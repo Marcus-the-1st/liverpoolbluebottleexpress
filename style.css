@@ -1170,3 +1170,67 @@ footer p{
   }
 
 }
+/* ================================================================
+   V3.4 — MOBILE TAP HIGHLIGHT / FOCUS BLOCK FIX
+   ================================================================ */
+
+/* Prevent Android/Chrome from painting a rectangular tap highlight */
+button,
+a,
+.category-strip a,
+.product-grid,
+.product-card,
+.back-top,
+.menu-toggle {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Prevent clickable elements from showing a browser focus box
+   after being tapped on mobile */
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none !important;
+}
+
+/* Back-to-top must remain a perfect circle in every interaction state */
+.back-top,
+.back-top:hover,
+.back-top:focus,
+.back-top:focus-visible,
+.back-top:active {
+  border-radius: 50% !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  background: rgba(8,124,255,.92) !important;
+}
+
+/* Category buttons/links must not flash a square when touched */
+.category-strip a,
+.category-strip a:hover,
+.category-strip a:focus,
+.category-strip a:focus-visible,
+.category-strip a:active {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+
+/* Hamburger button must also remain clean when touched */
+.menu-toggle,
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.menu-toggle:active {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+
+/* Don't allow text/image selection during a quick tap */
+.back-top,
+.menu-toggle,
+.category-strip a {
+  user-select: none;
+  -webkit-user-select: none;
+}
