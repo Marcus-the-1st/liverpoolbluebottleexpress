@@ -1,6 +1,6 @@
 /* ================================================================
    Liverpool Blue Bottle Liquor Express
-   V3.3 — CLEANED / IMAGE PROPORTION FIX
+   V3.4 — CLEAN MASTER STYLESHEET
    ================================================================ */
 
 :root{
@@ -66,9 +66,10 @@ button{
   justify-content:space-between;
   background:rgba(6,17,31,.88);
   backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
   z-index:1000;
-  transition:.25s;
+  transition:background .25s ease,box-shadow .25s ease;
 }
 
 .site-header.scrolled{
@@ -78,7 +79,7 @@ button{
 
 
 /* ================================================================
-   BRAND / OFFICIAL LOGO
+   BRAND / LOGO
    ================================================================ */
 
 .brand{
@@ -89,22 +90,21 @@ button{
 }
 
 .brand-mark{
-  width:52px !important;
-  height:52px !important;
-  min-width:52px !important;
-  min-height:52px !important;
-  max-width:52px !important;
-  max-height:52px !important;
+  width:52px;
+  height:52px;
+  min-width:52px;
+  min-height:52px;
+  max-width:52px;
+  max-height:52px;
+  flex:0 0 52px;
 
-  flex:0 0 52px !important;
-
-  display:block !important;
+  display:block;
   position:relative;
 
-  overflow:hidden !important;
-  border-radius:50% !important;
+  overflow:hidden;
+  border-radius:50%;
 
-  background:none !important;
+  background:none;
   border:2px solid #fff;
 
   box-shadow:0 0 24px rgba(8,124,255,.45);
@@ -114,23 +114,24 @@ button{
 }
 
 .brand-mark img{
-  display:block !important;
+  display:block;
 
-  width:100% !important;
-  height:100% !important;
+  width:100%;
+  height:100%;
 
-  min-width:0 !important;
-  min-height:0 !important;
-  max-width:100% !important;
-  max-height:100% !important;
+  min-width:0;
+  min-height:0;
+  max-width:100%;
+  max-height:100%;
 
-  object-fit:cover !important;
-  object-position:center !important;
+  object-fit:cover;
+  object-position:center;
 
-  border-radius:50% !important;
+  border-radius:50%;
 
-  margin:0 !important;
-  padding:0 !important;
+  margin:0;
+  padding:0;
+  border:0;
 }
 
 .brand-text{
@@ -152,7 +153,7 @@ button{
 
 
 /* ================================================================
-   NAVIGATION
+   DESKTOP NAVIGATION
    ================================================================ */
 
 .desktop-nav{
@@ -163,7 +164,7 @@ button{
 }
 
 .desktop-nav a{
-  transition:.2s;
+  transition:color .2s ease;
 }
 
 .desktop-nav a:hover{
@@ -179,7 +180,7 @@ button{
 
 
 /* ================================================================
-   MENU BUTTON
+   MOBILE MENU BUTTON
    ================================================================ */
 
 .menu-toggle{
@@ -188,14 +189,33 @@ button{
   min-width:44px;
   min-height:44px;
 
+  padding:9px 12px;
+
   border:1px solid var(--line);
   background:var(--navy2);
   color:#fff;
+
   border-radius:10px;
-  padding:9px 12px;
+
   cursor:pointer;
 
+  -webkit-appearance:none;
+  appearance:none;
+
   -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+  user-select:none;
+  -webkit-user-select:none;
+
+  outline:none;
+}
+
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.menu-toggle:active{
+  outline:none !important;
+  box-shadow:none !important;
+  -webkit-tap-highlight-color:transparent !important;
 }
 
 
@@ -234,6 +254,9 @@ button{
   padding:14px;
   border-radius:10px;
   font-weight:700;
+
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
 }
 
 .mobile-menu a:hover{
@@ -246,35 +269,37 @@ button{
 
 
 /* ================================================================
-   OFFICIAL WHATSAPP ICON
+   WHATSAPP ICON
    ================================================================ */
 
 .whatsapp-icon{
-  display:inline-block !important;
+  display:inline-block;
 
-  width:1.5em !important;
-  height:1.5em !important;
+  width:1.5em;
+  height:1.5em;
 
-  min-width:1.5em !important;
-  min-height:1.5em !important;
+  min-width:1.5em;
+  min-height:1.5em;
 
-  max-width:1.5em !important;
-  max-height:1.5em !important;
+  max-width:1.5em;
+  max-height:1.5em;
 
-  flex:0 0 1.5em !important;
+  flex:0 0 1.5em;
 
-  object-fit:contain !important;
-  object-position:center !important;
-
-  border-radius:50% !important;
+  object-fit:contain;
+  object-position:center;
 
   vertical-align:middle;
 
   margin-right:.42em;
 
-  padding:0 !important;
+  padding:0;
+
+  border:0;
 
   line-height:0;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
 .nav-whatsapp,
@@ -284,8 +309,8 @@ button{
 }
 
 .prompt-icon{
-  width:1.5em !important;
-  height:1.5em !important;
+  width:1.5em;
+  height:1.5em;
   margin-right:.35em;
 }
 
@@ -360,22 +385,22 @@ button{
 }
 
 .hero-banner-image{
-  display:block !important;
+  display:block;
 
-  width:100% !important;
-  height:100% !important;
+  width:100%;
+  height:100%;
 
-  min-width:0 !important;
-  min-height:0 !important;
+  min-width:0;
+  min-height:0;
 
-  max-width:100% !important;
-  max-height:100% !important;
+  max-width:100%;
+  max-height:100%;
 
-  object-fit:cover !important;
-  object-position:center !important;
+  object-fit:cover;
+  object-position:center;
 
-  margin:0 !important;
-  padding:0 !important;
+  margin:0;
+  padding:0;
 
   border:0;
 }
@@ -444,7 +469,7 @@ button{
 
 
 /* ================================================================
-   CATEGORY STRIP
+   CATEGORY STRIP / CAROUSEL
    ================================================================ */
 
 .category-strip{
@@ -490,15 +515,40 @@ button{
   scroll-snap-align:start;
 
   font-weight:700;
+
+  cursor:pointer;
+
+  -webkit-appearance:none;
+  appearance:none;
+
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+
+  user-select:none;
+  -webkit-user-select:none;
+
+  outline:none;
 }
 
 .category-strip a:hover{
   border-color:var(--blue2);
 }
 
+.category-strip a:focus,
+.category-strip a:focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
+}
+
+.category-strip a:active{
+  outline:none !important;
+  box-shadow:none !important;
+  border-radius:999px !important;
+}
+
 
 /* ================================================================
-   CATEGORY HEADINGS / ICONS
+   CATEGORY SECTIONS
    ================================================================ */
 
 .category{
@@ -520,6 +570,10 @@ button{
   border-left:4px solid var(--blue);
 
   padding-left:14px;
+
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 .category-title span{
@@ -539,6 +593,8 @@ button{
   line-height:1;
 
   flex:0 0 32px;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
 .category-title h3{
@@ -601,7 +657,12 @@ button{
 
   scroll-snap-align:start;
 
-  transition:.25s;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
 .product-card:hover{
@@ -614,7 +675,7 @@ button{
 
 
 /* ================================================================
-   PRODUCT IMAGE / PLACEHOLDER AREA
+   PRODUCT IMAGE AREA
    ================================================================ */
 
 .product-placeholder{
@@ -642,10 +703,10 @@ button{
   letter-spacing:-1px;
 
   overflow:hidden;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
-
-/* Any future real product image */
 .product-placeholder img,
 .product-image{
   display:block;
@@ -663,6 +724,8 @@ button{
   padding:0;
 
   border:0;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
 
@@ -779,15 +842,30 @@ button{
 
   font-weight:800;
 
-  transition:.2s;
+  transition:
+    transform .2s ease,
+    background .2s ease;
 
   border:1px solid transparent;
 
   -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+
+  outline:none;
 }
 
 .btn:hover{
   transform:translateY(-2px);
+}
+
+.btn:focus,
+.btn:focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
+}
+
+.btn:active{
+  outline:none !important;
 }
 
 .btn.primary{
@@ -802,6 +880,8 @@ button{
 .whatsapp-prompt a{
   color:var(--green);
   font-weight:800;
+
+  -webkit-tap-highlight-color:transparent;
 }
 
 
@@ -846,8 +926,6 @@ footer p{
   appearance:none;
   -webkit-appearance:none;
 
-  box-sizing:border-box;
-
   position:fixed;
 
   right:18px;
@@ -864,7 +942,7 @@ footer p{
 
   border:1px solid rgba(255,255,255,.16);
 
-  border-radius:50%;
+  border-radius:50% !important;
 
   display:none;
 
@@ -891,26 +969,33 @@ footer p{
 
   z-index:900;
 
-  outline:none;
+  outline:none !important;
 
-  -webkit-tap-highlight-color:transparent;
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-touch-callout:none;
+
+  user-select:none;
+  -webkit-user-select:none;
+
+  -webkit-focus-ring-color:transparent;
 }
 
 .back-top:hover,
 .back-top:focus,
 .back-top:focus-visible,
-.back-top:active,
-.back-top:focus:active{
+.back-top:active{
   appearance:none;
   -webkit-appearance:none;
 
-  border-radius:50%;
+  border-radius:50% !important;
 
   outline:none !important;
 
-  background:rgba(8,124,255,.92);
+  box-shadow:0 8px 24px rgba(0,0,0,.28) !important;
 
-  box-shadow:0 8px 24px rgba(0,0,0,.28);
+  background:rgba(8,124,255,.92) !important;
+
+  -webkit-tap-highlight-color:transparent !important;
 }
 
 .back-top:active{
@@ -922,10 +1007,6 @@ footer p{
   padding:0;
 }
 
-.back-top::selection{
-  background:transparent;
-}
-
 
 /* ================================================================
    REVEAL ANIMATION
@@ -933,6 +1014,7 @@ footer p{
 
 .reveal{
   opacity:0;
+
   transform:translateY(18px);
 
   transition:
@@ -943,6 +1025,42 @@ footer p{
 .reveal.visible{
   opacity:1;
   transform:translateY(0);
+}
+
+
+/* ================================================================
+   GLOBAL MOBILE TOUCH / FOCUS PROTECTION
+   ================================================================ */
+
+/*
+   This is the important part.
+
+   Android Chrome can retain focus on a tapped <a> or <button>.
+   That can create the small rectangular highlight/block seen
+   immediately after tapping.
+
+   All interactive elements are explicitly protected here.
+*/
+
+a,
+button{
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-touch-callout:none;
+}
+
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
+  -webkit-focus-ring-color:transparent !important;
+}
+
+a:active,
+button:active{
+  -webkit-tap-highlight-color:transparent !important;
+  outline:none !important;
 }
 
 
@@ -960,7 +1078,7 @@ footer p{
 
 
 /* ================================================================
-   MOBILE
+   TABLET / MOBILE
    ================================================================ */
 
 @media (max-width:768px){
@@ -971,13 +1089,13 @@ footer p{
   }
 
   .brand-mark{
-    width:46px !important;
-    height:46px !important;
-    min-width:46px !important;
-    min-height:46px !important;
-    max-width:46px !important;
-    max-height:46px !important;
-    flex-basis:46px !important;
+    width:46px;
+    height:46px;
+    min-width:46px;
+    min-height:46px;
+    max-width:46px;
+    max-height:46px;
+    flex-basis:46px;
   }
 
   .brand-text strong{
@@ -1076,7 +1194,7 @@ footer p{
 
 
 /* ================================================================
-   SMALLER MOBILE
+   SMALL MOBILE
    ================================================================ */
 
 @media (max-width:700px){
@@ -1092,13 +1210,13 @@ footer p{
   }
 
   .brand-mark{
-    width:52px !important;
-    height:52px !important;
-    min-width:52px !important;
-    min-height:52px !important;
-    max-width:52px !important;
-    max-height:52px !important;
-    flex-basis:52px !important;
+    width:52px;
+    height:52px;
+    min-width:52px;
+    min-height:52px;
+    max-width:52px;
+    max-height:52px;
+    flex-basis:52px;
   }
 
   .brand-text{
@@ -1148,6 +1266,44 @@ footer p{
 
 
 /* ================================================================
+   TOUCH DEVICES
+   ================================================================ */
+
+@media (hover:none) and (pointer:coarse){
+
+  a,
+  button{
+    -webkit-tap-highlight-color:transparent !important;
+  }
+
+  a:focus,
+  a:focus-visible,
+  button:focus,
+  button:focus-visible{
+    outline:none !important;
+    box-shadow:none !important;
+  }
+
+  .category-strip a:active{
+    background:var(--card) !important;
+    border-color:var(--line) !important;
+    border-radius:999px !important;
+  }
+
+  .menu-toggle:active{
+    background:var(--navy2) !important;
+    border-radius:10px !important;
+  }
+
+  .back-top:active{
+    background:rgba(8,124,255,.92) !important;
+    border-radius:50% !important;
+  }
+
+}
+
+
+/* ================================================================
    REDUCED MOTION
    ================================================================ */
 
@@ -1161,76 +1317,9 @@ footer p{
   *::before,
   *::after{
     scroll-behavior:auto !important;
-
     animation-duration:.01ms !important;
-
     animation-iteration-count:1 !important;
-
     transition-duration:.01ms !important;
   }
 
-}
-/* ================================================================
-   V3.4 — MOBILE TAP HIGHLIGHT / FOCUS BLOCK FIX
-   ================================================================ */
-
-/* Prevent Android/Chrome from painting a rectangular tap highlight */
-button,
-a,
-.category-strip a,
-.product-grid,
-.product-card,
-.back-top,
-.menu-toggle {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
-
-/* Prevent clickable elements from showing a browser focus box
-   after being tapped on mobile */
-button:focus,
-button:focus-visible,
-a:focus,
-a:focus-visible {
-  outline: none !important;
-}
-
-/* Back-to-top must remain a perfect circle in every interaction state */
-.back-top,
-.back-top:hover,
-.back-top:focus,
-.back-top:focus-visible,
-.back-top:active {
-  border-radius: 50% !important;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  background: rgba(8,124,255,.92) !important;
-}
-
-/* Category buttons/links must not flash a square when touched */
-.category-strip a,
-.category-strip a:hover,
-.category-strip a:focus,
-.category-strip a:focus-visible,
-.category-strip a:active {
-  -webkit-tap-highlight-color: transparent !important;
-  outline: none !important;
-}
-
-/* Hamburger button must also remain clean when touched */
-.menu-toggle,
-.menu-toggle:hover,
-.menu-toggle:focus,
-.menu-toggle:focus-visible,
-.menu-toggle:active {
-  -webkit-tap-highlight-color: transparent !important;
-  outline: none !important;
-}
-
-/* Don't allow text/image selection during a quick tap */
-.back-top,
-.menu-toggle,
-.category-strip a {
-  user-select: none;
-  -webkit-user-select: none;
 }
