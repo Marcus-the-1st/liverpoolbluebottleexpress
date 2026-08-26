@@ -2003,3 +2003,477 @@ button:active{
   }
 
 }
+
+/* ================================================================
+   V3.6 — ELECTRIC BLUE ATMOSPHERIC BACKGROUND
+   VISUAL ONLY — DOES NOT CHANGE PAGE LAYOUT OR SCROLLING
+   ================================================================ */
+
+/* ------------------------------------------------
+   CORE BACKGROUND
+   ------------------------------------------------ */
+
+html,
+body{
+  background:#020b18 !important;
+}
+
+/* ------------------------------------------------
+   ATMOSPHERIC BLUE LIGHT
+   Fixed to the viewport so it cannot affect
+   page height, scrolling or layout.
+   ------------------------------------------------ */
+
+body{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(
+      ellipse at 15% 8%,
+      rgba(0,105,255,.22) 0%,
+      rgba(0,105,255,.10) 18%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 88% 25%,
+      rgba(0,150,255,.18) 0%,
+      rgba(0,100,255,.08) 22%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 50% 65%,
+      rgba(0,76,190,.16) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #020817 0%,
+      #031126 28%,
+      #020b18 55%,
+      #031329 78%,
+      #020817 100%
+    ) !important;
+}
+
+/* ------------------------------------------------
+   BLUE LIGHT WAVES / STREAKS
+   These are fixed visual layers only.
+   They cannot create extra height or interfere
+   with scrolling.
+   ------------------------------------------------ */
+
+body::before{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  pointer-events:none;
+
+  width:140vw;
+  height:140vh;
+
+  left:-20vw;
+  top:-20vh;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 22%,
+      transparent 0%,
+      transparent 28%,
+      rgba(0,115,255,.16) 29%,
+      rgba(0,190,255,.09) 30%,
+      transparent 34%
+    ),
+
+    radial-gradient(
+      ellipse at 82% 42%,
+      transparent 0%,
+      transparent 30%,
+      rgba(0,110,255,.14) 31%,
+      rgba(0,180,255,.07) 32%,
+      transparent 36%
+    ),
+
+    radial-gradient(
+      ellipse at 42% 78%,
+      transparent 0%,
+      transparent 31%,
+      rgba(0,105,255,.13) 32%,
+      rgba(0,180,255,.06) 33%,
+      transparent 37%
+    );
+
+  filter:blur(3px);
+  opacity:.95;
+  transform:rotate(-7deg);
+}
+
+/* ------------------------------------------------
+   SOFT DIAGONAL BLUE LIGHT
+   ------------------------------------------------ */
+
+body::after{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  pointer-events:none;
+
+  inset:-30%;
+
+  background:
+    linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 28%,
+      rgba(0,115,255,.035) 31%,
+      rgba(0,175,255,.10) 33%,
+      rgba(0,115,255,.035) 35%,
+      transparent 39%,
+      transparent 57%,
+      rgba(0,105,255,.045) 60%,
+      rgba(0,170,255,.08) 62%,
+      rgba(0,105,255,.035) 64%,
+      transparent 68%
+    );
+
+  filter:blur(14px);
+  opacity:.9;
+  transform:rotate(-5deg);
+}
+
+/* ------------------------------------------------
+   KEEP CONTENT ABOVE THE ATMOSPHERE
+   ------------------------------------------------ */
+
+.site-header,
+.hero,
+.section,
+.specials-section,
+.brands-section,
+.visit,
+footer,
+main{
+  position:relative;
+  z-index:1;
+}
+
+/* ------------------------------------------------
+   REMOVE THE "FLAT NAVY BOX" LOOK FROM SECTIONS
+   while keeping the sections readable.
+   ------------------------------------------------ */
+
+.hero{
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(0,130,255,.20),
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2,12,28,.88),
+      rgba(2,11,24,.78)
+    ) !important;
+}
+
+.specials-section{
+  background:
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(0,120,255,.12),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      rgba(0,150,255,.10),
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3,18,39,.90),
+      rgba(2,11,24,.88)
+    ) !important;
+}
+
+.brands-section{
+  background:
+    radial-gradient(
+      ellipse at 75% 20%,
+      rgba(0,130,255,.14),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 20% 75%,
+      rgba(0,100,255,.12),
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3,16,35,.90),
+      rgba(2,10,23,.90)
+    ) !important;
+}
+
+.visit{
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(0,120,255,.14),
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3,17,36,.90),
+      rgba(2,10,22,.92)
+    ) !important;
+}
+
+footer{
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,100,255,.10),
+      transparent 48%
+    ),
+    rgba(1,7,15,.96) !important;
+}
+
+/* ------------------------------------------------
+   SECTION DIVIDERS
+   Give the page the glowing blue-line effect
+   from the reference artwork.
+   ------------------------------------------------ */
+
+.section-heading{
+  position:relative;
+}
+
+.section-heading::before{
+  content:"";
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:min(900px,95vw);
+  height:1px;
+
+  transform:translate(-50%,-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0,130,255,.05) 8%,
+      rgba(0,150,255,.65) 28%,
+      rgba(0,190,255,.95) 50%,
+      rgba(0,150,255,.65) 72%,
+      rgba(0,130,255,.05) 92%,
+      transparent 100%
+    );
+
+  box-shadow:
+    0 0 12px rgba(0,150,255,.45),
+    0 0 28px rgba(0,100,255,.20);
+
+  z-index:-1;
+}
+
+/* ------------------------------------------------
+   PRODUCT CARDS
+   Dark glass-like appearance that blends into
+   the new background.
+   ------------------------------------------------ */
+
+.product-card{
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,130,255,.12),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(7,29,54,.94),
+      rgba(3,16,32,.97)
+    ) !important;
+
+  border-color:rgba(35,145,255,.20) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 10px 35px rgba(0,0,0,.20);
+}
+
+.product-card:hover{
+  border-color:rgba(30,170,255,.55) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.30),
+    0 0 25px rgba(0,110,255,.14);
+}
+
+/* ------------------------------------------------
+   CATEGORY PILLS
+   ------------------------------------------------ */
+
+.category-strip a{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8,32,58,.90),
+      rgba(3,17,34,.94)
+    ) !important;
+
+  border-color:rgba(35,145,255,.18) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.category-strip a:hover{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8,45,80,.95),
+      rgba(3,20,40,.96)
+    ) !important;
+
+  border-color:rgba(30,170,255,.55) !important;
+}
+
+/* ------------------------------------------------
+   FEATURED BRAND CARDS
+   ------------------------------------------------ */
+
+.brand-card{
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,130,255,.10),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(7,29,54,.92),
+      rgba(3,16,31,.97)
+    ) !important;
+
+  border-color:rgba(35,145,255,.18) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 12px 35px rgba(0,0,0,.20);
+}
+
+.brand-card:hover{
+  border-color:rgba(30,170,255,.50) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.30),
+    0 0 25px rgba(0,110,255,.14);
+}
+
+/* ------------------------------------------------
+   FIND US CARD
+   ------------------------------------------------ */
+
+.visit-card{
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,130,255,.10),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(7,29,54,.94),
+      rgba(3,16,31,.97)
+    ) !important;
+
+  border-color:rgba(35,145,255,.20) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 15px 40px rgba(0,0,0,.22);
+}
+
+/* ------------------------------------------------
+   BUTTONS
+   ------------------------------------------------ */
+
+.btn.primary{
+  background:
+    linear-gradient(
+      135deg,
+      #087cff,
+      #08aaff
+    ) !important;
+
+  box-shadow:
+    0 0 18px rgba(0,140,255,.20);
+}
+
+/* ------------------------------------------------
+   BACK TO TOP
+   ------------------------------------------------ */
+
+.back-top{
+  background:
+    linear-gradient(
+      135deg,
+      #087cff,
+      #08aaff
+    ) !important;
+
+  border-color:rgba(100,200,255,.35) !important;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.30),
+    0 0 22px rgba(0,130,255,.25);
+}
+
+.back-top:hover,
+.back-top:focus,
+.back-top:focus-visible,
+.back-top:active{
+  background:
+    linear-gradient(
+      135deg,
+      #087cff,
+      #08aaff
+    ) !important;
+}
+
+/* ------------------------------------------------
+   MOBILE
+   ------------------------------------------------ */
+
+@media (max-width:768px){
+
+  body::before{
+    opacity:.70;
+  }
+
+  body::after{
+    opacity:.65;
+  }
+
+  .section-heading::before{
+    width:120vw;
+  }
+
+}
+
+/* ------------------------------------------------
+   REDUCED MOTION
+   No animation is used here, so this remains safe.
+   ------------------------------------------------ */
+
+@media (prefers-reduced-motion:reduce){
+
+  body::before,
+  body::after{
+    transform:none;
+  }
+
+}
