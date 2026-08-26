@@ -1,6 +1,6 @@
 /* ================================================================
    Liverpool Blue Bottle Liquor Express
-   V3.4 — CLEAN MASTER STYLESHEET
+   V3.5 — FEATURED BRANDS
    ================================================================ */
 
 :root{
@@ -14,6 +14,7 @@
   --card:#0d2237;
   --line:rgba(255,255,255,.10);
 }
+
 
 /* ================================================================
    BASE
@@ -97,38 +98,28 @@ button{
   max-width:52px;
   max-height:52px;
   flex:0 0 52px;
-
   display:block;
   position:relative;
-
   overflow:hidden;
   border-radius:50%;
-
   background:none;
   border:2px solid #fff;
-
   box-shadow:0 0 24px rgba(8,124,255,.45);
-
   line-height:0;
   aspect-ratio:1 / 1;
 }
 
 .brand-mark img{
   display:block;
-
   width:100%;
   height:100%;
-
   min-width:0;
   min-height:0;
   max-width:100%;
   max-height:100%;
-
   object-fit:cover;
   object-position:center;
-
   border-radius:50%;
-
   margin:0;
   padding:0;
   border:0;
@@ -185,28 +176,20 @@ button{
 
 .menu-toggle{
   display:none;
-
   min-width:44px;
   min-height:44px;
-
   padding:9px 12px;
-
   border:1px solid var(--line);
   background:var(--navy2);
   color:#fff;
-
   border-radius:10px;
-
   cursor:pointer;
-
   -webkit-appearance:none;
   appearance:none;
-
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
   user-select:none;
   -webkit-user-select:none;
-
   outline:none;
 }
 
@@ -225,22 +208,15 @@ button{
 
 .mobile-menu{
   display:none;
-
   position:fixed;
   top:78px;
   right:0;
-
   width:min(330px,90vw);
-
   padding:18px;
-
   background:#071522;
-
   border-left:1px solid var(--line);
   border-bottom:1px solid var(--line);
-
   z-index:999;
-
   box-shadow:0 20px 50px rgba(0,0,0,.45);
 }
 
@@ -254,7 +230,6 @@ button{
   padding:14px;
   border-radius:10px;
   font-weight:700;
-
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
 }
@@ -274,31 +249,20 @@ button{
 
 .whatsapp-icon{
   display:inline-block;
-
   width:1.5em;
   height:1.5em;
-
   min-width:1.5em;
   min-height:1.5em;
-
   max-width:1.5em;
   max-height:1.5em;
-
   flex:0 0 1.5em;
-
   object-fit:contain;
   object-position:center;
-
   vertical-align:middle;
-
   margin-right:.42em;
-
   padding:0;
-
   border:0;
-
   line-height:0;
-
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -321,19 +285,14 @@ button{
 
 .hero{
   min-height:100vh;
-
   padding:112px 5% 70px;
-
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-
   text-align:center;
-
   position:relative;
   overflow:hidden;
-
   background:
     radial-gradient(
       circle at 50% 15%,
@@ -354,27 +313,17 @@ button{
 
 .hero-banner{
   width:min(1120px,100%);
-
   aspect-ratio:1536 / 1031;
-
   min-height:0;
-
   border-radius:28px;
-
   border:1px solid rgba(255,255,255,.22);
-
   overflow:hidden;
-
   position:relative;
-
   display:block;
-
   background:none;
-
   box-shadow:
     0 28px 70px rgba(0,0,0,.35),
     0 0 55px rgba(8,124,255,.12);
-
   line-height:0;
 }
 
@@ -386,22 +335,16 @@ button{
 
 .hero-banner-image{
   display:block;
-
   width:100%;
   height:100%;
-
   min-width:0;
   min-height:0;
-
   max-width:100%;
   max-height:100%;
-
   object-fit:cover;
   object-position:center;
-
   margin:0;
   padding:0;
-
   border:0;
 }
 
@@ -475,23 +418,14 @@ button{
 .category-strip{
   display:flex;
   gap:10px;
-
   overflow-x:auto;
-
   padding:4px 2px 18px;
-
   margin:0 auto 54px;
-
   max-width:1300px;
-
   scrollbar-width:none;
-
   scroll-snap-type:x proximity;
-
   overscroll-behavior-x:contain;
-
   -webkit-overflow-scrolling:touch;
-
   touch-action:pan-x pan-y;
 }
 
@@ -501,32 +435,20 @@ button{
 
 .category-strip a{
   flex:0 0 auto;
-
   padding:11px 15px;
-
   background:var(--card);
-
   border:1px solid var(--line);
-
   border-radius:999px;
-
   white-space:nowrap;
-
   scroll-snap-align:start;
-
   font-weight:700;
-
   cursor:pointer;
-
   -webkit-appearance:none;
   appearance:none;
-
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
-
   user-select:none;
   -webkit-user-select:none;
-
   outline:none;
 }
 
@@ -553,24 +475,17 @@ button{
 
 .category{
   margin:0 auto 64px;
-
   max-width:1300px;
-
   scroll-margin-top:100px;
 }
 
 .category-title{
   display:flex;
   align-items:center;
-
   gap:12px;
-
   margin-bottom:20px;
-
   border-left:4px solid var(--blue);
-
   padding-left:14px;
-
   -webkit-tap-highlight-color:transparent;
   user-select:none;
   -webkit-user-select:none;
@@ -578,22 +493,15 @@ button{
 
 .category-title span{
   display:inline-flex;
-
   width:32px;
   height:32px;
-
   min-width:32px;
   min-height:32px;
-
   align-items:center;
   justify-content:center;
-
   font-size:1.7rem;
-
   line-height:1;
-
   flex:0 0 32px;
-
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -608,23 +516,14 @@ button{
 
 .product-grid{
   display:flex;
-
   gap:16px;
-
   overflow-x:auto;
-
   padding:3px 3px 18px;
-
   scroll-snap-type:x mandatory;
-
   scrollbar-width:none;
-
   -webkit-overflow-scrolling:touch;
-
   overscroll-behavior-x:contain;
-
   touch-action:pan-x pan-y;
-
   scroll-padding-inline:3px;
 }
 
@@ -639,37 +538,27 @@ button{
 
 .product-card{
   flex:0 0 225px;
-
   background:
     linear-gradient(
       160deg,
       rgba(13,34,55,.98),
       rgba(8,24,40,.98)
     );
-
   border:1px solid var(--line);
-
   border-radius:18px;
-
   overflow:hidden;
-
   min-height:330px;
-
   scroll-snap-align:start;
-
   transition:
     transform .25s ease,
     border-color .25s ease,
     box-shadow .25s ease;
-
   -webkit-tap-highlight-color:transparent;
 }
 
 .product-card:hover{
   transform:translateY(-5px);
-
   border-color:rgba(24,184,255,.5);
-
   box-shadow:0 18px 45px rgba(0,0,0,.25);
 }
 
@@ -680,12 +569,9 @@ button{
 
 .product-placeholder{
   height:205px;
-
   width:100%;
-
   display:grid;
   place-items:center;
-
   background:
     radial-gradient(
       circle at 50% 35%,
@@ -693,38 +579,26 @@ button{
       #d9e5ef 65%,
       #bdccda
     );
-
   color:#0b2338;
-
   font-size:2.2rem;
-
   font-weight:900;
-
   letter-spacing:-1px;
-
   overflow:hidden;
-
   -webkit-tap-highlight-color:transparent;
 }
 
 .product-placeholder img,
 .product-image{
   display:block;
-
   width:100%;
   height:100%;
-
   max-width:100%;
   max-height:100%;
-
   object-fit:contain;
   object-position:center;
-
   margin:0;
   padding:0;
-
   border:0;
-
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -750,14 +624,116 @@ button{
 
 .product-info strong{
   display:inline-block;
-
   background:var(--blue);
-
   padding:7px 12px;
-
   border-radius:999px;
+  font-size:1rem;
+}
+
+
+/* ================================================================
+   FEATURED BRANDS
+   ================================================================ */
+
+.brands-section{
+  background:
+    linear-gradient(
+      180deg,
+      #071726,
+      #06111f
+    );
+}
+
+.brands-grid{
+  width:min(1300px,100%);
+  margin:0 auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(5,minmax(0,1fr));
+
+  gap:18px;
+}
+
+.brand-card{
+  min-width:0;
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(13,34,55,.98),
+      rgba(8,24,40,.98)
+    );
+
+  border:1px solid var(--line);
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  padding:16px;
+
+  text-align:center;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.brand-card:hover{
+  transform:translateY(-5px);
+
+  border-color:rgba(24,184,255,.5);
+
+  box-shadow:0 18px 45px rgba(0,0,0,.25);
+}
+
+.brand-logo-area{
+  width:100%;
+
+  height:150px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  border-radius:14px;
+
+  background:#fff;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  padding:12px;
+}
+
+.brand-logo-area img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  max-width:100%;
+  max-height:100%;
+
+  object-fit:contain;
+  object-position:center;
+
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+.brand-card h3{
+  margin-top:14px;
 
   font-size:1rem;
+
+  line-height:1.2;
 }
 
 
@@ -771,24 +747,17 @@ button{
 
 .visit-card{
   max-width:1000px;
-
   margin:auto;
-
   background:
     linear-gradient(
       160deg,
       rgba(13,34,55,.98),
       rgba(8,24,40,.98)
     );
-
   border:1px solid var(--line);
-
   border-radius:24px;
-
   padding:34px;
-
   display:grid;
-
   gap:25px;
 }
 
@@ -830,27 +799,18 @@ button{
 
 .btn{
   display:inline-flex;
-
   justify-content:center;
   align-items:center;
-
   min-height:48px;
-
   padding:12px 20px;
-
   border-radius:999px;
-
   font-weight:800;
-
   transition:
     transform .2s ease,
     background .2s ease;
-
   border:1px solid transparent;
-
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
-
   outline:none;
 }
 
@@ -880,7 +840,6 @@ button{
 .whatsapp-prompt a{
   color:var(--green);
   font-weight:800;
-
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -891,11 +850,8 @@ button{
 
 footer{
   background:#050d16;
-
   padding:45px 20px;
-
   text-align:center;
-
   border-top:1px solid var(--line);
 }
 
@@ -1014,7 +970,6 @@ footer p{
 
 .reveal{
   opacity:0;
-
   transform:translateY(18px);
 
   transition:
@@ -1031,16 +986,6 @@ footer p{
 /* ================================================================
    GLOBAL MOBILE TOUCH / FOCUS PROTECTION
    ================================================================ */
-
-/*
-   This is the important part.
-
-   Android Chrome can retain focus on a tapped <a> or <button>.
-   That can create the small rectangular highlight/block seen
-   immediately after tapping.
-
-   All interactive elements are explicitly protected here.
-*/
 
 a,
 button{
@@ -1166,10 +1111,8 @@ button:active{
 
   .product-grid{
     gap:12px;
-
     padding-left:2px;
     padding-right:14px;
-
     scroll-padding-left:2px;
   }
 
@@ -1180,6 +1123,23 @@ button:active{
 
   .product-placeholder{
     height:195px;
+  }
+
+  .brands-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .brand-card{
+    padding:12px;
+  }
+
+  .brand-logo-area{
+    height:135px;
+  }
+
+  .brand-card h3{
+    font-size:.92rem;
   }
 
   .visit-card{
@@ -1229,11 +1189,8 @@ button:active{
 
   .brand-text span{
     max-width:56vw;
-
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
   }
 
@@ -1243,9 +1200,7 @@ button:active{
 
   .hero-banner{
     width:100%;
-
     aspect-ratio:1536 / 1031;
-
     border-radius:22px;
   }
 
@@ -1260,6 +1215,15 @@ button:active{
 
   .category-strip::-webkit-scrollbar{
     display:none;
+  }
+
+  .brands-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .brand-logo-area{
+    height:120px;
+    padding:10px;
   }
 
 }
