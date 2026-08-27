@@ -1,24 +1,12 @@
-Liverpool Blue Bottle Liquor Express — V3.3 TEST BUILD
+Liverpool Blue Bottle Liquor Express — V3.8 Professional Homepage Update
 
-SOURCE
-Built from the verified V3.2 scroll-fix build.
+Based on V3.7 Cosmic Blue Complete.
 
-TEST FEEDBACK ADDRESSED
-- The Back to Top button looked correct when idle but displayed a rectangular
-  square/background when pressed.
-- Removed the browser/native focus, tap-highlight and pressed-state appearance.
-- Forced the control to remain circular in hover, focus, focus-visible and active
-  states.
-- Kept the existing back-to-top action and the smooth page scrolling.
-- No changes made to the official Liverpool Blue Bottle logo, banner or
-  blue/white WhatsApp icon.
-- No changes made to product cards or product imagery.
-
-STATUS
-V3.3 TEST BUILD — deploy and test the Back to Top button on the phone.
-Expected result: pressing/tapping it should keep the same clean circular
-appearance, with no square box appearing.
-
-
-V3.7 VISUAL UPDATE
-Cosmic/electric-blue background, flowing blue light arcs, softer card blending and blue-glow borders. Existing HTML, products, prices, categories, links and JavaScript preserved.
+Changes in V3.8:
+- Replaced the homepage banner with the supplied Premium Brands / Exceptional Service artwork.
+- Updated the homepage hero copy to:
+  LIVERPOOL BLUE BOTTLE LIQUOR EXPRESS
+  The Art of Fine Spirits
+  Curated collections of premium brands and exclusive bottles, delivered with care.
+- No product, price, category, navigation, Find Us, WhatsApp, or functionality changes.
+- Existing CSS/background system retained.
