@@ -18,3 +18,7 @@ STATUS
 V3.3 TEST BUILD — deploy and test the Back to Top button on the phone.
 Expected result: pressing/tapping it should keep the same clean circular
 appearance, with no square box appearing.
+
+
+V3.7 VISUAL UPDATE
+Cosmic/electric-blue background, flowing blue light arcs, softer card blending and blue-glow borders. Existing HTML, products, prices, categories, links and JavaScript preserved.
