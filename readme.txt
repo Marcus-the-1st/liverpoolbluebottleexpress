@@ -10,3 +10,5 @@ Changes in V3.8:
   Curated collections of premium brands and exclusive bottles, delivered with care.
 - No product, price, category, navigation, Find Us, WhatsApp, or functionality changes.
 - Existing CSS/background system retained.
+
+V3.10: Cart icon now toggles the drawer open/closed on mobile and desktop. Added Clear All button that clears the cart and closes the drawer.

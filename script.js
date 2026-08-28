@@ -207,6 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $("cartCount").textContent = count;
     $("cartButton").classList.toggle("has-items", count > 0);
+    const clearButton = $("clearCartButton");
+    if (clearButton) clearButton.hidden = count === 0;
 
     if (!cart.size) {
       items.innerHTML = "";
@@ -250,6 +252,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cart.set(id, {product, qty:(existing?.qty || 0) + 1});
     saveCart();
     renderCart();
+  }
+
+  function toggleCart() {
+    const drawer = $("cartDrawer");
+    if (drawer?.classList.contains("open")) closeCart();
+    else openCart();
   }
 
   function openCart() {
@@ -333,7 +341,14 @@ document.addEventListener("DOMContentLoaded", () => {
     scheduleExpiry();
     renderCart();
 
-    $("cartButton")?.addEventListener("click", openCart);
+    $("cartButton")?.addEventListener("click", toggleCart);
+    $("clearCartButton")?.addEventListener("click", () => {
+      if (!cart.size) return;
+      cart.clear();
+      localStorage.removeItem(STORAGE_KEY);
+      renderCart();
+      closeCart();
+    });
     $("cartClose")?.addEventListener("click", closeCart);
     $("cartOverlay")?.addEventListener("click", closeCart);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
