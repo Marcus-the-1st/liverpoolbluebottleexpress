@@ -12,3 +12,6 @@ Changes in V3.8:
 - Existing CSS/background system retained.
 
 V3.10: Cart icon now toggles the drawer open/closed on mobile and desktop. Added Clear All button that clears the cart and closes the drawer.
+
+
+V3.11: Updated all 25 product normal/base prices to the current prices supplied by Liverpool Blue Bottle Liquor Express. Special prices remain blank so future specials can be entered against these base prices.
