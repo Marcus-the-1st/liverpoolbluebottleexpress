@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-page="home" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -8,7 +8,7 @@
 <title>Liverpool Blue Bottle Liquor Express</title>
 <link href="style.css" rel="stylesheet"/>
 </head>
-<body data-page="home">
+<body data-page="shop">
 <header class="site-header" id="siteHeader">
 <a aria-label="Liverpool Blue Bottle Liquor Express home" class="brand" href="#home">
 <span aria-hidden="true" class="brand-mark">
@@ -51,39 +51,23 @@
     Join WhatsApp
   </a>
 </div>
-<main>
+<main><section class="section catalog-section" data-catalog-mode="shop" id="shop">
+<div class="section-heading">
+<p class="eyebrow">THE COLLECTION</p>
+<h1>Shop All Products</h1>
+<p class="specials-subtitle">Browse our full collection of spirits, wines, beers and more — all in one place.</p>
+</div>
+<div class="catalog-root" id="catalogRoot"></div>
+<div class="no-specials" hidden="" id="noSpecials">
+<div class="no-specials-icon">✦</div>
+<h2>No current specials</h2>
+<p>Check back soon for our latest special offers. Our full collection is available in the Shop.</p>
+<a class="btn primary" href="shop.html#shop">Browse the Shop</a>
+</div>
+</section>
 <!-- ============================================================
      HERO
      ============================================================ -->
-<section class="hero" id="home">
-<div aria-label="Liverpool Blue Bottle promotional banner" class="hero-banner">
-<img alt="Premium Brands — Exceptional Service — Liverpool Blue Bottle Liquor Express" class="hero-banner-image" fetchpriority="high" height="1031" src="liverpool-blue-bottle-banner.jpg" width="1536"/>
-</div>
-<div class="hero-content">
-<p class="eyebrow">
-      LIVERPOOL BLUE BOTTLE LIQUOR EXPRESS
-    </p>
-<h1>
-      The Art of Fine Spirits
-    </h1>
-<p class="hero-subtitle">
-      Curated collections of premium brands<br/>
-      and exclusive bottles, delivered with care.
-    </p>
-</div>
-</section><section aria-label="Shop all products promotion" class="shop-promo section">
-<div class="shop-promo-banner">
-<a aria-label="Enter the Liverpool Blue Bottle shop" class="shop-promo-link" href="shop.html#shop">
-<img alt="Welcome to the Collection — Discover premium spirits, wines and more — Shop now" class="shop-promo-image" height="864" loading="lazy" src="shop-promo-banner.jpg" width="1536"/>
-</a>
-</div>
-</section><section aria-label="Current specials promotion" class="specials-promo section">
-<div class="specials-promo-banner">
-<a aria-label="View current specials" class="specials-promo-link" href="specials.html#specials">
-<img alt="What's on special — Your Next Favourite, Now on Special — Current Specials. Great Prices." class="specials-promo-image" height="864" loading="lazy" src="specials-promo-banner.jpg" width="1536"/>
-</a>
-</div>
-</section>
 <!-- ============================================================
      CURRENT SPECIALS
      ============================================================ -->

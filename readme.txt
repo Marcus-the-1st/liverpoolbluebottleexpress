@@ -1,19 +1,12 @@
-Liverpool Blue Bottle Liquor Express — V3.8 Professional Homepage Update
+Liverpool Blue Bottle Liquor Express — V3.13
 
-Based on V3.7 Cosmic Blue Complete.
+V3.13 adds a dedicated Shop page and a dedicated Current Specials page using one shared catalogue data source.
 
-Changes in V3.8:
-- Replaced the homepage banner with the supplied Premium Brands / Exceptional Service artwork.
-- Updated the homepage hero copy to:
-  LIVERPOOL BLUE BOTTLE LIQUOR EXPRESS
-  The Art of Fine Spirits
-  Curated collections of premium brands and exclusive bottles, delivered with care.
-- No product, price, category, navigation, Find Us, WhatsApp, or functionality changes.
-- Existing CSS/background system retained.
+Shop page: shop.html
+Specials page: specials.html
+Shared catalogue/pricing/special logic: catalog-data.js + catalog.js
+Cart/order engine: script.js
 
-V3.10: Cart icon now toggles the drawer open/closed on mobile and desktop. Added Clear All button that clears the cart and closes the drawer.
+Normal/base prices remain the master prices. Add a specialPrice and optional specialStart/specialEnd for a product in catalog-data.js to make it appear on the Specials page and show the crossed-out base price, special price and calculated percentage off.
 
-
-V3.11: Updated all 25 product normal/base prices to the current prices supplied by Liverpool Blue Bottle Liquor Express. Special prices remain blank so future specials can be entered against these base prices.
-
-V3.12 — Homepage specials promo banner + dedicated specials page.
+Product images are intentionally placeholders until approved packshots are supplied.
