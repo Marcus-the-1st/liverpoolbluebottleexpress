@@ -15,3 +15,5 @@ V3.10: Cart icon now toggles the drawer open/closed on mobile and desktop. Added
 
 
 V3.11: Updated all 25 product normal/base prices to the current prices supplied by Liverpool Blue Bottle Liquor Express. Special prices remain blank so future specials can be entered against these base prices.
+
+V3.12 — Homepage specials promo banner + dedicated specials page.

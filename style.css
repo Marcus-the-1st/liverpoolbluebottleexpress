@@ -2890,3 +2890,109 @@ body.cart-open{overflow:hidden}
 @media(max-width:430px){
   .cart-drawer{width:100vw}.cart-drawer-header{padding-top:18px}.cart-line{grid-template-columns:46px 1fr auto}.cart-line-icon{width:46px;height:54px}.cart-line-controls{grid-column:2/4}.cart-drawer-header h2{font-size:1.35rem}
 }
+
+
+/* ================================================================
+   V3.12 — HOMEPAGE SPECIALS PROMO BANNER
+   ================================================================ */
+.specials-promo{
+  padding-top:52px;
+  padding-bottom:52px;
+  background:
+    radial-gradient(
+      ellipse 70% 45% at 50% 50%,
+      rgba(0,115,255,.10),
+      transparent 72%
+    );
+}
+
+.specials-promo-banner{
+  position:relative;
+  width:min(1536px,100%);
+  margin:0 auto;
+  border-radius:28px;
+  overflow:hidden;
+  line-height:0;
+  border:1px solid rgba(77,178,255,.24);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.42),
+    0 0 35px rgba(8,124,255,.12),
+    0 0 90px rgba(0,103,255,.07);
+}
+
+.specials-promo-image{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1536 / 864;
+  object-fit:cover;
+}
+
+/* The supplied artwork contains the visible Shop now button.
+   This transparent hit area sits over that button so only the
+   intended button area navigates to the dedicated specials page. */
+.specials-promo-shop{
+  position:absolute;
+  left:65.3%;
+  top:69.0%;
+  width:18.5%;
+  height:10.5%;
+  display:block;
+  border-radius:12px;
+  outline:none;
+  text-decoration:none;
+}
+
+.specials-promo-shop:focus-visible{
+  box-shadow:0 0 0 3px rgba(255,255,255,.9), 0 0 24px rgba(24,184,255,.9);
+}
+
+.specials-promo-shop span{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* ================================================================
+   V3.12 — DEDICATED SPECIALS PAGE HEADER
+   ================================================================ */
+.specials-page-header{
+  padding-top:142px;
+  padding-bottom:34px;
+  background:
+    radial-gradient(
+      ellipse 65% 45% at 50% 0%,
+      rgba(0,126,255,.16),
+      transparent 70%
+    );
+}
+
+.specials-page-header .section-heading{
+  margin-bottom:0;
+}
+
+.specials-page-header h1{
+  font-size:clamp(2.25rem,6vw,4.5rem);
+  margin-bottom:14px;
+}
+
+@media (max-width:700px){
+  .specials-promo{
+    padding:34px 4% 44px;
+  }
+
+  .specials-promo-banner{
+    border-radius:20px;
+  }
+
+  .specials-page-header{
+    padding-top:118px;
+    padding-bottom:18px;
+  }
+}
