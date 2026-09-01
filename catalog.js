@@ -1,4 +1,4 @@
-/* Liverpool Blue Bottle — V3.13 shared product catalogue */
+/* Liverpool Blue Bottle — V3.14 expanded shop catalogue */
 (() => {
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
   const root = document.getElementById("catalogRoot");
