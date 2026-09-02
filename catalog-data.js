@@ -1,12 +1,12 @@
-/* V3.21 — PAGE-LEVEL SPECIALS CAMPAIGN
-   Products only carry their special price. The campaign dates live here once per specials batch.
-   When a new batch is supplied, update campaignStart/campaignEnd; do not add dates to each product.
+/* V3.22 — SPECIALS TEST CAMPAIGN
+   One page-level specials campaign: 1 September 2026 through 15 September 2026.
+   Products carry only their special price; the page campaign controls activation.
 */
 window.LBB_SPECIALS_CAMPAIGN = {
-  enabled: false,
-  campaignStart: null,
-  campaignEnd: null,
-  label: ""
+  enabled: true,
+  campaignStart: "2026-09-01",
+  campaignEnd: "2026-09-15",
+  label: "1 September – 15 September 2026"
 };
 
 window.LBB_CATALOG = [
@@ -103,10 +103,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 209.99,
     "initial": "BW",
-    "specialPrice": null,
+    "specialPrice": 189.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/black-white.jpg"
   },
   {
     "id": "chivas-regal-12yr",
@@ -229,10 +229,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 315,
     "initial": "JD",
-    "specialPrice": null,
+    "specialPrice": 299.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/jack-daniels.jpg"
   },
   {
     "id": "jameson",
@@ -453,10 +453,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 205,
     "initial": "KE",
-    "specialPrice": null,
+    "specialPrice": 185.0,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/klipdrift-export.jpg"
   },
   {
     "id": "klipdrift-premium",
@@ -467,10 +467,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 239.99,
     "initial": "KP",
-    "specialPrice": null,
+    "specialPrice": 219.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/klipdrift-premium.jpg"
   },
   {
     "id": "kwv-10-year-old",
@@ -495,10 +495,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 195.0,
     "initial": "K3Y",
-    "specialPrice": null,
+    "specialPrice": 179.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/kwv-3-year-old.jpg"
   },
   {
     "id": "kwv-5-year-old",
@@ -544,17 +544,17 @@ window.LBB_CATALOG = [
   },
   {
     "id": "richelieu",
-    "name": "Richelieu",
+    "name": "Richelieu International",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 219.99,
     "initial": "R",
-    "specialPrice": null,
+    "specialPrice": 199.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/richelieu-international.jpg"
   },
   {
     "id": "viceroy",
@@ -719,10 +719,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 169.99,
     "initial": "RB",
-    "specialPrice": null,
+    "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/russian-bear.jpg"
   },
   {
     "id": "russian-bear-1l",
@@ -831,10 +831,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 1299.99,
     "initial": "DJR",
-    "specialPrice": null,
+    "specialPrice": 799.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/don-julio-reposado.jpg"
   },
   {
     "id": "el-jimador-reposado",
@@ -1027,10 +1027,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 179.99,
     "initial": "SO",
-    "specialPrice": null,
+    "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/strettons-original.jpg"
   },
   {
     "id": "tanqueray-blackcurrant",
@@ -1076,17 +1076,17 @@ window.LBB_CATALOG = [
   },
   {
     "id": "amarula",
-    "name": "Amarula",
+    "name": "Amarula Cream",
     "category": "Cream Liqueurs & Other Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
     "normalPrice": 169.99,
     "initial": "A",
-    "specialPrice": null,
+    "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/amarula-cream.jpg"
   },
   {
     "id": "amarula-1l",
@@ -1111,10 +1111,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 129.99,
     "initial": "CR",
-    "specialPrice": null,
+    "specialPrice": 112.0,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/coco-rico.jpg"
   },
   {
     "id": "el-bravo-strawberry",
@@ -1167,10 +1167,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 169.99,
     "initial": "P10C",
-    "specialPrice": null,
+    "specialPrice": 155.0,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/po-10-c.jpg"
   },
   {
     "id": "southern-comfort",
@@ -1237,10 +1237,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 119.99,
     "initial": "TB",
-    "specialPrice": null,
+    "specialPrice": 99.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/tang-sour-blueberry.jpg"
   },
   {
     "id": "tant-sannie-se-melktert",
@@ -1251,10 +1251,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 139.99,
     "initial": "TS",
-    "specialPrice": null,
+    "specialPrice": 120.0,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/tant-sannie-se-melktart.jpg"
   },
   {
     "id": "wild-africa-cream",
@@ -1265,10 +1265,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 149.99,
     "initial": "WA",
-    "specialPrice": null,
+    "specialPrice": 129.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/wild-africa-cream.jpg"
   },
   {
     "id": "mo-t-chandon-brut-imp-rial",

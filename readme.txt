@@ -14,3 +14,5 @@ Product images are intentionally placeholders until approved packshots are suppl
 
 V3.21 — PAGE-LEVEL SPECIALS CAMPAIGN
 Specials are now controlled by one campaign date range in catalog-data.js (window.LBB_SPECIALS_CAMPAIGN), not by individual product dates. Products only need normalPrice and specialPrice. A specials batch is active only inside the campaign window; when it expires, the Specials page clears and Shop products return to normal pricing. For the next batch, update the single campaignStart/campaignEnd values and enable the campaign. The website cannot reliably infer a GitHub upload/commit date from a static page, so the batch date is stamped once when the specials batch is prepared.
+
+V3.22 TEST: Specials campaign is enabled for 1 September 2026 through 15 September 2026. 15 supplied product images are source-derived crops from the user-provided specials composite and are used only for this test.
