@@ -1,4 +1,4 @@
-/* Liverpool Blue Bottle — V3.14 expanded shop catalogue */
+/* Liverpool Blue Bottle — V3.18 category preview / View All system */
 (() => {
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
   const root = document.getElementById("catalogRoot");
@@ -15,7 +15,11 @@
   };
   const esc = v => String(v).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));
   const mode = document.body.dataset.page || "shop";
-  const items = mode === "specials" ? catalog.filter(activeSpecial) : catalog;
+  const params = new URLSearchParams(window.location.search);
+  const selectedCategoryId = params.get("category");
+  const baseItems = mode === "specials" ? catalog.filter(activeSpecial) : catalog;
+  const selectedCategory = selectedCategoryId ? catalog.find(p => p.categoryId === selectedCategoryId) : null;
+  const items = selectedCategory ? baseItems.filter(p => p.categoryId === selectedCategoryId) : baseItems;
 
   const categories = [];
   items.forEach(p => {
@@ -23,19 +27,21 @@
   });
 
   root.innerHTML = `
+    ${selectedCategory ? `<div class="category-return"><a class="category-return-link" href="${mode === "specials" ? "specials.html" : "shop.html"}#shop">← Back to ${mode === "specials" ? "Specials" : "Shop"}</a></div>` : `
     <div class="category-nav" id="categoryNav">
       <div class="category-strip" id="categories" aria-label="Product categories">
         ${categories.map(c => `<a href="#${esc(c.id)}">${esc(c.name)}</a>`).join("")}
       </div>
-    </div>
+    </div>`}
     ${categories.map(c => {
       const categoryItems = items.filter(p => p.categoryId === c.id);
-      const hasViewAll = mode === "shop" && categoryItems.length > 5;
+      const hasViewAll = !selectedCategory && categoryItems.length > 5;
+      const previewItems = hasViewAll ? categoryItems.slice(0, 5) : categoryItems;
       return `
       <div class="category" id="${esc(c.id)}" data-category-id="${esc(c.id)}">
-        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3>${hasViewAll ? `<button class="category-view-all" type="button" data-view-category="${esc(c.id)}" aria-expanded="false">View All</button>` : ""}</div>
+        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3>${hasViewAll ? `<a class="category-view-all" href="${mode === "specials" ? "specials.html" : "shop.html"}?category=${encodeURIComponent(c.id)}#shop" aria-label="View all ${esc(c.name)}">View All <span class="view-all-arrow" aria-hidden="true">→</span></a>` : ""}</div>
         <div class="product-grid" tabindex="0" role="region" aria-label="${esc(c.name)} products">
-          ${categoryItems.map(p => {
+          ${previewItems.map(p => {
             const special = activeSpecial(p);
             const discount = special ? Math.round(((p.normalPrice - p.specialPrice) / p.normalPrice) * 100) : 0;
             const image = p.image ? `<img class="product-image" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="product-initial">${esc(p.initial)}</span>`;
@@ -56,24 +62,18 @@
     }).join("")}
   `;
 
+  const heading = root.closest(".catalog-section")?.querySelector(".section-heading h1");
+  const subtitle = root.closest(".catalog-section")?.querySelector(".section-heading .specials-subtitle");
+  if (selectedCategory && heading) heading.textContent = selectedCategory.category;
+  if (selectedCategory && subtitle) subtitle.textContent = `Browse the full ${selectedCategory.category} collection.`;
+
   if (mode === "specials") {
     const empty = document.getElementById("noSpecials");
     if (empty) empty.hidden = items.length !== 0;
     if (!items.length) root.querySelectorAll(".category-nav, .category").forEach(el => el.remove());
   }
 
-  // V3.17 — each shop category starts as a compact five-product carousel.
-  // View All expands that category in place; no copied third-party navigation is used.
-  root.querySelectorAll(".category-view-all").forEach(button => {
-    button.addEventListener("click", () => {
-      const category = button.closest(".category");
-      if (!category) return;
-      const expanded = category.classList.toggle("is-expanded");
-      button.setAttribute("aria-expanded", String(expanded));
-      button.textContent = expanded ? "Show Less" : "View All";
-      if (expanded) {
-        category.querySelector(".product-grid")?.scrollTo({left: 0, behavior: "smooth"});
-      }
-    });
-  });
+  // V3.18 — category previews show at most five products.
+  // View All opens a clean category-filtered Shop view instead of expanding
+  // a long list inside the main catalogue. Navigation and styling are original LBB UI.
 })();

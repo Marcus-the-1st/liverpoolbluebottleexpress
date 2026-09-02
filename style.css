@@ -2942,18 +2942,21 @@ body.cart-open{overflow:hidden}
 .category-view-all{
   flex:0 0 auto;
   margin-left:auto;
-  padding:8px 13px;
-  border:1px solid rgba(89,210,255,.24);
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 8px 7px 12px;
+  border:1px solid rgba(89,210,255,.22);
   border-radius:999px;
-  background:linear-gradient(145deg,rgba(7,29,51,.9),rgba(2,12,25,.94));
+  background:linear-gradient(145deg,rgba(7,29,51,.92),rgba(2,12,25,.96));
   color:#73cfff;
   font:inherit;
-  font-size:.72rem;
+  font-size:.68rem;
   font-weight:900;
-  letter-spacing:.55px;
+  letter-spacing:.7px;
   text-transform:uppercase;
   white-space:nowrap;
-  cursor:pointer;
+  text-decoration:none;
   box-shadow:0 0 16px rgba(8,124,255,.10), inset 0 0 12px rgba(8,124,255,.04);
   -webkit-tap-highlight-color:transparent;
   transition:border-color .16s ease, box-shadow .16s ease, transform .16s ease;
@@ -2964,11 +2967,38 @@ body.cart-open{overflow:hidden}
 }
 .category-view-all:active{transform:scale(.96)}
 .category-view-all:focus-visible{outline:2px solid rgba(89,210,255,.65);outline-offset:3px}
-.category:not(.is-expanded) .product-grid .product-card:nth-child(n+6){display:none}
+.view-all-arrow{
+  width:24px;
+  height:24px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(35,143,255,.13);
+  border:1px solid rgba(89,210,255,.22);
+  font-size:1rem;
+  line-height:1;
+  box-shadow:0 0 10px rgba(8,124,255,.12);
+}
+.category-return{margin:0 0 26px}
+.category-return-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#73cfff;
+  text-decoration:none;
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.4px;
+  padding:8px 12px;
+  border:1px solid rgba(89,210,255,.16);
+  border-radius:999px;
+  background:rgba(4,19,35,.72);
+}
 @media(max-width:768px){
   .category-nav{margin-bottom:42px}
   .category-nav .category-strip{padding-right:2px}
   .category-title{gap:9px}
   .category-title h3{font-size:1.28rem}
-  .category-view-all{padding:7px 10px;font-size:.64rem}
+  .category-view-all{padding:6px 7px 6px 9px;font-size:.60rem}.view-all-arrow{width:22px;height:22px;font-size:.9rem}
 }
