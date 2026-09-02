@@ -17,7 +17,9 @@
   const mode = document.body.dataset.page || "shop";
   const params = new URLSearchParams(window.location.search);
   const selectedCategoryId = params.get("category");
-  const baseItems = mode === "specials" ? catalog.filter(activeSpecial) : catalog;
+  const categoryPage = mode === "category";
+  const categorySpecials = params.get("specials") === "1";
+  const baseItems = (mode === "specials" || (categoryPage && categorySpecials)) ? catalog.filter(activeSpecial) : catalog;
   const selectedCategory = selectedCategoryId ? catalog.find(p => p.categoryId === selectedCategoryId) : null;
   const items = selectedCategory ? baseItems.filter(p => p.categoryId === selectedCategoryId) : baseItems;
 
@@ -27,7 +29,7 @@
   });
 
   root.innerHTML = `
-    ${selectedCategory ? `<div class="category-return"><a class="category-return-link" href="${mode === "specials" ? "specials.html" : "shop.html"}#shop">← Back to ${mode === "specials" ? "Specials" : "Shop"}</a></div>` : `
+    ${selectedCategory ? `<div class="category-return"><a class="category-return-link" href="${categoryPage ? "shop.html" : (mode === "specials" ? "specials.html" : "shop.html")}#shop">← Back to ${categoryPage ? "Shop" : (mode === "specials" ? "Specials" : "Shop")}</a></div>` : `
     <div class="category-nav" id="categoryNav">
       <div class="category-strip" id="categories" aria-label="Product categories">
         ${categories.map(c => `<a href="#${esc(c.id)}">${esc(c.name)}</a>`).join("")}
@@ -39,7 +41,7 @@
       const previewItems = hasViewAll ? categoryItems.slice(0, 5) : categoryItems;
       return `
       <div class="category" id="${esc(c.id)}" data-category-id="${esc(c.id)}">
-        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3>${hasViewAll ? `<a class="category-view-all" href="${mode === "specials" ? "specials.html" : "shop.html"}?category=${encodeURIComponent(c.id)}#shop" aria-label="View all ${esc(c.name)}">View All <span class="view-all-arrow" aria-hidden="true">→</span></a>` : ""}</div>
+        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3>${hasViewAll ? `<a class="category-view-all" href="category.html?category=${encodeURIComponent(c.id)}${mode === "specials" ? "&specials=1" : ""}#shop" aria-label="View all ${esc(c.name)}">View All <span class="view-all-arrow" aria-hidden="true">→</span></a>` : ""}</div>
         <div class="product-grid" tabindex="0" role="region" aria-label="${esc(c.name)} products">
           ${previewItems.map(p => {
             const special = activeSpecial(p);
@@ -65,7 +67,7 @@
   const heading = root.closest(".catalog-section")?.querySelector(".section-heading h1");
   const subtitle = root.closest(".catalog-section")?.querySelector(".section-heading .specials-subtitle");
   if (selectedCategory && heading) heading.textContent = selectedCategory.category;
-  if (selectedCategory && subtitle) subtitle.textContent = `Browse the full ${selectedCategory.category} collection.`;
+  if (selectedCategory && subtitle) subtitle.textContent = categorySpecials ? `Browse current ${selectedCategory.category} specials.` : `Browse the full ${selectedCategory.category} collection.`;
 
   if (mode === "specials") {
     const empty = document.getElementById("noSpecials");

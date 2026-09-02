@@ -3002,3 +3002,20 @@ body.cart-open{overflow:hidden}
   .category-title h3{font-size:1.28rem}
   .category-view-all{padding:6px 7px 6px 9px;font-size:.60rem}.view-all-arrow{width:22px;height:22px;font-size:.9rem}
 }
+
+/* ================================================================
+   V3.19 — CLEAN CATEGORY DETAIL PAGES
+   Category pages are dedicated catalogue views: no brand/find-us
+   sections and no long horizontal product carousel.
+   ================================================================ */
+.category-detail-section{min-height:70vh}
+.category-page .category-detail-section .section-heading{max-width:1300px;margin-left:auto;margin-right:auto}
+.category-page .category-detail-section .category-return{max-width:1300px;margin-left:auto;margin-right:auto}
+.category-page .category{max-width:1300px;margin:0 auto 34px}
+.category-page .category-title{margin-bottom:18px}
+.category-page .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;overflow:visible;padding:3px 0 10px;scroll-snap-type:none;touch-action:auto}
+.category-page .product-card{min-width:0;width:100%;flex:none;scroll-snap-align:none}
+.category-page .category-title .category-view-all{display:none}
+@media(min-width:900px){.category-page .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}}
+@media(min-width:650px) and (max-width:899px){.category-page .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.category-page .product-grid{gap:12px}.category-page .product-card{border-radius:15px}.category-page .product-placeholder{height:175px}.category-page .product-info{padding:13px 12px 14px}}
