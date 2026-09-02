@@ -5,14 +5,41 @@
   if (!root) return;
 
   const money = n => `R${Number(n || 0).toFixed(2)}`;
+
+  // V3.21 — Specials are controlled by ONE page-level campaign, not by
+  // individual product dates. This keeps the catalogue simple and lets an
+  // entire specials batch expire together.
+  const SA_OFFSET = "+02:00";
+  const dateBoundary = (value, endOfDay = false) => {
+    if (!value) return null;
+    const raw = String(value).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+      return new Date(`${raw}T${endOfDay ? "23:59:59.999" : "00:00:00"}${SA_OFFSET}`);
+    }
+    const d = new Date(raw);
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+
+  const campaign = window.LBB_SPECIALS_CAMPAIGN || {};
+  const campaignStart = dateBoundary(campaign.campaignStart, false);
+  const campaignEnd = dateBoundary(campaign.campaignEnd, true);
+  const campaignActive = Boolean(campaign.enabled) &&
+    Boolean(campaignStart) && Boolean(campaignEnd) &&
+    new Date() >= campaignStart && new Date() <= campaignEnd;
+
   const activeSpecial = p => {
     const price = Number(p.specialPrice);
-    if (!Number.isFinite(price) || price <= 0 || price >= p.normalPrice) return false;
-    const now = new Date();
-    const start = p.specialStart ? new Date(p.specialStart) : null;
-    const end = p.specialEnd ? new Date(p.specialEnd) : null;
-    return (!start || now >= start) && (!end || now <= end);
+    if (!campaignActive || !Number.isFinite(price) || price <= 0 || price >= Number(p.normalPrice)) return false;
+    return true;
   };
+
+  const campaignLabel = () => {
+    if (!campaignActive) return "";
+    const start = campaignStart.toLocaleDateString("en-ZA", {day:"numeric", month:"long", timeZone:"Africa/Johannesburg"});
+    const end = campaignEnd.toLocaleDateString("en-ZA", {day:"numeric", month:"long", timeZone:"Africa/Johannesburg"});
+    return `Current specials: ${start} – ${end}`;
+  };
+
   const esc = v => String(v).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));
   const mode = document.body.dataset.page || "shop";
   const params = new URLSearchParams(window.location.search);
@@ -70,6 +97,7 @@
   if (selectedCategory && subtitle) subtitle.textContent = categorySpecials ? `Browse current ${selectedCategory.category} specials.` : `Browse the full ${selectedCategory.category} collection.`;
 
   if (mode === "specials") {
+    if (subtitle) subtitle.textContent = campaignActive ? campaignLabel() : "No active specials campaign right now.";
     const empty = document.getElementById("noSpecials");
     if (empty) empty.hidden = items.length !== 0;
     if (!items.length) root.querySelectorAll(".category-nav, .category").forEach(el => el.remove());
@@ -78,4 +106,15 @@
   // V3.18 — category previews show at most five products.
   // View All opens a clean category-filtered Shop view instead of expanding
   // a long list inside the main catalogue. Navigation and styling are original LBB UI.
+
+  // V3.21 — Refresh around the campaign boundary so an offer cannot remain
+  // visible after its page-level campaign expires.
+  let scheduleTimer = null;
+  if (campaignEnd) {
+    const ms = campaignEnd.getTime() - Date.now() + 1000;
+    if (ms > 0) scheduleTimer = setTimeout(() => window.location.reload(), Math.min(ms, 2147483647));
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) window.location.reload();
+  });
 })();

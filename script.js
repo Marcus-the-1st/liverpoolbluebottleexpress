@@ -91,17 +91,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bottleSvg = (plus=false) => `<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"/>${plus ? '<path class="plus" d="M12 11v6M9 14h6"/>' : ''}</svg>`;
 
+  // V3.21 — Cart pricing follows the same PAGE-LEVEL specials campaign as
+  // the catalogue. Individual products do not need their own date fields.
+  const SA_OFFSET = "+02:00";
+  const dateBoundary = (value, endOfDay = false) => {
+    if (!value) return null;
+    const raw = String(value).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+      return new Date(`${raw}T${endOfDay ? "23:59:59.999" : "00:00:00"}${SA_OFFSET}`);
+    }
+    const d = new Date(raw);
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+
+  const getCampaignActive = () => {
+    const c = window.LBB_SPECIALS_CAMPAIGN || {};
+    const start = dateBoundary(c.campaignStart, false);
+    const end = dateBoundary(c.campaignEnd, true);
+    const now = new Date();
+    return Boolean(c.enabled && start && end && now >= start && now <= end);
+  };
+
+  const getActivePrice = (normalPrice, specialPrice) => {
+    const normal = Number(normalPrice || 0);
+    const special = Number(specialPrice);
+    if (!getCampaignActive() || !Number.isFinite(special) || special <= 0 || special >= normal) return normal;
+    return special;
+  };
+
   function readProducts() {
     return [...document.querySelectorAll(".product-card")].map((card, index) => {
       const normal = parseFloat(card.dataset.normalPrice || "0");
       const special = parseFloat(card.dataset.specialPrice || "");
-      const now = new Date();
-      let price = normal;
-      if (Number.isFinite(special) && special > 0) {
-        const start = card.dataset.specialStart ? new Date(card.dataset.specialStart) : null;
-        const end = card.dataset.specialEnd ? new Date(card.dataset.specialEnd) : null;
-        if ((!start || now >= start) && (!end || now <= end)) price = special;
-      }
+      const price = getActivePrice(normal, special);
       return {
         id: card.dataset.productId || `${(card.dataset.productName || "product").toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${index}`,
         name: card.dataset.productName || card.querySelector("h4")?.textContent.trim() || "Product",
@@ -165,7 +187,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Re-price items already in the cart when a special starts/ends.
+  // This means a product cannot remain at an expired special price simply
+  // because it was added to the cart earlier.
+  function syncCartPricing() {
+    const source = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+    cart.forEach((entry) => {
+      const master = source.find(p => p.id === entry.product.id);
+      if (!master) return;
+      const normal = Number(master.normalPrice || 0);
+      const price = getActivePrice(normal, master.specialPrice);
+      entry.product.normalPrice = normal;
+      entry.product.price = price;
+      entry.product.discount = Math.max(0, normal - price);
+      entry.product.specialPrice = Number(master.specialPrice) || null;
+    });
+  }
+
   function totals() {
+    syncCartPricing();
     let subtotal = 0, discount = 0, total = 0, count = 0;
     cart.forEach(({product, qty}) => {
       subtotal += product.normalPrice * qty;
@@ -340,6 +380,20 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCart();
     scheduleExpiry();
     renderCart();
+
+    // Keep cart pricing synchronized while the page stays open.
+    setInterval(() => {
+      products = readProducts();
+      syncCartPricing();
+      renderCart();
+    }, 30000);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        products = readProducts();
+        syncCartPricing();
+        renderCart();
+      }
+    });
 
     $("cartButton")?.addEventListener("click", toggleCart);
     $("clearCartButton")?.addEventListener("click", () => {

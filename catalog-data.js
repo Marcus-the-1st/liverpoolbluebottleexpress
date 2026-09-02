@@ -1,3 +1,14 @@
+/* V3.21 — PAGE-LEVEL SPECIALS CAMPAIGN
+   Products only carry their special price. The campaign dates live here once per specials batch.
+   When a new batch is supplied, update campaignStart/campaignEnd; do not add dates to each product.
+*/
+window.LBB_SPECIALS_CAMPAIGN = {
+  enabled: false,
+  campaignStart: null,
+  campaignEnd: null,
+  label: ""
+};
+
 window.LBB_CATALOG = [
   {
     "id": "4th-street-natural-sweet-red-5l",

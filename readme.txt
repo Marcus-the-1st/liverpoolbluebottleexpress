@@ -10,3 +10,7 @@ Cart/order engine: script.js
 Normal/base prices remain the master prices. Add a specialPrice and optional specialStart/specialEnd for a product in catalog-data.js to make it appear on the Specials page and show the crossed-out base price, special price and calculated percentage off.
 
 Product images are intentionally placeholders until approved packshots are supplied.
+
+
+V3.21 — PAGE-LEVEL SPECIALS CAMPAIGN
+Specials are now controlled by one campaign date range in catalog-data.js (window.LBB_SPECIALS_CAMPAIGN), not by individual product dates. Products only need normalPrice and specialPrice. A specials batch is active only inside the campaign window; when it expires, the Specials page clears and Shop products return to normal pricing. For the next batch, update the single campaignStart/campaignEnd values and enable the campaign. The website cannot reliably infer a GitHub upload/commit date from a static page, so the batch date is stamped once when the specials batch is prepared.
