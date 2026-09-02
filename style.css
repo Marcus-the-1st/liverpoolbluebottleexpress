@@ -3019,3 +3019,11 @@ body.cart-open{overflow:hidden}
 @media(min-width:900px){.category-page .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}}
 @media(min-width:650px) and (max-width:899px){.category-page .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.category-page .product-grid{gap:12px}.category-page .product-card{border-radius:15px}.category-page .product-placeholder{height:175px}.category-page .product-info{padding:13px 12px 14px}}
+
+/* V3.24 STABLE: static catalogue + local specials images */
+.specials-product-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow:visible!important;padding:3px 0 10px;touch-action:auto}
+.specials-product-grid .product-card{min-width:0;width:100%;overflow:hidden}
+.specials-product-grid .product-media{height:330px;background:#050505!important;border-radius:18px 18px 0 0;display:flex!important;align-items:center;justify-content:center;overflow:hidden}
+.specials-product-grid .product-image{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;background:#050505}
+@media(max-width:900px){.specials-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.specials-product-grid .product-media{height:300px}}
+@media(max-width:520px){.specials-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.specials-product-grid .product-media{height:245px;border-radius:14px 14px 0 0}.specials-product-grid .product-card{border-radius:14px}.specials-product-grid .product-info{padding:13px 12px 15px}.specials-product-grid .product-info h4{font-size:.96rem;line-height:1.2}.specials-product-grid .product-info p{font-size:.78rem}.specials-product-grid .current-price{font-size:.92rem;padding:6px 9px}.specials-product-grid .base-price{font-size:.72rem}.specials-product-grid .special-badge,.specials-product-grid .discount-badge{font-size:.55rem;padding:3px 6px}.specials-product-grid .add-to-cart-button{font-size:.78rem;padding:9px 10px}}

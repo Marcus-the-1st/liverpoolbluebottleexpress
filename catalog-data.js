@@ -1,4 +1,4 @@
-/* V3.23 FIXED — master catalogue preserved; specials campaign is page-level. */
+/* Liverpool Blue Bottle — V3.24 stable catalogue + page-level specials campaign */
 window.LBB_SPECIALS_CAMPAIGN = {
   enabled: true,
   campaignStart: "2026-09-01",
@@ -226,10 +226,10 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 315,
     "initial": "JD",
-    "specialPrice": null,
+    "specialPrice": 299.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/jack-daniel-s.jpg"
   },
   {
     "id": "jameson",
@@ -450,7 +450,7 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 205,
     "initial": "KE",
-    "specialPrice": 185.0,
+    "specialPrice": 185,
     "specialStart": null,
     "specialEnd": null,
     "image": "specials-images/klipdrift-export.jpg"
@@ -541,17 +541,17 @@ window.LBB_CATALOG = [
   },
   {
     "id": "richelieu",
-    "name": "Richelieu",
+    "name": "Richelieu International",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 219.99,
     "initial": "R",
-    "specialPrice": null,
+    "specialPrice": 199.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/richelieu-international.jpg"
   },
   {
     "id": "viceroy",
@@ -821,17 +821,17 @@ window.LBB_CATALOG = [
   },
   {
     "id": "don-julio-reposado",
-    "name": "Don Julio Reposado",
+    "name": "Don Julio Reposado Tequila",
     "category": "Tequila",
     "categoryId": "tequila",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 1299.99,
     "initial": "DJR",
-    "specialPrice": null,
+    "specialPrice": 799.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/don-julio-reposado-tequila.jpg"
   },
   {
     "id": "el-jimador-reposado",
@@ -1017,7 +1017,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "strettons-original",
-    "name": "Stretton’s Original",
+    "name": "Strettons Original",
     "category": "Gin",
     "categoryId": "gin",
     "emoji": "🍸",
@@ -1073,17 +1073,17 @@ window.LBB_CATALOG = [
   },
   {
     "id": "amarula",
-    "name": "Amarula",
+    "name": "Amarula Cream",
     "category": "Cream Liqueurs & Other Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
     "normalPrice": 169.99,
     "initial": "A",
-    "specialPrice": null,
+    "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "specials-images/amarula-cream.jpg"
   },
   {
     "id": "amarula-1l",
@@ -1108,7 +1108,7 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 129.99,
     "initial": "CR",
-    "specialPrice": 112.0,
+    "specialPrice": 112,
     "specialStart": null,
     "specialEnd": null,
     "image": "specials-images/coco-rico-salted-caramel-coconut-cream.jpg"
@@ -1164,7 +1164,7 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 169.99,
     "initial": "P10C",
-    "specialPrice": 155.0,
+    "specialPrice": 155,
     "specialStart": null,
     "specialEnd": null,
     "image": "specials-images/po-10-c.jpg"
@@ -1248,7 +1248,7 @@ window.LBB_CATALOG = [
     "size": "750ml",
     "normalPrice": 139.99,
     "initial": "TS",
-    "specialPrice": 120.0,
+    "specialPrice": 120,
     "specialStart": null,
     "specialEnd": null,
     "image": "specials-images/tant-sannie-se-melktert.jpg"
@@ -1672,61 +1672,5 @@ window.LBB_CATALOG = [
     "specialStart": null,
     "specialEnd": null,
     "image": null
-  },
-  {
-    "id": "amarula-cream",
-    "name": "Amarula Cream",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "cream-liqueurs-other-liqueurs",
-    "emoji": "🥛",
-    "size": "750ml",
-    "normalPrice": 169.99,
-    "initial": "AC",
-    "specialPrice": 149.99,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": "specials-images/amarula-cream.jpg"
-  },
-  {
-    "id": "richelieu-international",
-    "name": "Richelieu International",
-    "category": "Brandy",
-    "categoryId": "brandy",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 229.99,
-    "initial": "RI",
-    "specialPrice": 199.99,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": "specials-images/richelieu-international.jpg"
-  },
-  {
-    "id": "jack-daniels",
-    "name": "Jack Daniel's",
-    "category": "Whisky",
-    "categoryId": "whisky",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 315.0,
-    "initial": "JDS",
-    "specialPrice": 299.99,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": "specials-images/jack-daniel-s.jpg"
-  },
-  {
-    "id": "don-julio-reposado-tequila",
-    "name": "Don Julio Reposado Tequila",
-    "category": "Tequila",
-    "categoryId": "tequila",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 1299.99,
-    "initial": "DJR",
-    "specialPrice": 799.99,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": "specials-images/don-julio-reposado-tequila.jpg"
   }
 ];
