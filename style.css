@@ -2916,3 +2916,59 @@ body.cart-open{overflow:hidden}
 .no-specials-icon{font-size:1.7rem;color:#39baff;text-shadow:0 0 16px rgba(24,184,255,.45);margin-bottom:8px}
 .no-specials h2{font-size:1.35rem}.no-specials p{margin:9px auto 18px;color:#9fb2c5;line-height:1.55;max-width:500px}.no-specials .btn{display:inline-flex;text-decoration:none}
 @media(max-width:768px){.shop-promo,.specials-promo{padding-top:20px;padding-bottom:20px}.shop-promo-banner,.specials-promo-banner{border-radius:17px}.catalog-section{padding-top:65px;padding-bottom:65px}.catalog-section .category{margin-bottom:38px}}
+
+/* ================================================================
+   V3.17 — LBB CATEGORY VIEW-ALL CONTROLS
+   Category browsing stays compact (five products at a time) while
+   each category can be expanded in place with our own control.
+   ================================================================ */
+.category-nav{
+  position:relative;
+  max-width:1300px;
+  margin:0 auto 54px;
+  z-index:4;
+}
+.category-nav .category-strip{
+  margin:0;
+  padding-right:4px;
+  scroll-behavior:smooth;
+}
+.category-title{
+  justify-content:flex-start;
+}
+.category-title h3{
+  flex:1 1 auto;
+}
+.category-view-all{
+  flex:0 0 auto;
+  margin-left:auto;
+  padding:8px 13px;
+  border:1px solid rgba(89,210,255,.24);
+  border-radius:999px;
+  background:linear-gradient(145deg,rgba(7,29,51,.9),rgba(2,12,25,.94));
+  color:#73cfff;
+  font:inherit;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.55px;
+  text-transform:uppercase;
+  white-space:nowrap;
+  cursor:pointer;
+  box-shadow:0 0 16px rgba(8,124,255,.10), inset 0 0 12px rgba(8,124,255,.04);
+  -webkit-tap-highlight-color:transparent;
+  transition:border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.category-view-all:hover{
+  border-color:rgba(89,210,255,.55);
+  box-shadow:0 0 22px rgba(8,124,255,.18), inset 0 0 14px rgba(8,124,255,.06);
+}
+.category-view-all:active{transform:scale(.96)}
+.category-view-all:focus-visible{outline:2px solid rgba(89,210,255,.65);outline-offset:3px}
+.category:not(.is-expanded) .product-grid .product-card:nth-child(n+6){display:none}
+@media(max-width:768px){
+  .category-nav{margin-bottom:42px}
+  .category-nav .category-strip{padding-right:2px}
+  .category-title{gap:9px}
+  .category-title h3{font-size:1.28rem}
+  .category-view-all{padding:7px 10px;font-size:.64rem}
+}

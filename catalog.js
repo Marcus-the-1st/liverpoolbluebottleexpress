@@ -23,14 +23,19 @@
   });
 
   root.innerHTML = `
-    <div class="category-strip" id="categories" aria-label="Product categories">
-      ${categories.map(c => `<a href="#${esc(c.id)}">${esc(c.name)}</a>`).join("")}
+    <div class="category-nav" id="categoryNav">
+      <div class="category-strip" id="categories" aria-label="Product categories">
+        ${categories.map(c => `<a href="#${esc(c.id)}">${esc(c.name)}</a>`).join("")}
+      </div>
     </div>
-    ${categories.map(c => `
-      <div class="category" id="${esc(c.id)}">
-        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3></div>
+    ${categories.map(c => {
+      const categoryItems = items.filter(p => p.categoryId === c.id);
+      const hasViewAll = mode === "shop" && categoryItems.length > 5;
+      return `
+      <div class="category" id="${esc(c.id)}" data-category-id="${esc(c.id)}">
+        <div class="category-title"><span aria-hidden="true">${esc(c.emoji)}</span><h3>${esc(c.name)}</h3>${hasViewAll ? `<button class="category-view-all" type="button" data-view-category="${esc(c.id)}" aria-expanded="false">View All</button>` : ""}</div>
         <div class="product-grid" tabindex="0" role="region" aria-label="${esc(c.name)} products">
-          ${items.filter(p => p.categoryId === c.id).map(p => {
+          ${categoryItems.map(p => {
             const special = activeSpecial(p);
             const discount = special ? Math.round(((p.normalPrice - p.specialPrice) / p.normalPrice) * 100) : 0;
             const image = p.image ? `<img class="product-image" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="product-initial">${esc(p.initial)}</span>`;
@@ -47,12 +52,28 @@
           }).join("")}
         </div>
       </div>
-    `).join("")}
+    `;
+    }).join("")}
   `;
 
   if (mode === "specials") {
     const empty = document.getElementById("noSpecials");
     if (empty) empty.hidden = items.length !== 0;
-    if (!items.length) root.querySelectorAll(".category-strip, .category").forEach(el => el.remove());
+    if (!items.length) root.querySelectorAll(".category-nav, .category").forEach(el => el.remove());
   }
+
+  // V3.17 — each shop category starts as a compact five-product carousel.
+  // View All expands that category in place; no copied third-party navigation is used.
+  root.querySelectorAll(".category-view-all").forEach(button => {
+    button.addEventListener("click", () => {
+      const category = button.closest(".category");
+      if (!category) return;
+      const expanded = category.classList.toggle("is-expanded");
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "Show Less" : "View All";
+      if (expanded) {
+        category.querySelector(".product-grid")?.scrollTo({left: 0, behavior: "smooth"});
+      }
+    });
+  });
 })();
