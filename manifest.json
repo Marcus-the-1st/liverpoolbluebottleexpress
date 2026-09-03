@@ -1,0 +1,268 @@
+[
+  {
+    "name": "01-don-julio",
+    "source_box": [
+      28,
+      290,
+      181,
+      570
+    ],
+    "raw_crop_px": [
+      153,
+      280
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "02-tang-sour-blueberry",
+    "source_box": [
+      177,
+      175,
+      300,
+      545
+    ],
+    "raw_crop_px": [
+      123,
+      370
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "03-wild-africa",
+    "source_box": [
+      298,
+      176,
+      415,
+      530
+    ],
+    "raw_crop_px": [
+      117,
+      354
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "04-black-and-white",
+    "source_box": [
+      416,
+      151,
+      527,
+      529
+    ],
+    "raw_crop_px": [
+      111,
+      378
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "05-richelieu",
+    "source_box": [
+      526,
+      148,
+      632,
+      526
+    ],
+    "raw_crop_px": [
+      106,
+      378
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "06-klipdrift-export",
+    "source_box": [
+      625,
+      154,
+      721,
+      526
+    ],
+    "raw_crop_px": [
+      96,
+      372
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "07-three-ships",
+    "source_box": [
+      719,
+      174,
+      812,
+      526
+    ],
+    "raw_crop_px": [
+      93,
+      352
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "08-white-river",
+    "source_box": [
+      806,
+      215,
+      899,
+      526
+    ],
+    "raw_crop_px": [
+      93,
+      311
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "09-jack-daniels",
+    "source_box": [
+      895,
+      218,
+      989,
+      527
+    ],
+    "raw_crop_px": [
+      94,
+      309
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "10-po10-purple",
+    "source_box": [
+      982,
+      194,
+      1081,
+      528
+    ],
+    "raw_crop_px": [
+      99,
+      334
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "11-klipdrift-premium",
+    "source_box": [
+      1071,
+      203,
+      1181,
+      527
+    ],
+    "raw_crop_px": [
+      110,
+      324
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "12-amarula",
+    "source_box": [
+      1170,
+      153,
+      1280,
+      528
+    ],
+    "raw_crop_px": [
+      110,
+      375
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "13-strettons-original-gin",
+    "source_box": [
+      1270,
+      202,
+      1382,
+      529
+    ],
+    "raw_crop_px": [
+      112,
+      327
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  },
+  {
+    "name": "14-coco-rico",
+    "source_box": [
+      1370,
+      187,
+      1490,
+      533
+    ],
+    "raw_crop_px": [
+      120,
+      346
+    ],
+    "website_image_px": [
+      800,
+      1000
+    ],
+    "source": "1000170825.png supplied by user",
+    "processing": "crop + proportional resize onto white canvas only; no AI generation or retouching"
+  }
+]
