@@ -103,7 +103,7 @@ window.LBB_CATALOG = [
     "specialPrice": 189.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/black-white.jpg"
+    "image": "specials-images/black-white.png"
   },
   {
     "id": "chivas-regal-12yr",
@@ -229,7 +229,7 @@ window.LBB_CATALOG = [
     "specialPrice": 299.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/jack-daniel-s.jpg"
+    "image": "specials-images/jack-daniel-s.png"
   },
   {
     "id": "jameson",
@@ -453,7 +453,7 @@ window.LBB_CATALOG = [
     "specialPrice": 185,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/klipdrift-export.jpg"
+    "image": "specials-images/klipdrift-export.png"
   },
   {
     "id": "klipdrift-premium",
@@ -467,7 +467,7 @@ window.LBB_CATALOG = [
     "specialPrice": 219.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/klipdrift-premium.jpg"
+    "image": "specials-images/klipdrift-premium.png"
   },
   {
     "id": "kwv-10-year-old",
@@ -495,7 +495,7 @@ window.LBB_CATALOG = [
     "specialPrice": 179.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/kwv-3-year-old.jpg"
+    "image": "specials-images/kwv-3-year-old.png"
   },
   {
     "id": "kwv-5-year-old",
@@ -551,7 +551,7 @@ window.LBB_CATALOG = [
     "specialPrice": 199.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/richelieu-international.jpg"
+    "image": "specials-images/richelieu-international.png"
   },
   {
     "id": "viceroy",
@@ -831,7 +831,7 @@ window.LBB_CATALOG = [
     "specialPrice": 799.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/don-julio-reposado-tequila.jpg"
+    "image": "specials-images/don-julio-reposado-tequila.png"
   },
   {
     "id": "el-jimador-reposado",
@@ -1027,7 +1027,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/strettons-original.jpg"
+    "image": "specials-images/strettons-original.png"
   },
   {
     "id": "tanqueray-blackcurrant",
@@ -1083,7 +1083,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/amarula-cream.jpg"
+    "image": "specials-images/amarula-cream.png"
   },
   {
     "id": "amarula-1l",
@@ -1111,7 +1111,7 @@ window.LBB_CATALOG = [
     "specialPrice": 112,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/coco-rico-salted-caramel-coconut-cream.jpg"
+    "image": "specials-images/coco-rico-salted-caramel-coconut-cream.png"
   },
   {
     "id": "el-bravo-strawberry",
@@ -1167,7 +1167,7 @@ window.LBB_CATALOG = [
     "specialPrice": 155,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/po-10-c.jpg"
+    "image": "specials-images/po-10-c.png"
   },
   {
     "id": "southern-comfort",
@@ -1237,7 +1237,7 @@ window.LBB_CATALOG = [
     "specialPrice": 99.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/tang-sour-blueberry.jpg"
+    "image": "specials-images/tang-sour-blueberry.png"
   },
   {
     "id": "tant-sannie-se-melktert",
@@ -1265,7 +1265,7 @@ window.LBB_CATALOG = [
     "specialPrice": 129.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "specials-images/wild-africa-cream.jpg"
+    "image": "specials-images/wild-africa-cream.png"
   },
   {
     "id": "mo-t-chandon-brut-imp-rial",
