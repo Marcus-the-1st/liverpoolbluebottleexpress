@@ -719,7 +719,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-product-image-pending.png"
+    "image": "special-russian-bear.png"
   },
   {
     "id": "russian-bear-1l",
@@ -1251,7 +1251,7 @@ window.LBB_CATALOG = [
     "specialPrice": 120,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-product-image-pending.png"
+    "image": "special-russian-bear.png"
   },
   {
     "id": "wild-africa-cream",
