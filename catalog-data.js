@@ -831,7 +831,7 @@ window.LBB_CATALOG = [
     "specialPrice": 799.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-don-julio.png"
+    "image": "special-don-julio-reposado.png"
   },
   {
     "id": "el-jimador-reposado",
