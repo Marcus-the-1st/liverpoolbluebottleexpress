@@ -1251,7 +1251,7 @@ window.LBB_CATALOG = [
     "specialPrice": 120,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-russian-bear.png"
+    "image": "special-tant-sannie-se-melktert.png"
   },
   {
     "id": "wild-africa-cream",
