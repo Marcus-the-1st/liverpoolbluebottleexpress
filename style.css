@@ -3033,3 +3033,50 @@ body.cart-open{overflow:hidden}
   object-fit: contain;
   background: #02070d;
 }
+
+/* ================================================================
+   V3.38 — UNIFIED PRODUCT IMAGE FRAMES
+   Shop, category pages and Current Specials now use the same
+   responsive product-media footprint so product images never
+   appear oversized simply because the source image has different
+   dimensions. Images remain contained and keep their black artwork
+   backgrounds where supplied.
+   ================================================================ */
+.product-placeholder.product-media{
+  height:330px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#050505 !important;
+  border-radius:18px 18px 0 0;
+}
+.product-placeholder.product-media .product-image,
+.product-media .product-image{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain !important;
+  object-position:center center;
+  background:#050505 !important;
+  margin:0;
+  padding:0;
+  border:0;
+}
+@media(max-width:900px){
+  .product-placeholder.product-media{height:300px}
+}
+@media(max-width:520px){
+  .product-placeholder.product-media{
+    height:245px;
+    border-radius:14px 14px 0 0;
+  }
+  .category-page .product-placeholder.product-media{height:245px}
+}
+/* Keep the existing Specials sizing declaration visually identical to Shop. */
+.specials-product-grid .product-media{height:330px}
+@media(max-width:900px){.specials-product-grid .product-media{height:300px}}
+@media(max-width:520px){.specials-product-grid .product-media{height:245px}}
