@@ -112,10 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return Boolean(c.enabled && start && end && now >= start && now <= end);
   };
 
-  const getActivePrice = (normalPrice, specialPrice) => {
+  const getActivePrice = (normalPrice, specialPrice, specialOnly = false) => {
     const normal = Number(normalPrice || 0);
     const special = Number(specialPrice);
-    if (!getCampaignActive() || !Number.isFinite(special) || special <= 0 || special >= normal) return normal;
+    if (!getCampaignActive() || !Number.isFinite(special) || special <= 0) return normal;
+    if (specialOnly === true) return special;
+    if (special >= normal) return normal;
     return special;
   };
 
@@ -123,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return [...document.querySelectorAll(".product-card")].map((card, index) => {
       const normal = parseFloat(card.dataset.normalPrice || "0");
       const special = parseFloat(card.dataset.specialPrice || "");
-      const price = getActivePrice(normal, special);
+      const price = getActivePrice(normal, special, card.dataset.specialOnly === "true");
       return {
         id: card.dataset.productId || `${(card.dataset.productName || "product").toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${index}`,
         name: card.dataset.productName || card.querySelector("h4")?.textContent.trim() || "Product",
@@ -196,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const master = source.find(p => p.id === entry.product.id);
       if (!master) return;
       const normal = Number(master.normalPrice || 0);
-      const price = getActivePrice(normal, master.specialPrice);
+      const price = getActivePrice(normal, master.specialPrice, master.specialOnly === true);
       entry.product.normalPrice = normal;
       entry.product.price = price;
       entry.product.discount = Math.max(0, normal - price);

@@ -1416,9 +1416,9 @@ window.LBB_CATALOG = [
     "size": "6 × 440ml",
     "normalPrice": 129.99,
     "initial": "BG",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 115.0,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": null
   },
   {
@@ -1430,9 +1430,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 125.0,
     "initial": "BFR",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 110.0,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": null
   },
   {
@@ -1444,9 +1444,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 105.0,
     "initial": "CBL",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 99.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": "special-carling-black-label.png"
   },
   {
@@ -1458,9 +1458,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 95,
     "initial": "C",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 89.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": "special-castle-lager.png"
   },
   {
@@ -1472,9 +1472,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 105,
     "initial": "CL",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 99.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": null
   },
   {
@@ -1486,9 +1486,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 105.0,
     "initial": "CMS",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 99.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": "special-castle-milk-stout.png"
   },
   {
@@ -1556,9 +1556,9 @@ window.LBB_CATALOG = [
     "size": "6 × 500ml",
     "normalPrice": 85,
     "initial": "LL",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
+    "specialPrice": 69.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
     "image": null
   },
   {
@@ -1672,5 +1672,35 @@ window.LBB_CATALOG = [
     "specialStart": null,
     "specialEnd": null,
     "image": null
-  }
+  },
+  {
+    "id": "bernini-blush-6-pack",
+    "name": "Bernini Blush",
+    "category": "Six Packs",
+    "categoryId": "six-packs",
+    "emoji": "🍺",
+    "size": "6 × 500ml",
+    "normalPrice": 99.99,
+    "initial": "BB",
+    "specialPrice": 99.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
+    "specialOnly": true,
+    "image": null
+  },
+  {
+    "id": "bernini-classic-6-pack",
+    "name": "Bernini Classic",
+    "category": "Six Packs",
+    "categoryId": "six-packs",
+    "emoji": "🍺",
+    "size": "6 × 500ml",
+    "normalPrice": 99.99,
+    "initial": "BC",
+    "specialPrice": 99.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
+    "specialOnly": true,
+    "image": null
+  },
 ];
