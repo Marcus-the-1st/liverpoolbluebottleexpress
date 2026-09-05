@@ -1447,7 +1447,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-carling-black-label.png"
   },
   {
     "id": "castle-lager",
@@ -1461,7 +1461,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-castle-lager.png"
   },
   {
     "id": "castle-lite",
@@ -1489,7 +1489,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-castle-milk-stout.png"
   },
   {
     "id": "flying-fish-pressed-lemon",
