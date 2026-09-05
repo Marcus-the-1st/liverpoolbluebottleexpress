@@ -232,6 +232,36 @@ window.LBB_CATALOG = [
     "image": "special-jack-daniels.png"
   },
   {
+    "id": "jack-daniel-s-tennessee-honey",
+    "name": "Jack Daniel's Tennessee Honey",
+    "category": "Whisky",
+    "categoryId": "whisky",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "JD H",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "special-jack-honey.png"
+  },
+  {
+    "id": "jack-daniel-s-tennessee-apple",
+    "name": "Jack Daniel's Tennessee Apple",
+    "category": "Whisky",
+    "categoryId": "whisky",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "JD A",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "special-jack-apple.png"
+  },
+  {
     "id": "jameson",
     "name": "Jameson",
     "category": "Whisky",

@@ -117,7 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Normal Shop/category cards also advertise a live special.
       const price = card.querySelector('.product-price');
       if (price && document.body.dataset.page !== 'specials') {
-        if (special && specialPrice < normal) {
+        if (product.priceTbc) {
+          price.innerHTML = `<strong class="current-price price-tbc">Price in store</strong>`;
+        } else if (special && specialPrice < normal) {
           price.innerHTML = `<span class="base-price struck">${money(normal)}</span><strong class="current-price">${money(specialPrice)}</strong>`;
         } else {
           price.innerHTML = `<strong class="current-price">${money(activePrice)}</strong>`;
@@ -227,6 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
         normalPrice: normal,
         price,
         discount: Math.max(0, normal - price),
+        priceTbc: card.dataset.priceTbc === "true",
         card
       };
     });
@@ -312,6 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function productControl(product) {
+    if (product.priceTbc) return `<button class="add-to-cart-button" type="button" disabled aria-disabled="true"><span>Price in store</span></button>`;
     const entry = cart.get(product.id);
     if (!entry) {
       return `<button class="add-to-cart-button" type="button" data-cart-add="${escapeHtml(product.id)}"><span class="bottle-plus-icon">${bottleSvg(true)}</span><span>Add to Cart</span></button>`;
