@@ -55,6 +55,99 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/* ================================================================
+   V3.37 — CATALOGUE-WIDE IMAGE + SPECIAL BADGE SYNC
+   The master catalogue is the source of truth for product images,
+   special pricing and special badges on the normal Shop/category
+   pages as well as the dedicated Current Specials page.
+   ================================================================ */
+(() => {
+  const money = n => `R${Number(n || 0).toFixed(2)}`;
+  const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+  const dateBoundary = (value, endOfDay = false) => {
+    if (!value) return null;
+    const raw = String(value).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+      return new Date(`${raw}T${endOfDay ? "23:59:59.999" : "00:00:00"}+02:00`);
+    }
+    const d = new Date(raw);
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+  const campaignActive = () => {
+    const c = window.LBB_SPECIALS_CAMPAIGN || {};
+    const start = dateBoundary(c.campaignStart, false);
+    const end = dateBoundary(c.campaignEnd, true);
+    return Boolean(c.enabled && start && end && Date.now() >= start.getTime() && Date.now() <= end.getTime());
+  };
+  const isSpecial = product => {
+    if (!campaignActive()) return false;
+    const special = Number(product.specialPrice);
+    const normal = Number(product.normalPrice);
+    if (!Number.isFinite(special) || special <= 0) return false;
+    return product.specialOnly === true || special < normal;
+  };
+  const apply = () => {
+    const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+    if (!catalog.length) return;
+    const byId = new Map(catalog.map(p => [p.id, p]));
+
+    document.querySelectorAll('.product-card[data-product-id]').forEach(card => {
+      const product = byId.get(card.dataset.productId);
+      if (!product) return;
+
+      const special = isSpecial(product);
+      const normal = Number(product.normalPrice || 0);
+      const specialPrice = Number(product.specialPrice);
+      const activePrice = special ? specialPrice : normal;
+
+      card.dataset.normalPrice = normal.toFixed(2);
+      card.dataset.specialPrice = Number.isFinite(specialPrice) && specialPrice > 0 ? specialPrice.toFixed(2) : '';
+      card.dataset.specialOnly = product.specialOnly === true ? 'true' : 'false';
+
+      // Use the same local product image everywhere it exists.
+      const media = card.querySelector('.product-media');
+      if (media && product.image) {
+        const current = media.querySelector('img.product-image');
+        if (!current || current.getAttribute('src') !== product.image) {
+          media.innerHTML = `<img class="product-image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy">`;
+        }
+        media.classList.remove('product-placeholder');
+      }
+
+      // Normal Shop/category cards also advertise a live special.
+      const price = card.querySelector('.product-price');
+      if (price && document.body.dataset.page !== 'specials') {
+        if (special && specialPrice < normal) {
+          price.innerHTML = `<span class="base-price struck">${money(normal)}</span><strong class="current-price">${money(specialPrice)}</strong>`;
+        } else {
+          price.innerHTML = `<strong class="current-price">${money(activePrice)}</strong>`;
+        }
+      }
+
+      if (document.body.dataset.page !== 'specials') {
+        let meta = card.querySelector('.special-meta');
+        if (special) {
+          if (!meta) {
+            meta = document.createElement('div');
+            meta.className = 'special-meta';
+            const info = card.querySelector('.product-info');
+            const control = info?.querySelector('.cart-product-control');
+            if (control) info.insertBefore(meta, control); else info?.appendChild(meta);
+          }
+          const discount = specialPrice < normal ? Math.round((normal - specialPrice) / normal * 100) : 0;
+          meta.innerHTML = `<span class="special-badge">ON SPECIAL</span>${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}`;
+          meta.hidden = false;
+        } else if (meta) {
+          meta.remove();
+        }
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', apply);
+})();
+
+
 /* V3.1 carousel accessibility: native touch scrolling remains primary. */
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".product-grid").forEach((row) => {
