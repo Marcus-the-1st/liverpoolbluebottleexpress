@@ -1223,7 +1223,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-tang-apple.png"
   },
   {
     "id": "tang-sour-blueberry",
