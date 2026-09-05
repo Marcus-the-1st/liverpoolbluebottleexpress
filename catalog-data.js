@@ -1589,7 +1589,7 @@ window.LBB_CATALOG = [
     "specialPrice": 69.99,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "image": null
+    "image": "special-lion-lager.png"
   },
   {
     "id": "mxd-peach-mojito",
@@ -1716,7 +1716,7 @@ window.LBB_CATALOG = [
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
     "specialOnly": true,
-    "image": null
+    "image": "special-bernini-blush.png"
   },
   {
     "id": "bernini-classic-6-pack",
@@ -1731,6 +1731,6 @@ window.LBB_CATALOG = [
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
     "specialOnly": true,
-    "image": null
+    "image": "special-bernini-classic.png"
   },
 ];
