@@ -1505,7 +1505,7 @@ window.LBB_CATALOG = [
     "specialPrice": 99.99,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "image": null
+    "image": "special-castle-lite.png"
   },
   {
     "id": "castle-milk-stout",
