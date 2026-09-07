@@ -3080,3 +3080,31 @@ body.cart-open{overflow:hidden}
 .specials-product-grid .product-media{height:330px}
 @media(max-width:900px){.specials-product-grid .product-media{height:300px}}
 @media(max-width:520px){.specials-product-grid .product-media{height:245px}}
+
+/* V3.50 — SPECIALS IMAGE SCALE / RATIO FIX
+   Keep every product image inside a consistent visual footprint.
+   The supplied packshots have different native aspect ratios, so
+   width:100% + height:100% makes tall bottles appear oversized.
+*/
+.specials-product-grid .product-media{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.specials-product-grid .product-media .product-image{
+  width:auto!important;
+  height:auto!important;
+  max-width:88%!important;
+  max-height:88%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  flex:0 0 auto!important;
+}
+@media(max-width:520px){
+  .specials-product-grid .product-media{height:220px!important}
+  .specials-product-grid .product-media .product-image{
+    max-width:88%!important;
+    max-height:88%!important;
+  }
+}
