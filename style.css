@@ -3108,3 +3108,35 @@ body.cart-open{overflow:hidden}
     max-height:88%!important;
   }
 }
+
+/* V3.51 — FINAL UNIFORM SPECIALS IMAGE FRAME
+   Every source image is presented through the same 800x1000 visual canvas.
+   The product cards and image frames stay identical in size; source-image
+   aspect-ratio differences cannot make one product visually jump larger.
+*/
+.specials-product-grid .product-media{
+  height:330px!important;
+  width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  background:#050505!important;
+}
+.specials-product-grid .product-media .product-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#050505!important;
+  flex:0 0 auto!important;
+}
+@media(max-width:900px){
+  .specials-product-grid .product-media{height:300px!important}
+}
+@media(max-width:520px){
+  .specials-product-grid .product-media{height:245px!important}
+}
