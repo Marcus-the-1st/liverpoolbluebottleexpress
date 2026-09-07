@@ -1449,7 +1449,7 @@ window.LBB_CATALOG = [
     "specialPrice": 115.0,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "image": null
+    "image": "special-belgravia-gin-dry-lemon.png"
   },
   {
     "id": "brutal-fruit-ruby-apple",
@@ -1463,7 +1463,7 @@ window.LBB_CATALOG = [
     "specialPrice": 110.0,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "image": null
+    "image": "special-brutal-fruit-ruby-apple.png"
   },
   {
     "id": "carling-black-label",
