@@ -145,7 +145,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-firstwatch.png"
   },
   {
     "id": "gentleman-jack",
@@ -159,7 +159,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-gentleman-jack.png"
   },
   {
     "id": "grant-s",
@@ -173,7 +173,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-grants.png"
   },
   {
     "id": "harrier",
@@ -187,7 +187,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-harrier.png"
   },
   {
     "id": "harrier-1l",
