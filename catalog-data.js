@@ -33,7 +33,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "4th-street-natural-sweet-rose-5l.png"
   },
   {
     "id": "4th-street-natural-sweet-white-5l",
@@ -47,7 +47,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "4th-street-natural-sweet-white-5l.png"
   },
   {
     "id": "4th-street-sweet-late-harvest-5l",
