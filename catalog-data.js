@@ -201,7 +201,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-harrier-1l.png"
   },
   {
     "id": "j-b-rare",
@@ -215,7 +215,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "special-jb-rare.png"
   },
   {
     "id": "jack-daniel-s",
@@ -273,7 +273,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jameson.png"
   },
   {
     "id": "jameson-select-reserve",
@@ -287,7 +287,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jameson-select-reserve.png"
   },
   {
     "id": "johnnie-walker-black-label",
