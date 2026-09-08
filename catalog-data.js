@@ -333,7 +333,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "samuel-gelston-s-irish-whisky",
-    "name": "Samuel Gelston’s Irish Whisky",
+    "name": "Samuel Gelston’s Irish Whiskey",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
@@ -343,7 +343,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "samuel-gelston-s-irish-whisky.jpg"
   },
   {
     "id": "the-famous-grouse",
@@ -1732,20 +1732,5 @@ window.LBB_CATALOG = [
     "specialEnd": "2026-09-15",
     "specialOnly": true,
     "image": "special-bernini-classic.png"
-  },
-  {
-    "id": "three-gee-see",
-    "name": "Samuel Gelston's Irish Whiskey",
-    "category": "Whisky",
-    "categoryId": "whisky",
-    "emoji": "🥃",
-    "size": "700ml",
-    "normalPrice": 0,
-    "initial": "SG",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "priceTbc": true,
-    "image": "three-gee-see.png"
   },
 ]; 
