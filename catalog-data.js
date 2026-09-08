@@ -301,7 +301,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "johnnie-walker-black-label.png"
   },
   {
     "id": "johnnie-walker-red-label",
@@ -315,21 +315,21 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "johnnie-walker-red-label.png"
   },
   {
     "id": "peaky-blinders",
-    "name": "Peaky Blinders",
+    "name": "Peaky Blinders Irish Whiskey",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
-    "size": "750ml",
+    "size": "700ml",
     "normalPrice": 259.99,
     "initial": "PB",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "peaky-blinders.png"
   },
   {
     "id": "samuel-gelston-s-irish-whisky",
@@ -357,25 +357,25 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "the-famous-grouse.png"
   },
   {
     "id": "the-pogues",
-    "name": "The Pogues",
+    "name": "The Pogues Triple Distilled Irish Whiskey",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
-    "size": "750ml",
+    "size": "700ml",
     "normalPrice": 289.99,
     "initial": "TP",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "the-pogues.png"
   },
   {
     "id": "the-quiet-man",
-    "name": "The Quiet Man",
+    "name": "The Quiet Man Superior Irish Whiskey Blend",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
@@ -385,11 +385,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "the-quiet-man.png"
   },
   {
     "id": "three-ships-bourbon-cask",
-    "name": "Three Ships Bourbon Cask",
+    "name": "Three Ships Premium Whisky Bourbon Cask",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
@@ -399,11 +399,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "three-ships-bourbon-cask.png"
   },
   {
     "id": "tullamore-dew",
-    "name": "Tullamore Dew",
+    "name": "Tullamore D.E.W. Irish Whiskey",
     "category": "Whisky",
     "categoryId": "whisky",
     "emoji": "🥃",
@@ -413,7 +413,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "tullamore-dew.png"
   },
   {
     "id": "vat-69",
@@ -427,11 +427,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "vat-69.png"
   },
   {
     "id": "buffelsfontein",
-    "name": "Buffelsfontein",
+    "name": "Buffelsfontein Brandywyn",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -441,11 +441,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "buffelsfontein.png"
   },
   {
     "id": "commando",
-    "name": "Commando",
+    "name": "Commando Brandy",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -455,7 +455,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "commando.png"
   },
   {
     "id": "flight-of-the-fish-eagle",
@@ -501,7 +501,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "kwv-10-year-old",
-    "name": "KWV 10 Year Old",
+    "name": "KWV Signature Darrel Select Ten",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -511,7 +511,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "kwv-10-year-old.png"
   },
   {
     "id": "kwv-3-year-old",
@@ -529,7 +529,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "kwv-5-year-old",
-    "name": "KWV 5 Year Old",
+    "name": "KWV Signature Five Brandy",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -539,11 +539,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "kwv-5-year-old.png"
   },
   {
     "id": "kwv-vs-pot-still",
-    "name": "KWV VS Pot Still",
+    "name": "KWV Signature Release VS",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -553,11 +553,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "kwv-vs-pot-still.png"
   },
   {
     "id": "olof-bergh",
-    "name": "Olof Bergh",
+    "name": "Olof Bergh Brandywyn",
     "category": "Brandy",
     "categoryId": "brandy",
     "emoji": "🥃",
@@ -567,7 +567,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "olof-bergh.png"
   },
   {
     "id": "richelieu",
@@ -1733,4 +1733,19 @@ window.LBB_CATALOG = [
     "specialOnly": true,
     "image": "special-bernini-classic.png"
   },
-];
+  {
+    "id": "three-gee-see",
+    "name": "Three Gee See Irish Whiskey",
+    "category": "Whisky",
+    "categoryId": "whisky",
+    "emoji": "🥃",
+    "size": "700ml",
+    "normalPrice": 0,
+    "initial": "TGS",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "three-gee-see.png"
+  },
+]; 
