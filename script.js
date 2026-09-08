@@ -140,7 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
           meta.innerHTML = `<span class="special-badge">ON SPECIAL</span>${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}`;
           meta.hidden = false;
         } else if (meta) {
-          meta.remove();
+          // Keep the special-badge row in the DOM so non-special products
+          // reserve exactly the same vertical space as special products.
+          meta.innerHTML = '';
+          meta.hidden = true;
+          meta.setAttribute('aria-hidden', 'true');
         }
       }
     });

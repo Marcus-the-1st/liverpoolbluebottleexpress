@@ -3142,178 +3142,128 @@ body.cart-open{overflow:hidden}
 }
 
 /* ================================================================
-   V3.55 — RESTORE ORIGINAL WHISKY CARD PROPORTIONS / FLOW
-   Fixes the V3.53/V3.54 override that made the product information
-   area too tall and pushed the Add to Cart control down.
-   Mobile product media uses a 3:4 frame; content flows naturally.
+   V3.56 — PRODUCT CARD STRUCTURE LOCK
+   Every category product card uses the exact same vertical rows:
+   image -> name -> size -> price -> special row -> cart control.
+   The special row is always present; non-special cards simply hide
+   its contents without collapsing the row.
    ================================================================ */
 
-/* The category grid stays a clean 2-column mobile grid. */
-.category-page .category-detail-section .product-grid{
-  display:grid !important;
-  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  gap:12px !important;
-  align-items:stretch !important;
-  overflow:visible !important;
-  padding:3px 0 12px !important;
-  touch-action:auto !important;
-}
-
-/* Do NOT force a fixed card height. Let each row determine its height. */
 .category-page .category-detail-section .product-card{
-  min-width:0 !important;
-  width:100% !important;
-  height:auto !important;
-  min-height:315px !important;
-  max-height:none !important;
+  height:100% !important;
+  min-height:0 !important;
   display:flex !important;
   flex-direction:column !important;
-  overflow:hidden !important;
   box-sizing:border-box !important;
 }
 
-/* Restore the intended 3:4 mobile product placeholder ratio. */
 .category-page .category-detail-section .product-placeholder.product-media{
   flex:0 0 auto !important;
-  width:100% !important;
+  aspect-ratio:3 / 4 !important;
   height:auto !important;
   min-height:0 !important;
-  max-height:none !important;
-  aspect-ratio:3 / 4 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  overflow:hidden !important;
-  background:#050505 !important;
 }
 
-/* Keep the supplied packshot fully contained in its frame. */
-.category-page .category-detail-section .product-placeholder.product-media .product-image{
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  object-fit:contain !important;
-  object-position:center center !important;
-  margin:0 !important;
-  padding:0 !important;
-  border:0 !important;
-}
-
-/* Restore the original compact information flow. */
 .category-page .category-detail-section .product-info{
-  position:relative !important;
-  z-index:2 !important;
-  flex:0 0 auto !important;
-  min-height:0 !important;
-  display:block !important;
+  flex:1 1 auto !important;
+  display:grid !important;
+  grid-template-rows:3.6em 1.3em 42px 30px 52px !important;
+  row-gap:0 !important;
+  align-content:start !important;
   padding:15px 16px !important;
   box-sizing:border-box !important;
 }
 
 .category-page .category-detail-section .product-info h4{
-  display:block !important;
-  height:auto !important;
-  min-height:2.8em !important;
-  max-height:none !important;
+  height:3.6em !important;
+  min-height:3.6em !important;
+  max-height:3.6em !important;
   margin:0 !important;
-  font-size:1rem !important;
-  line-height:normal !important;
-  overflow:visible !important;
-  -webkit-line-clamp:unset !important;
-  -webkit-box-orient:unset !important;
-  overflow-wrap:normal !important;
+  line-height:1.2 !important;
+  overflow:hidden !important;
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:3 !important;
 }
 
 .category-page .category-detail-section .product-info > p{
-  height:auto !important;
-  min-height:0 !important;
-  margin:4px 0 10px !important;
-  font-size:.9rem !important;
-  line-height:normal !important;
-  overflow:visible !important;
+  height:1.3em !important;
+  min-height:1.3em !important;
+  margin:0 !important;
+  line-height:1.3 !important;
+  overflow:hidden !important;
 }
 
 .category-page .category-detail-section .product-price{
+  height:42px !important;
+  min-height:42px !important;
+  margin:0 !important;
+  padding:0 !important;
   display:flex !important;
-  flex:0 0 auto !important;
-  min-height:0 !important;
-  margin-top:2px !important;
   align-items:center !important;
+  justify-content:flex-start !important;
   gap:8px !important;
-  flex-wrap:wrap !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+}
+
+.category-page .category-detail-section .product-price .base-price{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
 }
 
 .category-page .category-detail-section .product-price .current-price{
+  flex:0 0 auto !important;
   white-space:nowrap !important;
-  font-size:1rem !important;
-  padding:7px 12px !important;
 }
 
 .category-page .category-detail-section .special-meta{
+  height:30px !important;
+  min-height:30px !important;
+  max-height:30px !important;
+  margin:0 !important;
+  padding:0 !important;
   display:flex !important;
-  flex:0 0 auto !important;
-  min-height:0 !important;
-  margin-top:8px !important;
   align-items:center !important;
   gap:7px !important;
-  flex-wrap:wrap !important;
-  overflow:visible !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+}
+
+/* hidden is intentional here: keep the row's geometry, hide only contents */
+.category-page .category-detail-section .special-meta[hidden]{
+  display:flex !important;
+  visibility:hidden !important;
 }
 
 .category-page .category-detail-section .cart-product-control{
-  flex:0 0 auto !important;
+  height:42px !important;
   min-height:42px !important;
+  margin:10px 0 0 !important;
+  padding:0 !important;
   width:100% !important;
-  margin-top:10px !important;
   display:flex !important;
   align-items:center !important;
+  box-sizing:border-box !important;
 }
 
 .category-page .category-detail-section .add-to-cart-button,
 .category-page .category-detail-section .quantity-stepper{
   width:100% !important;
-  min-width:0 !important;
   height:42px !important;
+  min-height:42px !important;
   box-sizing:border-box !important;
   justify-content:center !important;
 }
 
-.category-page .category-detail-section .add-to-cart-button{
-  padding:7px 8px !important;
-  font-size:.78rem !important;
-}
-
-.category-page .category-detail-section .bottle-plus-icon{
-  width:27px !important;
-  height:27px !important;
-  flex:0 0 27px !important;
-}
-
-/* Same proportions at larger breakpoints; the frame scales with card width. */
-@media(min-width:650px){
-  .category-page .category-detail-section .product-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-    gap:16px !important;
-  }
-  .category-page .category-detail-section .product-placeholder.product-media{
-    aspect-ratio:3 / 4 !important;
-  }
-}
-
-@media(min-width:900px){
-  .category-page .category-detail-section .product-grid{
-    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-    gap:20px !important;
-  }
-  .category-page .category-detail-section .product-placeholder.product-media{
-    aspect-ratio:3 / 4 !important;
-  }
-}
-
 @media(max-width:520px){
   .category-page .category-detail-section .product-info{
+    grid-template-rows:3.6em 1.3em 42px 30px 52px !important;
     padding:15px 12px !important;
+  }
+
+  .category-page .category-detail-section .product-info h4{
+    font-size:.96rem !important;
+    line-height:1.2 !important;
   }
 }
