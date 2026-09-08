@@ -1733,4 +1733,4 @@ window.LBB_CATALOG = [
     "specialOnly": true,
     "image": "special-bernini-classic.png"
   },
-]; 
+];
