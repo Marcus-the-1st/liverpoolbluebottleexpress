@@ -343,7 +343,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": "samuel-gelston-s-irish-whisky.jpg"
+    "image": "samuel-gelston-s-irish-whisky.png"
   },
   {
     "id": "the-famous-grouse",
@@ -1733,4 +1733,4 @@ window.LBB_CATALOG = [
     "specialOnly": true,
     "image": "special-bernini-classic.png"
   },
-]; 
+];
