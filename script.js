@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (special) {
           if (!meta) {
             meta = document.createElement('div');
-            meta.className = 'special-meta';
+            meta.className = 'special-meta is-empty';
             const info = card.querySelector('.product-info');
             const control = info?.querySelector('.cart-product-control');
             if (control) info.insertBefore(meta, control); else info?.appendChild(meta);
@@ -139,11 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
           const discount = specialPrice < normal ? Math.round((normal - specialPrice) / normal * 100) : 0;
           meta.innerHTML = `<span class="special-badge">ON SPECIAL</span>${discount > 0 ? `<span class="discount-badge">${discount}% OFF</span>` : ''}`;
           meta.hidden = false;
+          meta.classList.remove('is-empty');
         } else if (meta) {
           // Keep the special-badge row in the DOM so non-special products
           // reserve exactly the same vertical space as special products.
           meta.innerHTML = '';
-          meta.hidden = true;
+          meta.hidden = false;
+          meta.classList.add('is-empty');
           meta.setAttribute('aria-hidden', 'true');
         }
       }

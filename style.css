@@ -3267,3 +3267,110 @@ body.cart-open{overflow:hidden}
     line-height:1.2 !important;
   }
 }
+
+
+/* ================================================================
+   V3.57 — WHISKY CARD ALIGNMENT: PERMANENT ROW STRUCTURE
+   The product card itself is allowed to size naturally. The content
+   rows are fixed so special/non-special cards cannot collapse.
+   ================================================================ */
+.category-page .category-detail-section .product-grid{
+  align-items:stretch !important;
+}
+.category-page .category-detail-section .product-card{
+  display:flex !important;
+  flex-direction:column !important;
+  height:auto !important;
+  min-height:0 !important;
+  align-self:stretch !important;
+}
+.category-page .category-detail-section .product-info{
+  display:grid !important;
+  grid-template-rows: 3.6em 1.4em 48px 34px 52px !important;
+  align-content:start !important;
+  flex:0 0 auto !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:15px 12px 14px !important;
+  box-sizing:border-box !important;
+}
+.category-page .category-detail-section .product-info h4{
+  height:3.6em !important;
+  min-height:3.6em !important;
+  max-height:3.6em !important;
+  margin:0 !important;
+  line-height:1.2 !important;
+  overflow:hidden !important;
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:3 !important;
+}
+.category-page .category-detail-section .product-info > p{
+  height:1.4em !important;
+  min-height:1.4em !important;
+  margin:0 !important;
+  line-height:1.4 !important;
+  overflow:hidden !important;
+}
+.category-page .category-detail-section .product-price{
+  height:48px !important;
+  min-height:48px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+}
+.category-page .category-detail-section .product-price .base-price,
+.category-page .category-detail-section .product-price .current-price{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+.category-page .category-detail-section .special-meta{
+  height:34px !important;
+  min-height:34px !important;
+  max-height:34px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+  visibility:visible !important;
+}
+.category-page .category-detail-section .special-meta.is-empty{
+  visibility:hidden !important;
+  display:flex !important;
+}
+.category-page .category-detail-section .special-meta[hidden]{
+  display:flex !important;
+  visibility:hidden !important;
+}
+.category-page .category-detail-section .cart-product-control{
+  height:52px !important;
+  min-height:52px !important;
+  margin:0 !important;
+  padding:10px 0 0 !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+}
+.category-page .category-detail-section .add-to-cart-button,
+.category-page .category-detail-section .quantity-stepper{
+  width:100% !important;
+  height:42px !important;
+  min-height:42px !important;
+  box-sizing:border-box !important;
+  justify-content:center !important;
+}
+@media(max-width:520px){
+  .category-page .category-detail-section .product-info{
+    grid-template-rows:3.6em 1.4em 48px 34px 52px !important;
+    padding:15px 12px 14px !important;
+  }
+  .category-page .category-detail-section .product-info h4{font-size:.96rem !important;line-height:1.2 !important}
+}

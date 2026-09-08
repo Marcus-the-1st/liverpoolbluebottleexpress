@@ -1,0 +1,3 @@
+V3.57 Whisky card alignment fix.
+
+Apply this patch over the current site. The special-badge row is permanently present and non-special cards reserve the same space. Product-info rows are fixed and the card stretches naturally to the grid row. The obsolete Three Gee See catalogue item is removed; Samuel Gelston's Irish Whiskey is restored with its supplied image filename. No product images are included in this patch.
