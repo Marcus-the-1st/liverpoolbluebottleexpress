@@ -3374,3 +3374,107 @@ body.cart-open{overflow:hidden}
   }
   .category-page .category-detail-section .product-info h4{font-size:.96rem !important;line-height:1.2 !important}
 }
+
+
+/* ================================================================
+   V3.58 — CURRENT SPECIALS CARD STRUCTURE LOCK
+   Match the proven Whisky/category card geometry on the dedicated
+   Current Specials page. Every card always reserves the same rows:
+   image -> name -> size -> price -> special badges -> cart control.
+   Longer names must never push the lower rows down.
+   ================================================================ */
+.specials-product-grid{
+  align-items:stretch !important;
+}
+.specials-product-grid .product-card{
+  display:flex !important;
+  flex-direction:column !important;
+  height:auto !important;
+  min-height:0 !important;
+  align-self:stretch !important;
+}
+.specials-product-grid .product-info{
+  display:grid !important;
+  grid-template-rows:3.6em 1.4em 48px 34px 52px !important;
+  align-content:start !important;
+  flex:0 0 auto !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:15px 12px 14px !important;
+  box-sizing:border-box !important;
+}
+.specials-product-grid .product-info h4{
+  height:3.6em !important;
+  min-height:3.6em !important;
+  max-height:3.6em !important;
+  margin:0 !important;
+  line-height:1.2 !important;
+  overflow:hidden !important;
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:3 !important;
+}
+.specials-product-grid .product-info > p{
+  height:1.4em !important;
+  min-height:1.4em !important;
+  margin:0 !important;
+  line-height:1.4 !important;
+  overflow:hidden !important;
+}
+.specials-product-grid .product-price{
+  height:48px !important;
+  min-height:48px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+}
+.specials-product-grid .product-price .base-price,
+.specials-product-grid .product-price .current-price{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+.specials-product-grid .special-meta{
+  height:34px !important;
+  min-height:34px !important;
+  max-height:34px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  flex-wrap:nowrap !important;
+  overflow:hidden !important;
+}
+.specials-product-grid .cart-product-control{
+  height:52px !important;
+  min-height:52px !important;
+  margin:0 !important;
+  padding:10px 0 0 !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+}
+.specials-product-grid .add-to-cart-button,
+.specials-product-grid .quantity-stepper{
+  width:100% !important;
+  height:42px !important;
+  min-height:42px !important;
+  box-sizing:border-box !important;
+  justify-content:center !important;
+}
+@media(max-width:520px){
+  .specials-product-grid .product-info{
+    grid-template-rows:3.6em 1.4em 48px 34px 52px !important;
+    padding:15px 12px 14px !important;
+  }
+  .specials-product-grid .product-info h4{
+    font-size:.96rem !important;
+    line-height:1.2 !important;
+  }
+}

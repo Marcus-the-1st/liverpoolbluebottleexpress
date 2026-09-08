@@ -1,0 +1,1 @@
+V3.58 — Current Specials uniform card structure fix. Apply on top of V3.57. Only style.css is included. This locks the specials card rows so long/short product names cannot move size, price, badges, or Add to Cart vertically. No images or catalogue data are changed.
