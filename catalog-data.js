@@ -808,20 +808,6 @@ window.LBB_CATALOG = [
     "image": "skyy.png"
   },
   {
-    "id": "smirnoff",
-    "name": "Smirnoff",
-    "category": "Vodka",
-    "categoryId": "vodka",
-    "emoji": "🍸",
-    "size": "750ml",
-    "normalPrice": 170.0,
-    "initial": "S",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
     "id": "cazadores-a-ejo",
     "name": "Cazadores Añejo",
     "category": "Tequila",
