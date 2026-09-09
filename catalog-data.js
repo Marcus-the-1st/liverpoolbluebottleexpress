@@ -763,7 +763,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "russian-bear-1l.png"
   },
   {
     "id": "russian-bear-pineapple",
