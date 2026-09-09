@@ -595,7 +595,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "viceroy.png"
   },
   {
     "id": "wellington",
@@ -609,7 +609,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "wellington.png"
   },
   {
     "id": "wellington-1l",
@@ -623,7 +623,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "wellington-1l.png"
   },
   {
     "id": "captain-morgan-spiced-gold",
@@ -637,7 +637,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "captain-morgan-spiced-gold.png"
   },
   {
     "id": "dead-man-s-fingers-dark",
