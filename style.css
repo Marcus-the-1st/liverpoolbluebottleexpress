@@ -2854,6 +2854,32 @@ img{
 .qty-bottle path.plus{display:none}
 .qty-value{font-size:.75rem;color:#b9c9d8;font-weight:800;min-width:15px;text-align:center}
 
+
+/* ================================================================
+   V3.65 — MOBILE CART SCROLL ISOLATION
+   Keep the page completely stationary while the cart is open. The cart
+   itself owns vertical touch scrolling; the overlay consumes background
+   gestures so the underlying page cannot move.
+   ================================================================ */
+html.cart-open,
+body.cart-open{
+  overflow:hidden!important;
+  overscroll-behavior:none!important;
+}
+.cart-overlay{
+  touch-action:none!important;
+  overscroll-behavior:none!important;
+}
+.cart-drawer{
+  touch-action:pan-y!important;
+  overscroll-behavior:contain!important;
+}
+.cart-items,
+.order-confirmation{
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch;
+}
+
 /* Drawer */
 body.cart-open{overflow:hidden}
 .cart-overlay{position:fixed;inset:0;background:rgba(0,3,10,.68);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1190}

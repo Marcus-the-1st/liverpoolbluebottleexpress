@@ -186,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const WHATSAPP_NUMBER = "27692900442";
 
   const cart = new Map();
+  let cartScrollY = 0;
   const $ = (id) => document.getElementById(id);
   const money = (n) => `R${Number(n || 0).toFixed(2)}`;
   const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
@@ -406,20 +407,50 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openCart() {
-    $("cartOverlay").hidden = false;
-    requestAnimationFrame(() => $("cartOverlay").classList.add("open"));
-    $("cartDrawer").classList.add("open");
-    $("cartDrawer").setAttribute("aria-hidden","false");
-    $("cartButton").setAttribute("aria-expanded","true");
+    const overlay = $("cartOverlay");
+    const drawer = $("cartDrawer");
+    if (!overlay || !drawer) return;
+
+    // V3.65 — Lock the underlying page while the cart drawer is open.
+    // A plain body{overflow:hidden} is not reliable on mobile browsers;
+    // freeze the current document position so touch-dragging inside the cart
+    // can only scroll the cart's own scrollable area.
+    cartScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${cartScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
     document.body.classList.add("cart-open");
+    document.documentElement.classList.add("cart-open");
+
+    overlay.hidden = false;
+    requestAnimationFrame(() => overlay.classList.add("open"));
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden","false");
+    $("cartButton")?.setAttribute("aria-expanded","true");
   }
 
   function closeCart() {
-    $("cartDrawer").classList.remove("open");
-    $("cartDrawer").setAttribute("aria-hidden","true");
-    $("cartButton").setAttribute("aria-expanded","false");
+    const overlay = $("cartOverlay");
+    const drawer = $("cartDrawer");
+    if (!drawer) return;
+
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden","true");
+    $("cartButton")?.setAttribute("aria-expanded","false");
     document.body.classList.remove("cart-open");
-    setTimeout(() => { $("cartOverlay").hidden = true; }, 280);
+    document.documentElement.classList.remove("cart-open");
+
+    // Restore the exact page position after releasing the mobile scroll lock.
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, cartScrollY);
+
+    if (overlay) setTimeout(() => { overlay.classList.remove("open"); overlay.hidden = true; }, 280);
   }
 
   function makeTicket() {
