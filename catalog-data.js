@@ -721,7 +721,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square.png"
   },
   {
     "id": "red-square-energy-infusion",
@@ -735,7 +735,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square-energy-infusion.png"
   },
   {
     "id": "russian-bear",
