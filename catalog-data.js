@@ -651,7 +651,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "dead-mans-fingers-dark.png"
   },
   {
     "id": "dead-man-s-fingers-spiced",
@@ -665,7 +665,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "dead-mans-fingers-spiced.png"
   },
   {
     "id": "red-heart-rum",
@@ -679,7 +679,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-heart-rum.png"
   },
   {
     "id": "c-roc-snap-frost",
@@ -693,11 +693,11 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "c-roc-snap-frost.png"
   },
   {
     "id": "c-roc-summer",
-    "name": "Cîroc Summer",
+    "name": "Cîroc Summer Citrus Flavoured",
     "category": "Vodka",
     "categoryId": "vodka",
     "emoji": "🍸",
@@ -707,7 +707,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "c-roc-summer.png"
   },
   {
     "id": "red-square",
@@ -749,7 +749,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-russian-bear.png"
+    "image": "russian-bear.png"
   },
   {
     "id": "russian-bear-1l",
@@ -777,7 +777,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "russian-bear-pineapple.png"
   },
   {
     "id": "russian-bear-wild-berry",
@@ -791,7 +791,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "russian-bear-wild-berry.png"
   },
   {
     "id": "skyy",
@@ -805,7 +805,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "skyy.png"
   },
   {
     "id": "smirnoff",
@@ -833,7 +833,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "cazadores-anejo.png"
   },
   {
     "id": "don-julio-blanco",
@@ -847,7 +847,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "don-julio-blanco.png"
   },
   {
     "id": "don-julio-reposado",
@@ -875,7 +875,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "el-jimador-reposado.png"
   },
   {
     "id": "jos-cuervo",
@@ -1732,5 +1732,50 @@ window.LBB_CATALOG = [
     "specialEnd": "2026-09-15",
     "specialOnly": true,
     "image": "special-bernini-classic.png"
+  },
+  {
+    "id": "smirnoff-1818",
+    "name": "Smirnoff 1818",
+    "category": "Vodka",
+    "categoryId": "vodka",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "S1818",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "smirnoff-1818.png"
+  },
+  {
+    "id": "cruz-vintage-black-vodka",
+    "name": "Cruz Vintage Black Vodka",
+    "category": "Vodka",
+    "categoryId": "vodka",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "CVB",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "cruz-vintage-black-vodka.png"
+  },
+  {
+    "id": "count-pushkin-energy-infused-grape-flavour-liqueur",
+    "name": "Count Pushkin Energy Infused-Grape Flavour Liqueur",
+    "category": "Vodka",
+    "categoryId": "vodka",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "CPG",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
 ];
