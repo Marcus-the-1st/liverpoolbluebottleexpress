@@ -1046,6 +1046,21 @@ window.LBB_CATALOG = [
     "image": "special-strettons.png"
   },
   {
+    "id": "tanqueray-london-dry",
+    "name": "Tanqueray London Dry Gin",
+    "category": "Gin",
+    "categoryId": "gin",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 0,
+    "initial": "TLD",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "priceTbc": true,
+    "image": "tanqueray-london-dry.png"
+  },
+  {
     "id": "tanqueray-blackcurrant",
     "name": "Tanqueray Blackcurrant",
     "category": "Gin",
