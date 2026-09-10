@@ -238,12 +238,11 @@ window.LBB_CATALOG = [
     "categoryId": "whisky",
     "emoji": "🥃",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 315,
     "initial": "JD H",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "special-jack-honey.png"
   },
   {
@@ -253,12 +252,11 @@ window.LBB_CATALOG = [
     "categoryId": "whisky",
     "emoji": "🥃",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 315,
     "initial": "JD A",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "special-jack-apple.png"
   },
   {
@@ -1052,12 +1050,11 @@ window.LBB_CATALOG = [
     "categoryId": "gin",
     "emoji": "🍸",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 325.0,
     "initial": "TLD",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "tanqueray-london-dry.png"
   },
   {
@@ -1741,12 +1738,11 @@ window.LBB_CATALOG = [
     "categoryId": "vodka",
     "emoji": "🍸",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 170.0,
     "initial": "S1818",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "smirnoff-1818.png"
   },
   {
@@ -1756,12 +1752,11 @@ window.LBB_CATALOG = [
     "categoryId": "vodka",
     "emoji": "🍸",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 295.0,
     "initial": "CVB",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "cruz-vintage-black-vodka.png"
   },
   {
@@ -1771,12 +1766,11 @@ window.LBB_CATALOG = [
     "categoryId": "vodka",
     "emoji": "🍸",
     "size": "750ml",
-    "normalPrice": 0,
+    "normalPrice": 100.0,
     "initial": "CPG",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "priceTbc": true,
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
 ];
