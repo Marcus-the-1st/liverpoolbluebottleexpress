@@ -1764,12 +1764,12 @@ window.LBB_CATALOG = [
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
-    "normalPrice": 99.99,
+    "normalPrice": 120.0,
     "initial": "BB",
     "specialPrice": 99.99,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "specialOnly": true,
+    "specialOnly": false,
     "image": "special-bernini-blush.png"
   },
   {
@@ -1779,12 +1779,12 @@ window.LBB_CATALOG = [
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
-    "normalPrice": 99.99,
+    "normalPrice": 120.0,
     "initial": "BC",
     "specialPrice": 99.99,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "specialOnly": true,
+    "specialOnly": false,
     "image": "special-bernini-classic.png"
   },
   {
