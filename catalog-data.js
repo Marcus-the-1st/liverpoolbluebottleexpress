@@ -1099,7 +1099,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "special-amarula.png"
+    "image": "amarula-cream.png"
   },
   {
     "id": "amarula-1l",
