@@ -1099,7 +1099,7 @@ window.LBB_CATALOG = [
     "specialPrice": 149.99,
     "specialStart": null,
     "specialEnd": null,
-    "image": "tanqueray-flor-de-sevilla.png"
+    "image": "special-amarula.png"
   },
   {
     "id": "amarula-1l",
