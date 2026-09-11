@@ -21,42 +21,41 @@ jobs:
           start = s.index('<div class="category" data-category-id="liqueurs" id="liqueurs">')
           end = s.index('<div class="category" data-category-id="sparkling"', start)
           sec = s[start:end]
-
           sec = sec.replace('<h3>Liqueurs</h3>', '<h3>Liqueurs / Cream Liqueurs</h3>', 1)
 
-          # Record the exact closing tag of the existing Liqueurs grid before
-          # removing the subgroup wrappers. The subgroups come after this grid.
-          first_subgroup_pos = sec.index('<div class="category-subgroup">')
-          grid_close = sec.rfind('</div>', 0, first_subgroup_pos)
-          if grid_close == -1:
-              raise SystemExit('Could not locate the existing Liqueurs grid closing tag')
+          first_sub = sec.index('<div class="category-subgroup"><h4>Cream Liqueurs</h4>')
+          grid_close = sec.rfind('</div>', 0, first_sub)
 
+          cream_start = first_sub
+          herbal_start = sec.index('<div class="category-subgroup"><h4>Herbal Liqueurs</h4>')
           cards = []
-          for title in ('Cream Liqueurs', 'Herbal Liqueurs'):
-              pat = rf'<div class="category-subgroup"><h4>{re.escape(title)}</h4><div class="product-grid">(.*?)</div></div>'
-              m = re.search(pat, sec, re.S)
-              if not m:
-                  raise SystemExit(f'Missing expected subgroup: {title}')
-              group_cards = m.group(1)
-              # Remove the duplicate static Amarula Cream 1L card. The existing
-              # amarula-1l card already represents the requested 1L Amarula.
+          for a, b, title in ((cream_start, herbal_start, 'Cream Liqueurs'), (herbal_start, len(sec), 'Herbal Liqueurs')):
+              block = sec[a:b]
+              open_end = block.index('<div class="product-grid">') + len('<div class="product-grid">')
+              close = block.rfind('</div></div>')
+              if close == -1:
+                  raise SystemExit(f'Could not close subgroup: {title}')
+              group_cards = block[open_end:close]
               group_cards = re.sub(r'<article class="product-card"[^>]*data-product-id="amarula-cream-1l".*?</article>', '', group_cards, flags=re.S)
               cards.append(group_cards)
-              sec = sec[:m.start()] + sec[m.end():]
 
-          if '<div class="category-subgroup">' in sec:
-              raise SystemExit('Unexpected subgroup remains')
+          # Remove both subgroup wrappers. Everything inside them will be moved
+          # into the existing Liqueurs product grid below.
+          sec = sec[:cream_start] + sec[herbal_start:]
+          herbal_start2 = sec.index('<div class="category-subgroup"><h4>Herbal Liqueurs</h4>')
+          herbal_block = sec[herbal_start2:]
+          herbal_close = herbal_block.rfind('</div></div>')
+          if herbal_close == -1:
+              raise SystemExit('Could not locate Herbal Liqueurs wrapper close')
+          sec = sec[:herbal_start2] + herbal_block[herbal_close + len('</div></div>'):]
 
-          # Because all removed subgroup markup was after the existing grid,
-          # grid_close still points at the same closing tag.
+          # Insert all cream/herbal cards into the original Liqueurs grid.
           sec = sec[:grid_close] + ''.join(cards) + sec[grid_close:]
-
           s = s[:start] + sec + s[end:]
           shop.write_text(s)
 
-          # Verify the final Liqueurs section is one single product grid.
-          final_shop = shop.read_text()
-          lsec = final_shop[final_shop.index('<div class="category" data-category-id="liqueurs"'):final_shop.index('<div class="category" data-category-id="sparkling"')]
+          final = shop.read_text()
+          lsec = final[final.index('<div class="category" data-category-id="liqueurs"'):final.index('<div class="category" data-category-id="sparkling"')]
           assert 'category-subgroup' not in lsec
           assert '<h3>Liqueurs / Cream Liqueurs</h3>' in lsec
           assert lsec.count('data-product-id="amarula-1l"') == 1
