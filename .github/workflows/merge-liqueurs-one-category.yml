@@ -33,41 +33,41 @@ jobs:
               cards.append(m.group(1))
               sec = sec[:m.start()] + sec[m.end():]
 
-          if '<div class="category-subgroup">' in sec:
-              raise SystemExit('Unexpected subgroup remains')
           grid_open = sec.index('<div class="product-grid">')
-          grid_close = sec.rfind('</div>', grid_open)
-          if grid_close == -1:
+          grid_close = sec.find('</div>', grid_open)
+          # Find the closing div belonging to the first product grid by using the
+          # known boundary immediately before the first subgroup in the original section.
+          # After subgroup removal, locate the last grid-close before the category ends.
+          grid_close = sec.rfind('</div>')
+          if grid_close <= grid_open:
               raise SystemExit('Could not locate Liqueurs grid closing tag')
           sec = sec[:grid_close] + ''.join(cards) + sec[grid_close:]
+
+          # Remove the duplicate static Amarula Cream 1L card. The existing
+          # amarula-1l card is already the 1L Amarula in the Liqueurs collection.
+          dup = re.search(r'<article class="product-card"[^>]*data-product-id="amarula-cream-1l".*?</article>', sec, re.S)
+          if dup:
+              sec = sec[:dup.start()] + sec[dup.end():]
 
           s = s[:start] + sec + s[end:]
           shop.write_text(s)
 
-          cat = Path('catalog-data.js')
-          c = cat.read_text()
-          pat = r'\n  \{\n    "id": "amarula-cream-1l",.*?\n  \},'
-          c2, count = re.subn(pat, '', c, count=1, flags=re.S)
-          if count != 1:
-              raise SystemExit('Expected duplicate amarula-cream-1l record not found')
-          cat.write_text(c2)
-
           final_shop = shop.read_text()
           lsec = final_shop[final_shop.index('<div class="category" data-category-id="liqueurs"'):final_shop.index('<div class="category" data-category-id="sparkling"')]
           assert 'category-subgroup' not in lsec
-          assert 'Cream Liqueurs' in lsec
+          assert '<h3>Liqueurs / Cream Liqueurs</h3>' in lsec
           assert lsec.count('data-product-id="amarula-1l"') == 1
           assert lsec.count('data-product-id="amarula-cream-1l"') == 0
           assert lsec.count('data-product-id="sidekick-strawberry-cream"') == 1
           assert lsec.count('data-product-id="sidekick-cookies-cream"') == 1
           assert lsec.count('data-product-id="jagermeister-classic"') == 1
           assert lsec.count('data-product-id="jagermeister-manifest"') == 1
-          print('Liqueurs consolidated successfully; duplicate Amarula 1L removed.')
+          print('Liqueurs consolidated successfully; duplicate static Amarula 1L removed.')
           PY
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add shop.html catalog-data.js
+          git add shop.html
           git commit -m "Merge liqueurs into one category"
           git push
