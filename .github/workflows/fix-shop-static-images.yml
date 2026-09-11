@@ -15,6 +15,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Fix catalogue hole handling
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('script.js')
+          text = path.read_text()
+          old = 'const byId = new Map(catalog.map(p => [p.id, p]));'
+          new = 'const byId = new Map(catalog.filter(Boolean).map(p => [p.id, p]));'
+          if old not in text:
+              raise SystemExit('Expected catalogue Map line was not found in script.js')
+          path.write_text(text.replace(old, new, 1))
+          print('Updated script.js to ignore sparse catalogue holes.')
+          PY
+
       - name: Sync Shop landing page images from master catalogue
         run: |
           node <<'NODE'
@@ -29,7 +43,7 @@ jobs:
           vm.createContext(context);
           vm.runInContext(data, context, { filename: 'catalog-data.js' });
 
-          const catalog = Array.isArray(context.window.LBB_CATALOG) ? context.window.LBB_CATALOG : [];
+          const catalog = Array.isArray(context.window.LBB_CATALOG) ? context.window.LBB_CATALOG.filter(Boolean) : [];
           if (!catalog.length) throw new Error('Master catalogue could not be loaded.');
 
           const byId = new Map(catalog.map(p => [p.id, p]));
@@ -98,10 +112,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if git diff --quiet -- shop.html; then
+          if git diff --quiet -- script.js shop.html; then
             echo 'No changes to commit.'
           else
-            git add shop.html
+            git add script.js shop.html
             git commit -m 'Fix Shop landing page product image mappings'
             git push
           fi
