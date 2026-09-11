@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apply = () => {
     const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
     if (!catalog.length) return;
-    const byId = new Map(catalog.map(p => [p.id, p]));
+    const byId = new Map(catalog.filter(Boolean).map(p => [p.id, p]));
 
     document.querySelectorAll('.product-card[data-product-id]').forEach(card => {
       const product = byId.get(card.dataset.productId);
