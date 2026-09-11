@@ -33,43 +33,50 @@ jobs:
           }
           catalog_path = Path('catalog-data.js')
           text = catalog_path.read_text(encoding='utf-8')
-          # Remove Jägermeister Orange object by id or exact name.
-          pats = [
-              r'(?ms)^\s*\{\s*\n\s*"id":\s*"[^"]*jagermeister-orange[^"]*".*?\n\s*\},(?=\s*\n\s*\{)',
-              r'(?ms)^\s*\{\s*\n\s*"id":\s*"[^"]*orange[^"]*"\s*,.*?"name":\s*"Jägermeister Orange".*?\n\s*\},(?=\s*\n\s*\{)'
-          ]
-          for pat in pats:
-              text, n = re.subn(pat, '', text, count=1)
-              if n:
-                  break
+          # Remove exactly the Jägermeister Orange product object.
+          text, removed = re.subn(r'\s*,?\s*\{\"id\":\"jagermeister-orange\".*?\},', '', text, count=1)
+          if not removed:
+              text, removed = re.subn(r'\s*,?\s*\{\"id\":\"jagermeister-orange\".*?\}', '', text, count=1)
+          if not removed:
+              raise SystemExit('Jägermeister Orange catalogue entry not found')
+          # Update each requested one-line catalogue object and clear its TBC flag.
           for pid, price in prices.items():
-              pat = re.compile(r'(?ms)(\{\s*\n\s*"id":\s*"' + re.escape(pid) + r'".*?\n\s*"normalPrice":\s*)[^,]+(,)')
-              text, n = pat.subn(lambda m: m.group(1) + f'{price:.2f}' + m.group(2), text, count=1)
+              pat = re.compile(r'(\{\"id\":\"' + re.escape(pid) + r'\".*?\"normalPrice\":)0(?:\.0)?(,.*?\"priceTbc\":)true(,?\})')
+              text, n = pat.subn(lambda m: m.group(1) + f'{price:.2f}' + m.group(2) + 'false' + m.group(3), text, count=1)
               if n != 1:
-                  raise SystemExit(f'Missing catalogue product id: {pid}')
-              block_pat = re.compile(r'(?ms)(\{\s*\n\s*"id":\s*"' + re.escape(pid) + r'".*?\n\s*"normalPrice":\s*' + re.escape(f'{price:.2f}') + r'.*?\n)(\s*"priceTbc":\s*)true(,)')
-              text = block_pat.sub(lambda m: m.group(1) + m.group(2) + 'false' + m.group(3), text, count=1)
+                  # Allow already-priced objects, but still ensure the id exists.
+                  if not re.search(r'\{\"id\":\"' + re.escape(pid) + r'\"', text):
+                      raise SystemExit(f'Missing catalogue product id: {pid}')
+                  pat2 = re.compile(r'(\{\"id\":\"' + re.escape(pid) + r'\".*?\"normalPrice\":)[^,}]+')
+                  text, n2 = pat2.subn(lambda m: m.group(1) + f'{price:.2f}', text, count=1)
+                  if n2 != 1:
+                      raise SystemExit(f'Could not update price for: {pid}')
+                  block = re.search(r'\{\"id\":\"' + re.escape(pid) + r'\".*?\}', text)
+                  if block:
+                      b = block.group(0).replace('"priceTbc":true', '"priceTbc":false')
+                      text = text[:block.start()] + b + text[block.end():]
           catalog_path.write_text(text, encoding='utf-8')
+          # Keep the existing static Shop cards in sync where they exist.
           shop_path = Path('shop.html')
           if shop_path.exists():
               shop = shop_path.read_text(encoding='utf-8')
               for pid, price in prices.items():
-                  card = re.compile(r'(?ms)(<article\b[^>]*data-product-id="' + re.escape(pid) + r'".*?</article>)')
+                  card = re.compile(r'(<article\b[^>]*data-product-id="' + re.escape(pid) + r'".*?</article>)', re.S)
                   m = card.search(shop)
                   if m:
                       block = m.group(1)
                       block = re.sub(r'data-normal-price="[^"]*"', f'data-normal-price="{price:.2f}"', block, count=1)
                       block = re.sub(r'(<strong\s+class="current-price">)R[0-9.]+(</strong>)', lambda x: x.group(1) + f'R{price:.2f}' + x.group(2), block, count=1)
                       shop = shop[:m.start()] + block + shop[m.end():]
-              shop = re.sub(r'(?ms)<article\b[^>]*data-product-id="[^"]*jagermeister-orange[^"]*".*?</article>', '', shop, count=1)
-              shop = re.sub(r'(?ms)<article\b[^>]*data-product-name="Jägermeister Orange".*?</article>', '', shop, count=1)
+              shop = re.sub(r'<article\b[^>]*data-product-id="jagermeister-orange".*?</article>', '', shop, flags=re.S)
+              shop = re.sub(r'<article\b[^>]*data-product-name="Jägermeister Orange".*?</article>', '', shop, flags=re.S)
               shop_path.write_text(shop, encoding='utf-8')
           for p in Path('.').glob('*.html'):
               if p.name == 'shop.html':
                   continue
               s = p.read_text(encoding='utf-8')
-              s2 = re.sub(r'(?ms)<article\b[^>]*data-product-id="[^"]*jagermeister-orange[^"]*".*?</article>', '', s, count=1)
-              s2 = re.sub(r'(?ms)<article\b[^>]*data-product-name="Jägermeister Orange".*?</article>', '', s2, count=1)
+              s2 = re.sub(r'<article\b[^>]*data-product-id="jagermeister-orange".*?</article>', '', s, flags=re.S)
+              s2 = re.sub(r'<article\b[^>]*data-product-name="Jägermeister Orange".*?</article>', '', s2, flags=re.S)
               if s2 != s:
                   p.write_text(s2, encoding='utf-8')
       - name: Commit changes
@@ -78,5 +85,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add catalog-data.js shop.html '*.html' || true
           git diff --cached --quiet && exit 0
-          git commit -m 'Update liqueur and champagne prices; remove Jager Orange'
+          git commit -m 'Update requested product prices and remove Jager Orange'
           git push
