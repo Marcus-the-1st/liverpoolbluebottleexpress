@@ -1,0 +1,76 @@
+name: Fix Shop landing page product images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-shop-static-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync Shop landing page images from master catalogue
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const vm = require('vm');
+
+          const htmlPath = 'shop.html';
+          const data = fs.readFileSync('catalog-data.js', 'utf8');
+          const html = fs.readFileSync(htmlPath, 'utf8');
+
+          const context = { window: {} };
+          vm.createContext(context);
+          vm.runInContext(data, context, { filename: 'catalog-data.js' });
+
+          const catalog = Array.isArray(context.window.LBB_CATALOG) ? context.window.LBB_CATALOG : [];
+          if (!catalog.length) throw new Error('Master catalogue could not be loaded.');
+
+          const byId = new Map(catalog.map(p => [p.id, p]));
+          const esc = value => String(value).replace(/[&<>\"']/g, c => ({
+            '&':'&amp;', '<':'&lt;', '>':'&gt;', '\"':'&quot;', "'":'&#39;'
+          }[c]));
+
+          let changed = 0;
+          let missing = 0;
+
+          const articleRe = /(<article\\b[^>]*data-product-id="([^"]+)"[^>]*>[\\s\\S]*?<div class="product-placeholder product-media">)[\\s\\S]*?(<\\/div>)/g;
+          const updated = html.replace(articleRe, (full, prefix, id, close) => {
+            const product = byId.get(id);
+            if (!product) return full;
+            if (!product.image) {
+              missing++;
+              return full;
+            }
+            const media = `<img alt="${esc(product.name)}" class="product-image" loading="lazy" src="${esc(product.image)}"/>`;
+            const currentMedia = full.slice(prefix.length, full.length - close.length);
+            if (currentMedia === media) return full;
+            changed++;
+            return prefix + media + close;
+          });
+
+          if (updated === html) {
+            console.log(`No Shop image changes required. Cards without catalogue images: ${missing}`);
+          } else {
+            fs.writeFileSync(htmlPath, updated, 'utf8');
+            console.log(`Updated ${changed} Shop landing page image mappings. Cards without catalogue images: ${missing}`);
+          }
+          NODE
+
+      - name: Commit Shop image fixes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet -- shop.html; then
+            echo 'No changes to commit.'
+          else
+            git add shop.html
+            git commit -m 'Fix Shop landing page product image mappings'
+            git push
+          fi
