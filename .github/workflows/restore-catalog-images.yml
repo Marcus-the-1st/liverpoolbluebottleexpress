@@ -1,0 +1,63 @@
+name: Restore uploaded product images
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  restore:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore catalogue image mappings from files already in the repo
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          p = Path('catalog-data.js')
+          text = p.read_text(encoding='utf-8')
+          files = {x.name for x in Path('.').glob('*.png')}
+
+          aliases = {
+              'amarula': 'amarula-cream.png',
+              'cazadores-a-ejo': 'cazadores-anejo.png',
+              'don-julio-reposado': 'special-don-julio-reposado.png',
+              'jose-cuervo-especial-silver': 'jose-cuervo-especial-silver.png',
+              'jose-cuervo-especial-reposado': 'jose-cuervo-especial-reposado.png',
+          }
+
+          def candidates(pid):
+              yield aliases.get(pid)
+              yield f'{pid}.png'
+              yield f'special-{pid}.png'
+
+          changed = 0
+          for m in list(re.finditer(r'(?P<obj>\{\s*"id"\s*:\s*"(?P<id>[^"]+)".*?\n\s*\})', text, re.S)):
+              obj = m.group('obj')
+              pid = m.group('id')
+              im = re.search(r'("image"\s*:\s*)(null|"[^"]*")', obj)
+              if not im:
+                  continue
+              current = None if im.group(2) == 'null' else im.group(2).strip('"')
+              if current and current in files:
+                  continue
+              chosen = next((x for x in candidates(pid) if x and x in files), None)
+              if not chosen:
+                  continue
+              obj2 = obj[:im.start(2)] + '"' + chosen + '"' + obj[im.end(2):]
+              text = text[:m.start('obj')] + obj2 + text[m.end('obj'):]
+              changed += 1
+
+          p.write_text(text, encoding='utf-8')
+          print(f'Restored {changed} catalogue image mappings.')
+
+      - name: Commit restored mappings
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add catalog-data.js
+          git diff --cached --quiet && exit 0
+          git commit -m 'Restore uploaded product image mappings'
+          git push
