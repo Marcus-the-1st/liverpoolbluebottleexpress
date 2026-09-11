@@ -1,0 +1,45 @@
+name: Add requested product categories
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.event.head_commit.message != 'Implement requested product categories'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        python - <<'PY'
+        from pathlib import Path
+        import re,json
+        groups=[
+        ['cream-liqueurs','Cream Liqueurs','🍸',[['amarula-cream-1l','Amarula Cream 1L','1L','AMR1'],['strawberry-lips','Strawberry Lips','750ml','SL'],['sidekick-strawberry-cream','Sidekick Strawberry & Cream','750ml','SSC'],['sidekick-cookies-cream','Sidekick Cookies & Cream','750ml','SCC']]],
+        ['herbal-liqueurs','Herbal Liqueurs','🌿',[['jagermeister-classic','Jägermeister (Classic)','750ml','JAG'],['jagermeister-orange','Jägermeister Orange','750ml','JGO'],['jagermeister-manifest','Jägermeister Manifest','1000ml','JGM']]],
+        ['whiskey-liqueurs','Whiskey Liqueurs','🥃',[['southern-comfort-original','Southern Comfort Original','750ml','SCO'],['southern-comfort-lime','Southern Comfort Lime','750ml','SCL']]],
+        ['champagne','Champagne','🥂',[['veuve-clicquot-brut','Veuve Clicquot Brut','750ml','VCB'],['veuve-clicquot-rose','Veuve Clicquot Rosé','750ml','VCR'],['veuve-clicquot-rich','Veuve Clicquot Rich','750ml','VCRH'],['moet-chandon-imperial-brut','Moët & Chandon Impérial Brut','750ml','MIB'],['moet-chandon-ice-imperial','Moët & Chandon Ice Impérial','750ml','MII'],['moet-chandon-nectar-imperial','Moët & Chandon Nectar Impérial','750ml','MNI']]]]
+        cp=Path('catalog-data.js'); s=cp.read_text(); ids=set(re.findall(r'"id"\s*:\s*"([^"]+)',s)); out=[]
+        for cid,cn,e,items in groups:
+          for pid,nm,sz,ini in items:
+            if pid not in ids:
+              out.append({'id':pid,'name':nm,'category':cn,'categoryId':cid,'emoji':e,'size':sz,'normalPrice':0,'initial':ini,'specialPrice':None,'specialStart':None,'specialEnd':None,'image':None,'priceTbc':True})
+        if out:
+          a=s[s.index('['):s.rfind(']')]; data=json.loads(a); data += out
+          cp.write_text(s[:s.index('[')]+json.dumps(data,ensure_ascii=False,indent=2)+s[s.rfind(']')+1:])
+        sp=Path('shop.html'); h=sp.read_text()
+        if 'href="#cream-liqueurs"' not in h:
+          h=h.replace('<a href="#ready-to-drink">Ready-To-Drink</a>','<a href="#ready-to-drink">Ready-To-Drink</a><a href="#cream-liqueurs">Cream Liqueurs</a><a href="#herbal-liqueurs">Herbal Liqueurs</a><a href="#whiskey-liqueurs">Whiskey Liqueurs</a><a href="#champagne">Champagne</a>',1)
+        def card(p,cn):
+          pid,nm,sz,ini=p
+          return f'<article class="product-card" data-category="{cn}" data-normal-price="0.00" data-product-id="{pid}" data-product-name="{nm}" data-size="{sz}" data-special-price="" data-price-tbc="true"><div class="product-placeholder product-media"><span class="product-initial">{ini}</span></div><div class="product-info"><h4>{nm}</h4><p>{sz}</p><div class="product-price"><strong class="current-price price-tbc">Price in store</strong></div><div class="special-meta is-empty" aria-hidden="true"></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span>Add to Cart</span></button></div></div></article>'
+        if 'id="cream-liqueurs"' not in h:
+          b=''.join(f'<div class="category" data-category-id="{cid}" id="{cid}"><div class="category-title"><span aria-hidden="true">{e}</span><h3>{cn}</h3><a class="category-view-all" href="category.html?category={cid}#shop">View All <span class="view-all-arrow">→</span></a></div><div class="product-grid">{"".join(card(p,cn) for p in items)}</div></div>' for cid,cn,e,items in groups)
+          h=h.replace('<div class="cart-overlay"',b+'<div class="cart-overlay"',1)
+        sp.write_text(h)
+        PY
+        git config user.name github-actions[bot]
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        git add catalog-data.js shop.html
+        git commit -m 'Implement requested product categories'
+        git push
