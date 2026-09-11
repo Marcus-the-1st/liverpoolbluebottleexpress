@@ -1,0 +1,149 @@
+name: Restore requested liqueur and champagne products
+
+on:
+  push:
+    paths:
+      - '.github/workflows/repair-requested-liqueur-champagne.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore exact requested products and Shop cards
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, json
+
+          catalog_path = Path('catalog-data.js')
+          shop_path = Path('shop.html')
+          catalog_text = catalog_path.read_text()
+          shop_text = shop_path.read_text()
+
+          # Remove only legacy duplicates that were superseded by the requested
+          # named products. Do not touch unrelated catalogue entries.
+          remove_ids = {
+              'southern-comfort',
+              'strawberry-lips-cream-liqueur',
+              'j-germeister',
+          }
+          for pid in remove_ids:
+              pattern = re.compile(r'\{\s*"id"\s*:\s*"' + re.escape(pid) + r'"\s*,[^{}]*?\}\s*,?', re.S)
+              catalog_text, n = pattern.subn('', catalog_text, count=1)
+              if n != 1:
+                  print(f'Legacy id {pid}: not found (already removed).')
+
+          # Remove the previous appended versions of the requested products so
+          # we can replace them with one clean, authoritative block.
+          requested_ids = {
+              'amarula-cream-1l', 'strawberry-lips', 'sidekick-strawberry-cream',
+              'sidekick-cookies-cream', 'jagermeister-classic', 'jagermeister-manifest',
+              'southern-comfort-original', 'southern-comfort-lime', 'veuve-clicquot-brut',
+              'veuve-clicquot-rose', 'veuve-clicquot-rich', 'moet-chandon-imperial-brut',
+              'moet-chandon-ice-imperial', 'moet-chandon-nectar-imperial'
+          }
+          for pid in requested_ids:
+              pattern = re.compile(r'\{\s*"id"\s*:\s*"' + re.escape(pid) + r'"\s*,[^{}]*?\}\s*,?', re.S)
+              catalog_text = pattern.sub('', catalog_text, count=0)
+
+          products = [
+              ('amarula-cream-1l','Amarula Cream 1L','Cream Liqueurs','cream-liqueurs','🍸','1L',215.00,'AMR1'),
+              ('strawberry-lips','Strawberry Lips','Cream Liqueurs','cream-liqueurs','🍸','750ml',159.99,'SL'),
+              ('sidekick-strawberry-cream','Sidekick Strawberry & Cream','Cream Liqueurs','cream-liqueurs','🍸','750ml',115.00,'SSC'),
+              ('sidekick-cookies-cream','Sidekick Cookies & Cream','Cream Liqueurs','cream-liqueurs','🍸','750ml',115.00,'SCC'),
+              ('jagermeister-classic','Jägermeister (Classic)','Herbal Liqueurs','herbal-liqueurs','🌿','750ml',329.99,'JAG'),
+              ('jagermeister-manifest','Jägermeister Manifest','Herbal Liqueurs','herbal-liqueurs','🌿','1000ml',449.00,'JGM'),
+              ('southern-comfort-original','Southern Comfort Original','Whiskey Liqueurs','whiskey-liqueurs','🥃','750ml',189.99,'SCO'),
+              ('southern-comfort-lime','Southern Comfort Lime','Whiskey Liqueurs','whiskey-liqueurs','🥃','750ml',155.00,'SCL'),
+              ('veuve-clicquot-brut','Veuve Clicquot Brut','Champagne','champagne','🥂','750ml',749.99,'VCB'),
+              ('veuve-clicquot-rose','Veuve Clicquot Rosé','Champagne','champagne','🥂','750ml',949.00,'VCR'),
+              ('veuve-clicquot-rich','Veuve Clicquot Rich','Champagne','champagne','🥂','750ml',1049.00,'VCRH'),
+              ('moet-chandon-imperial-brut','Moët & Chandon Impérial Brut','Champagne','champagne','🥂','750ml',649.00,'MIB'),
+              ('moet-chandon-ice-imperial','Moët & Chandon Ice Impérial','Champagne','champagne','🥂','750ml',879.00,'MII'),
+              ('moet-chandon-nectar-imperial','Moët & Chandon Nectar Impérial','Champagne','champagne','🥂','750ml',799.00,'MNI'),
+          ]
+
+          block = '\n' + ',\n'.join(json.dumps({
+              'id': p[0], 'name': p[1], 'category': p[2], 'categoryId': p[3],
+              'emoji': p[4], 'size': p[5], 'normalPrice': p[6], 'initial': p[7],
+              'specialPrice': None, 'specialStart': None, 'specialEnd': None,
+              'image': None, 'priceTbc': False
+          }, ensure_ascii=False) for p in products) + '\n'
+          catalog_text = re.sub(r'\n\s*\];\s*$', block + '];\n', catalog_text, count=1)
+          catalog_path.write_text(catalog_text)
+
+          # Build the exact Shop landing-page cards. They intentionally use the
+          # existing placeholder when no image has been uploaded yet, while the
+          # name, size, price row, reserved special row, and Add to Cart remain intact.
+          def card(p):
+              pid,name,cat,cid,emoji,size,price,initial = p
+              return (f'<article class="product-card" data-category="{cat}" data-normal-price="{price:.2f}" '
+                      f'data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price="">'
+                      f'<div class="product-placeholder product-media"><span class="product-initial">{initial}</span></div>'
+                      f'<div class="product-info"><h4>{name}</h4><p>{size}</p>'
+                      f'<div class="product-price"><strong class="current-price">R{price:.2f}</strong></div>'
+                      f'<div class="special-meta is-empty" aria-hidden="true"></div>'
+                      f'<div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span>Add to Cart</span></button></div>'
+                      f'</div></article>')
+
+          groups = {}
+          for p in products:
+              groups.setdefault(p[3], []).append(p)
+
+          sections = []
+          titles = [
+              ('cream-liqueurs','🍸','Cream Liqueurs'),
+              ('herbal-liqueurs','🌿','Herbal Liqueurs'),
+              ('whiskey-liqueurs','🥃','Whiskey Liqueurs'),
+              ('champagne','🥂','Champagne'),
+          ]
+          for cid,emoji,title in titles:
+              cards = ''.join(card(p) for p in groups[cid])
+              sections.append(f'<div class="category" data-category-id="{cid}" id="{cid}"><div class="category-title"><span aria-hidden="true">{emoji}</span><h3>{title}</h3><a class="category-view-all" href="category.html?category={cid}#shop">View All <span class="view-all-arrow">→</span></a></div><div class="product-grid">{cards}</div></div>')
+          new_sections = ''.join(sections)
+
+          start_marker = '<div class="category" data-category-id="cream-liqueurs" id="cream-liqueurs">'
+          end_marker = '<div class="cart-overlay"'
+          start = shop_text.find(start_marker)
+          end = shop_text.find(end_marker, start)
+          if start < 0 or end < 0:
+              raise SystemExit('Could not locate requested Shop category block.')
+          shop_text = shop_text[:start] + new_sections + shop_text[end:]
+          shop_path.write_text(shop_text)
+          print('Restored 14 requested products and rebuilt their Shop landing-page cards.')
+          PY
+
+      - name: Validate requested set
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          c = Path('catalog-data.js').read_text()
+          s = Path('shop.html').read_text()
+          ids = ['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial']
+          for pid in ids:
+              assert c.count('"id": "'+pid+'"') == 1, pid
+              assert s.count('data-product-id="'+pid+'"') == 1, pid
+          assert 'jagermeister-orange' not in c and 'jagermeister-orange' not in s
+          assert 'id": "southern-comfort"' not in c
+          assert 'id": "j-germeister"' not in c
+          assert 'id": "strawberry-lips-cream-liqueur"' not in c
+          print('Validation passed: all 14 requested products are present exactly once; Jägermeister Orange is absent.')
+          PY
+
+      - name: Commit repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet -- catalog-data.js shop.html; then
+            echo 'No changes required.'
+          else
+            git add catalog-data.js shop.html
+            git commit -m 'Restore requested liqueur and champagne products'
+            git push
+          fi
