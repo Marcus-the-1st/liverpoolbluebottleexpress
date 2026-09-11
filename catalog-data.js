@@ -1158,8 +1158,8 @@ window.LBB_CATALOG = [
   {
     "id": "el-bravo-strawberry",
     "name": "El Bravo Strawberry",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "liqueurs",
+    "category": "Tequila",
+    "categoryId": "tequila",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 129.99,
