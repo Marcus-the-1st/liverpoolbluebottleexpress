@@ -25,11 +25,7 @@ jobs:
           catalog = catalog_path.read_text(encoding='utf-8')
 
           def div_block(text, start):
-              if start < 0:
-                  return None
-              pos = start
               depth = 0
-              first = True
               token = re.compile(r'<div\b|</div>')
               for m in token.finditer(text, start):
                   if m.group() == '<div':
@@ -40,7 +36,6 @@ jobs:
                           return text[start:m.end()]
               return None
 
-          # Pull the four temporary top-level category blocks out of shop.html.
           temporary_ids = ['cream-liqueurs', 'herbal-liqueurs', 'whiskey-liqueurs', 'champagne']
           blocks = {}
           for cid in temporary_ids:
@@ -52,7 +47,6 @@ jobs:
                   raise SystemExit(f'Could not parse category #{cid}; nothing changed.')
               blocks[cid] = block
 
-          # Extract the requested product cards from those temporary blocks.
           def articles(block):
               return re.findall(r'<article class="product-card".*?</article>', block, flags=re.S)
 
@@ -72,38 +66,39 @@ jobs:
               out = []
               for card in cards:
                   m = re.search(r'data-product-id="([^"]+)"', card)
-                  if m: out.append(m.group(1))
+                  if m:
+                      out.append(m.group(1))
               return out
 
           if ids(cream) != expected['cream'] or ids(herbal) != expected['herbal'] or ids(whiskey_liqueurs) != expected['whiskey'] or ids(champagne) != expected['champagne']:
               raise SystemExit(f'Unexpected product order/content: {ids(cream)}, {ids(herbal)}, {ids(whiskey_liqueurs)}, {ids(champagne)}')
 
-          # Remove the temporary top-level sections completely.
+          # Remove the temporary top-level sections and their category-nav links.
           for cid in temporary_ids:
-              block = blocks[cid]
-              shop = shop.replace(block, '', 1)
-
-          # Remove their temporary category-nav links.
+              shop = shop.replace(blocks[cid], '', 1)
           shop = re.sub(r'<a href="#(?:cream-liqueurs|herbal-liqueurs|whiskey-liqueurs|champagne)">.*?</a>', '', shop)
 
-          # Rename the existing combined liqueurs section simply to Liqueurs.
+          # The original Liqueurs section remains the parent section; simplify its title.
           shop = re.sub(r'(<a href="#liqueurs">)Cream Liqueurs &amp; Other Liqueurs(</a>)', r'\1Liqueurs\2', shop, count=1)
           shop = re.sub(r'(<div class="category"[^>]*\bid="liqueurs"[^>]*>.*?<div class="category-title">.*?<h3>)Cream Liqueurs &amp; Other Liqueurs(</h3>)', r'\1Liqueurs\2', shop, count=1, flags=re.S)
 
           def find_category(text, cid):
               m = re.search(r'<div class="category"[^>]*\bid="' + re.escape(cid) + r'"[^>]*>', text)
-              if not m: raise SystemExit(f'Missing existing category #{cid}.')
+              if not m:
+                  raise SystemExit(f'Missing existing category #{cid}.')
               block = div_block(text, m.start())
-              if not block: raise SystemExit(f'Could not parse existing category #{cid}.')
+              if not block:
+                  raise SystemExit(f'Could not parse existing category #{cid}.')
               return m.start(), block
 
           def add_subgroup(text, cid, heading, cards):
               start, block = find_category(text, cid)
               subgroup = '<div class="category-subgroup"><h4>' + heading + '</h4><div class="product-grid">' + ''.join(cards) + '</div></div>'
-              # Append inside the existing category, before its final closing div.
               new_block = block[:-len('</div>')] + subgroup + '</div>'
               return text[:start] + new_block + text[start + len(block):]
 
+          # Put the new products inside the existing parent sections, with small labels
+          # identifying the subtype. No new top-level sections are created.
           shop = add_subgroup(shop, 'liqueurs', 'Cream Liqueurs', cream)
           shop = add_subgroup(shop, 'liqueurs', 'Herbal Liqueurs', herbal)
           shop = add_subgroup(shop, 'whisky', 'Whiskey Liqueurs', whiskey_liqueurs)
@@ -111,8 +106,8 @@ jobs:
 
           shop_path.write_text(shop, encoding='utf-8')
 
-          # Reclassify the catalog records so View All/category pages also treat them
-          # as members of the existing parent sections rather than new top-level categories.
+          # Reclassify the catalog records so category/View All logic uses the existing
+          # parent sections too.
           mapping = {}
           for pid in expected['cream'] + expected['herbal']:
               mapping[pid] = ('Liqueurs', 'liqueurs')
@@ -122,7 +117,7 @@ jobs:
               mapping[pid] = ('Champagne / Sparkling Wine', 'sparkling')
 
           for pid, (category, category_id) in mapping.items():
-              pat = re.compile(r'(\{\s*"id":\s*"' + re.escape(pid) + r'".*?\n\s*\})', re.S)
+              pat = re.compile(r'(\{\s*"id":\s*"' + re.escape(pid) + r'".*?\})', re.S)
               m = pat.search(catalog)
               if not m:
                   raise SystemExit(f'Missing catalog record {pid}.')
@@ -132,7 +127,7 @@ jobs:
               catalog = catalog[:m.start(1)] + obj2 + catalog[m.end(1):]
 
           catalog_path.write_text(catalog, encoding='utf-8')
-          print('Merged products:', ', '.join(expected['cream'] + expected['herbal'] + expected['whiskey'] + expected['champagne']))
+          print('Merged all requested products into their existing parent sections.')
           PY
 
       - name: Validate merged structure
@@ -146,7 +141,8 @@ jobs:
           for cid in forbidden:
               if re.search(r'<div class="category"[^>]*\bid="' + cid + r'"', shop):
                   raise SystemExit(f'Temporary top-level section still exists: {cid}')
-          for pid in ['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial']:
+          expected = ['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial']
+          for pid in expected:
               if shop.count('data-product-id="' + pid + '"') != 1:
                   raise SystemExit(f'Shop card count wrong for {pid}')
           if 'jagermeister-orange' in catalog:
