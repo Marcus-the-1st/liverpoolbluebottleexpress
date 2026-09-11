@@ -1183,20 +1183,7 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": null
   },
-  {
-    "id": "j-germeister-manifest",
-    "name": "Jägermeister Manifest",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "liqueurs",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 449.0,
-    "initial": "JGM",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
+
   {
     "id": "po-10-c",
     "name": "Po-10-C",
@@ -1848,7 +1835,7 @@ window.LBB_CATALOG = [
   {"id":"sidekick-strawberry-cream","name":"Sidekick Strawberry & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":115.00,"initial":"SSC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
   {"id":"sidekick-cookies-cream","name":"Sidekick Cookies & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":115.00,"initial":"SCC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
   {"id":"jagermeister-classic","name":"Jägermeister (Classic)","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"750ml","normalPrice":329.99,"initial":"JAG","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  ,
+
   {"id":"jagermeister-manifest","name":"Jägermeister Manifest","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"1000ml","normalPrice":449.00,"initial":"JGM","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
   {"id":"southern-comfort-original","name":"Southern Comfort Original","category":"Whiskey Liqueurs","categoryId":"whiskey-liqueurs","emoji":"🥃","size":"750ml","normalPrice":189.99,"initial":"SCO","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
   {"id":"veuve-clicquot-rose","name":"Veuve Clicquot Rosé","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":949.00,"initial":"VCR","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
