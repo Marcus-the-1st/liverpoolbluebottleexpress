@@ -1,1 +1,0 @@
-V3.55 restores the original compact Whisky card flow and 3:4 mobile media ratio. Apply after V3.53/V3.54. No product images or catalogue data are included.
