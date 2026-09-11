@@ -1,0 +1,49 @@
+name: Finalize liqueur catalogue syntax
+
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-liqueur-catalog.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove accidental sparse-array comma
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('catalog-data.js')
+          s = p.read_text()
+          old = '}\n,  \n{'
+          if old in s:
+              s = s.replace(old, '}\n{')
+          old2 = '}\n,\n{'
+          if old2 in s:
+              s = s.replace(old2, '}\n{')
+          p.write_text(s)
+          print('Catalogue syntax normalized.')
+          PY
+      - name: Validate exact requested products
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const vm = require('vm');
+          const ctx = { window: {} };
+          vm.createContext(ctx);
+          vm.runInContext(fs.readFileSync('catalog-data.js','utf8'), ctx);
+          const c = ctx.window.LBB_CATALOG.filter(Boolean);
+          const wanted = ['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial'];
+          for (const id of wanted) if (c.filter(p=>p.id===id).length !== 1) throw new Error('Missing/duplicate '+id);
+          for (const id of ['jagermeister-orange','southern-comfort','j-germeister','strawberry-lips-cream-liqueur']) if (c.some(p=>p.id===id)) throw new Error('Unwanted legacy product '+id);
+          console.log('Catalogue validation passed: 14 requested products, no Jägermeister Orange, no superseded duplicates.');
+          NODE
+      - name: Commit and push
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet -- catalog-data.js; then echo 'No catalogue syntax change needed.'; else git add catalog-data.js && git commit -m 'Finalize liqueur catalogue syntax' && git push; fi
