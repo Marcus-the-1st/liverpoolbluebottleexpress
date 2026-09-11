@@ -24,34 +24,37 @@ jobs:
 
           sec = sec.replace('<h3>Liqueurs</h3>', '<h3>Liqueurs / Cream Liqueurs</h3>', 1)
 
+          # Record the exact closing tag of the existing Liqueurs grid before
+          # removing the subgroup wrappers. The subgroups come after this grid.
+          first_subgroup_pos = sec.index('<div class="category-subgroup">')
+          grid_close = sec.rfind('</div>', 0, first_subgroup_pos)
+          if grid_close == -1:
+              raise SystemExit('Could not locate the existing Liqueurs grid closing tag')
+
           cards = []
           for title in ('Cream Liqueurs', 'Herbal Liqueurs'):
               pat = rf'<div class="category-subgroup"><h4>{re.escape(title)}</h4><div class="product-grid">(.*?)</div></div>'
               m = re.search(pat, sec, re.S)
               if not m:
                   raise SystemExit(f'Missing expected subgroup: {title}')
-              cards.append(m.group(1))
+              group_cards = m.group(1)
+              # Remove the duplicate static Amarula Cream 1L card. The existing
+              # amarula-1l card already represents the requested 1L Amarula.
+              group_cards = re.sub(r'<article class="product-card"[^>]*data-product-id="amarula-cream-1l".*?</article>', '', group_cards, flags=re.S)
+              cards.append(group_cards)
               sec = sec[:m.start()] + sec[m.end():]
 
-          grid_open = sec.index('<div class="product-grid">')
-          grid_close = sec.find('</div>', grid_open)
-          # Find the closing div belonging to the first product grid by using the
-          # known boundary immediately before the first subgroup in the original section.
-          # After subgroup removal, locate the last grid-close before the category ends.
-          grid_close = sec.rfind('</div>')
-          if grid_close <= grid_open:
-              raise SystemExit('Could not locate Liqueurs grid closing tag')
-          sec = sec[:grid_close] + ''.join(cards) + sec[grid_close:]
+          if '<div class="category-subgroup">' in sec:
+              raise SystemExit('Unexpected subgroup remains')
 
-          # Remove the duplicate static Amarula Cream 1L card. The existing
-          # amarula-1l card is already the 1L Amarula in the Liqueurs collection.
-          dup = re.search(r'<article class="product-card"[^>]*data-product-id="amarula-cream-1l".*?</article>', sec, re.S)
-          if dup:
-              sec = sec[:dup.start()] + sec[dup.end():]
+          # Because all removed subgroup markup was after the existing grid,
+          # grid_close still points at the same closing tag.
+          sec = sec[:grid_close] + ''.join(cards) + sec[grid_close:]
 
           s = s[:start] + sec + s[end:]
           shop.write_text(s)
 
+          # Verify the final Liqueurs section is one single product grid.
           final_shop = shop.read_text()
           lsec = final_shop[final_shop.index('<div class="category" data-category-id="liqueurs"'):final_shop.index('<div class="category" data-category-id="sparkling"')]
           assert 'category-subgroup' not in lsec
@@ -62,7 +65,7 @@ jobs:
           assert lsec.count('data-product-id="sidekick-cookies-cream"') == 1
           assert lsec.count('data-product-id="jagermeister-classic"') == 1
           assert lsec.count('data-product-id="jagermeister-manifest"') == 1
-          print('Liqueurs consolidated successfully; duplicate static Amarula 1L removed.')
+          print('Liqueurs consolidated successfully.')
           PY
       - name: Commit changes
         run: |
