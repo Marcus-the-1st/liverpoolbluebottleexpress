@@ -1843,4 +1843,16 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
+,  {"id":"amarula-cream-1l","name":"Amarula Cream 1L","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"1L","normalPrice":0,"initial":"AMR1","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"strawberry-lips","name":"Strawberry Lips","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":0,"initial":"SL","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"sidekick-strawberry-cream","name":"Sidekick Strawberry & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":0,"initial":"SSC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"sidekick-cookies-cream","name":"Sidekick Cookies & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":0,"initial":"SCC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"jagermeister-classic","name":"Jägermeister (Classic)","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"750ml","normalPrice":0,"initial":"JAG","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"jagermeister-orange","name":"Jägermeister Orange","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"750ml","normalPrice":0,"initial":"JGO","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"jagermeister-manifest","name":"Jägermeister Manifest","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"1000ml","normalPrice":0,"initial":"JGM","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"southern-comfort-original","name":"Southern Comfort Original","category":"Whiskey Liqueurs","categoryId":"whiskey-liqueurs","emoji":"🥃","size":"750ml","normalPrice":0,"initial":"SCO","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"veuve-clicquot-rose","name":"Veuve Clicquot Rosé","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":0,"initial":"VCR","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"moet-chandon-imperial-brut","name":"Moët & Chandon Impérial Brut","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":0,"initial":"MIB","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"moet-chandon-ice-imperial","name":"Moët & Chandon Ice Impérial","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":0,"initial":"MII","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true},
+  {"id":"moet-chandon-nectar-imperial","name":"Moët & Chandon Nectar Impérial","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":0,"initial":"MNI","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":true}
 ];
