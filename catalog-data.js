@@ -1169,20 +1169,7 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "el-bravo-strawberry.png"
   },
-  {
-    "id": "j-germeister",
-    "name": "Jägermeister",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "liqueurs",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 329.99,
-    "initial": "JG",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
+  
 
   {
     "id": "po-10-c",
@@ -1198,48 +1185,9 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "special-po10.png"
   },
-  {
-    "id": "southern-comfort",
-    "name": "Southern Comfort",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "liqueurs",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 189.99,
-    "initial": "SC",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
-    "id": "southern-comfort-lime",
-    "name": "Southern Comfort Lime",
-    "category": "Whiskey Liqueurs",
-    "categoryId": "whiskey-liqueurs",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 155.00,
-    "initial": "SCL",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
-    "id": "strawberry-lips-cream-liqueur",
-    "name": "Strawberry Lips Cream Liqueur",
-    "category": "Cream Liqueurs & Other Liqueurs",
-    "categoryId": "liqueurs",
-    "emoji": "🥛",
-    "size": "750ml",
-    "normalPrice": 159.99,
-    "initial": "SLC",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
+  
+  
+  
   {
     "id": "tang-sour-apple",
     "name": "Tang Sour Apple",
@@ -1338,34 +1286,8 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": null
   },
-  {
-    "id": "veuve-clicquot-brut",
-    "name": "Veuve Clicquot Brut",
-    "category": "Champagne",
-    "categoryId": "champagne",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 749.99,
-    "initial": "VCB",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
-    "id": "veuve-clicquot-rich",
-    "name": "Veuve Clicquot Rich",
-    "category": "Champagne",
-    "categoryId": "champagne",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 1049.00,
-    "initial": "VCR",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
+  
+  
   {
     "id": "veuve-clicquot-ros",
     "name": "Veuve Clicquot Rosé",
@@ -1830,16 +1752,19 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
-,  {"id":"amarula-cream-1l","name":"Amarula Cream 1L","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"1L","normalPrice":215.00,"initial":"AMR1","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"strawberry-lips","name":"Strawberry Lips","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":159.99,"initial":"SL","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"sidekick-strawberry-cream","name":"Sidekick Strawberry & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":115.00,"initial":"SSC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"sidekick-cookies-cream","name":"Sidekick Cookies & Cream","category":"Cream Liqueurs","categoryId":"cream-liqueurs","emoji":"🍸","size":"750ml","normalPrice":115.00,"initial":"SCC","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"jagermeister-classic","name":"Jägermeister (Classic)","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"750ml","normalPrice":329.99,"initial":"JAG","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-
-  {"id":"jagermeister-manifest","name":"Jägermeister Manifest","category":"Herbal Liqueurs","categoryId":"herbal-liqueurs","emoji":"🌿","size":"1000ml","normalPrice":449.00,"initial":"JGM","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"southern-comfort-original","name":"Southern Comfort Original","category":"Whiskey Liqueurs","categoryId":"whiskey-liqueurs","emoji":"🥃","size":"750ml","normalPrice":189.99,"initial":"SCO","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"veuve-clicquot-rose","name":"Veuve Clicquot Rosé","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":949.00,"initial":"VCR","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"moet-chandon-imperial-brut","name":"Moët & Chandon Impérial Brut","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":649.00,"initial":"MIB","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"moet-chandon-ice-imperial","name":"Moët & Chandon Ice Impérial","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":879.00,"initial":"MII","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false},
-  {"id":"moet-chandon-nectar-imperial","name":"Moët & Chandon Nectar Impérial","category":"Champagne","categoryId":"champagne","emoji":"🥂","size":"750ml","normalPrice":799.00,"initial":"MNI","specialPrice":null,"specialStart":null,"specialEnd":null,"image":null,"priceTbc":false}
+,  
+{"id": "amarula-cream-1l", "name": "Amarula Cream 1L", "category": "Cream Liqueurs", "categoryId": "cream-liqueurs", "emoji": "🍸", "size": "1L", "normalPrice": 215.0, "initial": "AMR1", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "strawberry-lips", "name": "Strawberry Lips", "category": "Cream Liqueurs", "categoryId": "cream-liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 159.99, "initial": "SL", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "sidekick-strawberry-cream", "name": "Sidekick Strawberry & Cream", "category": "Cream Liqueurs", "categoryId": "cream-liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SSC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "sidekick-cookies-cream", "name": "Sidekick Cookies & Cream", "category": "Cream Liqueurs", "categoryId": "cream-liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SCC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "jagermeister-classic", "name": "Jägermeister (Classic)", "category": "Herbal Liqueurs", "categoryId": "herbal-liqueurs", "emoji": "🌿", "size": "750ml", "normalPrice": 329.99, "initial": "JAG", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "jagermeister-manifest", "name": "Jägermeister Manifest", "category": "Herbal Liqueurs", "categoryId": "herbal-liqueurs", "emoji": "🌿", "size": "1000ml", "normalPrice": 449.0, "initial": "JGM", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "southern-comfort-original", "name": "Southern Comfort Original", "category": "Whiskey Liqueurs", "categoryId": "whiskey-liqueurs", "emoji": "🥃", "size": "750ml", "normalPrice": 189.99, "initial": "SCO", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "southern-comfort-lime", "name": "Southern Comfort Lime", "category": "Whiskey Liqueurs", "categoryId": "whiskey-liqueurs", "emoji": "🥃", "size": "750ml", "normalPrice": 155.0, "initial": "SCL", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "veuve-clicquot-brut", "name": "Veuve Clicquot Brut", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 749.99, "initial": "VCB", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "veuve-clicquot-rose", "name": "Veuve Clicquot Rosé", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 949.0, "initial": "VCR", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "veuve-clicquot-rich", "name": "Veuve Clicquot Rich", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 1049.0, "initial": "VCRH", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "moet-chandon-imperial-brut", "name": "Moët & Chandon Impérial Brut", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 649.0, "initial": "MIB", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "moet-chandon-ice-imperial", "name": "Moët & Chandon Ice Impérial", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 879.0, "initial": "MII", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
+{"id": "moet-chandon-nectar-imperial", "name": "Moët & Chandon Nectar Impérial", "category": "Champagne", "categoryId": "champagne", "emoji": "🥂", "size": "750ml", "normalPrice": 799.0, "initial": "MNI", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false}
 ];
