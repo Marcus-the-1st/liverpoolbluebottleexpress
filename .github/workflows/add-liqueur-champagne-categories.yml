@@ -1,0 +1,62 @@
+name: Add requested product categories
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update-catalogue:
+    if: github.event.head_commit.message != 'Implement requested liqueur and champagne categories'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add catalogue entries and shop sections
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          catalog_path=Path('catalog-data.js'); shop_path=Path('shop.html')
+          s=catalog_path.read_text(encoding='utf-8'); shop=shop_path.read_text(encoding='utf-8')
+          products=[
+          ('cream-liqueurs','Cream Liqueurs','🍸',[('amarula-cream-1l','Amarula Cream 1L','1L','AMR1'),('strawberry-lips','Strawberry Lips','750ml','SL'),('sidekick-strawberry-cream','Sidekick Strawberry & Cream','750ml','SSC'),('sidekick-cookies-cream','Sidekick Cookies & Cream','750ml','SCC')]),
+          ('herbal-liqueurs','Herbal Liqueurs','🌿',[('jagermeister-classic','Jägermeister (Classic)','750ml','JAG'),('jagermeister-orange','Jägermeister Orange','750ml','JGO'),('jagermeister-manifest','Jägermeister Manifest','1000ml','JGM')]),
+          ('whiskey-liqueurs','Whiskey Liqueurs','🥃',[('southern-comfort-original','Southern Comfort Original','750ml','SCO'),('southern-comfort-lime','Southern Comfort Lime','750ml','SCL')]),
+          ('champagne','Champagne','🥂',[('veuve-clicquot-brut','Veuve Clicquot Brut','750ml','VCB'),('veuve-clicquot-rose','Veuve Clicquot Rosé','750ml','VCR'),('veuve-clicquot-rich','Veuve Clicquot Rich','750ml','VCRH'),('moet-chandon-imperial-brut','Moët & Chandon Impérial Brut','750ml','MIB'),('moet-chandon-ice-imperial','Moët & Chandon Ice Impérial','750ml','MII'),('moet-chandon-nectar-imperial','Moët & Chandon Nectar Impérial','750ml','MNI')])]
+          def q(x): return '"'+x.replace('\\','\\\\').replace('"','\\"')+'"'
+          existing=set(re.findall(r'"id"\s*:\s*"([^"]+)"',s))
+          entries=[]
+          for cid,cname,emoji,items in products:
+            for pid,name,size,initial in items:
+              if pid not in existing:
+                entries.append('  {\n    "id": %s,\n    "name": %s,\n    "category": %s,\n    "categoryId": %s,\n    "emoji": %s,\n    "size": %s,\n    "normalPrice": 0,\n    "initial": %s,\n    "specialPrice": null,\n    "specialStart": null,\n    "specialEnd": null,\n    "image": null,\n    "priceTbc": true\n  }' % tuple(q(x) for x in [pid,name,cname,cid,emoji,size,initial]))
+          if entries:
+            s=s.rstrip(); s=s[:-2]+',\n'+',\n'.join(entries)+'\n];\n'; catalog_path.write_text(s,encoding='utf-8')
+          nav='<a href="#ready-to-drink">Ready-To-Drink</a>'
+          add='<a href="#cream-liqueurs">Cream Liqueurs</a><a href="#herbal-liqueurs">Herbal Liqueurs</a><a href="#whiskey-liqueurs">Whiskey Liqueurs</a><a href="#champagne">Champagne</a>'
+          if nav in shop and 'href="#cream-liqueurs"' not in shop: shop=shop.replace(nav,nav+add,1)
+          def card(pid,name,size,initial,cat,cid):
+            return f'<article class="product-card" data-category="{cat}" data-normal-price="0.00" data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price="" data-price-tbc="true"><div class="product-placeholder product-media"><span class="product-initial">{initial}</span></div><div class="product-info"><h4>{name}</h4><p>{size}</p><div class="product-price"><strong class="current-price price-tbc">Price in store</strong></div><div class="special-meta is-empty" aria-hidden="true"></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>'
+          if 'id="cream-liqueurs"' not in shop:
+            blocks=[]
+            for cid,cname,emoji,items in products:
+              cards=''.join(card(pid,name,size,initial,cname,cid) for pid,name,size,initial in items)
+              blocks.append(f'<div class="category" data-category-id="{cid}" id="{cid}"><div class="category-title"><span aria-hidden="true">{emoji}</span><h3>{cname}</h3><a class="category-view-all" href="category.html?category={cid}#shop">View All <span class="view-all-arrow">→</span></a></div><div class="product-grid">{cards}</div></div>')
+            marker='</div>\n</section>\n<div class="cart-overlay"'
+            pos=shop.find(marker)
+            if pos<0: raise SystemExit('Shop insertion point not found')
+            shop=shop[:pos]+''.join(blocks)+shop[pos:]
+          shop_path.write_text(shop,encoding='utf-8')
+          PY
+      - name: Commit requested category update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog-data.js shop.html
+          git commit -m "Implement requested liqueur and champagne categories"
+          git push
+      - name: Remove one-time workflow
+        if: always()
+        run: |
+          git rm .github/workflows/add-liqueur-champagne-categories.yml || true
+          git commit -m "Remove one-time category update workflow" || true
+          git push || true
