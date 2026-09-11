@@ -873,7 +873,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jose-cuervo-especial-silver.png"
   },
   {
     "id": "olmeca-reposado",
@@ -1097,7 +1097,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "african-secret-marula.png"
   },
   {
     "id": "amarula",
@@ -1153,7 +1153,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "el-bravo-strawberry.png"
   },
   {
     "id": "j-germeister",
