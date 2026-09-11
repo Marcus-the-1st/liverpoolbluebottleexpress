@@ -876,6 +876,20 @@ window.LBB_CATALOG = [
     "image": "jose-cuervo-especial-silver.png"
   },
   {
+    "id": "jose-cuervo-especial-reposado",
+    "name": "Jose Cuervo Especial Reposado",
+    "category": "Tequila",
+    "categoryId": "tequila",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 285.0,
+    "initial": "JR",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "jose-cuervo-especial-reposado.png"
+  },
+  {
     "id": "olmeca-reposado",
     "name": "Olmeca Reposado",
     "category": "Tequila",
@@ -887,7 +901,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "olmeca-reposado.png"
   },
   {
     "id": "olmeca-silver",
@@ -901,7 +915,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "olmeca-silver.png"
   },
   {
     "id": "another-hendrick-s",
