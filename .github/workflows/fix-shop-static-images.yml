@@ -23,7 +23,7 @@ jobs:
 
           const htmlPath = 'shop.html';
           const data = fs.readFileSync('catalog-data.js', 'utf8');
-          const html = fs.readFileSync(htmlPath, 'utf8');
+          let html = fs.readFileSync(htmlPath, 'utf8');
 
           const context = { window: {} };
           vm.createContext(context);
@@ -39,28 +39,59 @@ jobs:
 
           let changed = 0;
           let missing = 0;
+          let cursor = 0;
 
-          const articleRe = /(<article\\b[^>]*data-product-id="([^"]+)"[^>]*>[\\s\\S]*?<div class="product-placeholder product-media">)[\\s\\S]*?(<\\/div>)/g;
-          const updated = html.replace(articleRe, (full, prefix, id, close) => {
+          while (true) {
+            const idMarker = 'data-product-id="';
+            const idStart = html.indexOf(idMarker, cursor);
+            if (idStart < 0) break;
+            const idValueStart = idStart + idMarker.length;
+            const idEnd = html.indexOf('"', idValueStart);
+            if (idEnd < 0) break;
+            const id = html.slice(idValueStart, idEnd);
+
+            const articleStart = html.lastIndexOf('<article', idStart);
+            const articleEnd = html.indexOf('</article>', idEnd);
+            if (articleStart < 0 || articleEnd < 0) break;
+
+            const mediaStartMarker = '<div class="product-placeholder product-media">';
+            const mediaStart = html.indexOf(mediaStartMarker, idEnd);
+            if (mediaStart < 0 || mediaStart > articleEnd) {
+              cursor = articleEnd + 10;
+              continue;
+            }
+
+            const mediaEnd = html.indexOf('</div>', mediaStart);
+            if (mediaEnd < 0 || mediaEnd > articleEnd) {
+              cursor = articleEnd + 10;
+              continue;
+            }
+
             const product = byId.get(id);
-            if (!product) return full;
+            if (!product) {
+              cursor = articleEnd + 10;
+              continue;
+            }
+
             if (!product.image) {
               missing++;
-              return full;
+              cursor = articleEnd + 10;
+              continue;
             }
-            const media = `<img alt="${esc(product.name)}" class="product-image" loading="lazy" src="${esc(product.image)}"/>`;
-            const currentMedia = full.slice(prefix.length, full.length - close.length);
-            if (currentMedia === media) return full;
-            changed++;
-            return prefix + media + close;
-          });
 
-          if (updated === html) {
-            console.log(`No Shop image changes required. Cards without catalogue images: ${missing}`);
-          } else {
-            fs.writeFileSync(htmlPath, updated, 'utf8');
-            console.log(`Updated ${changed} Shop landing page image mappings. Cards without catalogue images: ${missing}`);
+            const media = `${mediaStartMarker}<img alt="${esc(product.name)}" class="product-image" loading="lazy" src="${esc(product.image)}"/>`;
+            const currentMedia = html.slice(mediaStart, mediaEnd + 6);
+            if (currentMedia !== media) {
+              html = html.slice(0, mediaStart) + media + html.slice(mediaEnd + 6);
+              changed++;
+              cursor = mediaStart + media.length;
+            } else {
+              cursor = mediaEnd + 6;
+            }
           }
+
+          fs.writeFileSync(htmlPath, html, 'utf8');
+          console.log(`Updated ${changed} Shop landing page image mappings. Cards without catalogue images: ${missing}`);
           NODE
 
       - name: Commit Shop image fixes
