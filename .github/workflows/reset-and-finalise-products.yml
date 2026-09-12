@@ -15,14 +15,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Restore clean text baseline and apply product references
         run: |
+          git fetch origin 5fea43f24ee0dc9fda497a57bc2f928c64b5963e --depth=1
+          git fetch origin 597746f5e1ecb319a4f19292ff34aefc4ce66468 --depth=1
           python3 - <<'PY'
           from pathlib import Path
-          import re
-          import subprocess
+          import re, subprocess
 
-          # Restore known-good text baselines; no CSS/JS/design changes.
-          subprocess.run(['git','show','5fea43f24ee0dc9fda497a57bc2f928c64b5963e:catalog-data.js'],check=True,stdout=open('catalog-data.js','wb'))
-          subprocess.run(['git','show','597746f5e1ecb319a4f19292ff34aefc4ce66468:shop.html'],check=True,stdout=open('shop.html','wb'))
+          with open('catalog-data.js','wb') as f: subprocess.run(['git','show','5fea43f24ee0dc9fda497a57bc2f928c64b5963e:catalog-data.js'],check=True,stdout=f)
+          with open('shop.html','wb') as f: subprocess.run(['git','show','597746f5e1ecb319a4f19292ff34aefc4ce66468:shop.html'],check=True,stdout=f)
 
           products=[
             ('strawberry-lips','Strawberry Lips','Liqueurs / Cream Liqueurs','liqueurs','🥛','750ml',159.99,'SL','strawberry-lips.png'),
@@ -43,46 +43,33 @@ jobs:
           allp=[amarula]+products
           remove={p[0] for p in allp}|{'southern-comfort','strawberry-lips-cream-liqueur','j-germeister','jagermeister-orange'}
 
-          # Remove affected catalogue objects line-by-line so even malformed legacy objects are handled safely.
           lines=Path('catalog-data.js').read_text().splitlines(True)
           out=[]; i=0
-          while i < len(lines):
-              line=lines[i]
-              hit=None
-              for pid in remove:
-                  if re.search(r'^\s*"id"\s*:\s*"'+re.escape(pid)+r'"', line): hit=pid; break
+          while i<len(lines):
+              hit=next((pid for pid in remove if re.search(r'^\s*"id"\s*:\s*"'+re.escape(pid)+r'"',lines[i])),None)
               if hit:
-                  i -= 1
-                  while i >= 0 and '{' not in lines[i]: i -= 1
-                  i += 1
-                  while i < len(lines):
-                      if re.match(r'^\s*\},?\s*$', lines[i]):
-                          i += 1; break
-                      i += 1
+                  while i<len(lines) and not re.match(r'^\s*\},?\s*$',lines[i]): i+=1
+                  if i<len(lines): i+=1
                   continue
-              out.append(line); i += 1
+              out.append(lines[i]); i+=1
           c=''.join(out)
-
           def obj(p):
               pid,name,cat,cid,emoji,size,price,initial,image=p
               img='null' if image is None else '"'+image+'"'
               return f'''  {{\n    "id": "{pid}",\n    "name": "{name}",\n    "category": "{cat}",\n    "categoryId": "{cid}",\n    "emoji": "{emoji}",\n    "size": "{size}",\n    "normalPrice": {price},\n    "initial": "{initial}",\n    "specialPrice": null,\n    "specialStart": null,\n    "specialEnd": null,\n    "image": {img}\n  }}'''
-          block=',\n'.join(obj(p) for p in allp)
-          c=re.sub(r'\n\s*\];\s*$', '\n'+block+'\n];\n', c, count=1)
+          c=re.sub(r'\n\s*\];\s*$', '\n'+',\n'.join(obj(p) for p in allp)+'\n];\n', c, count=1)
           Path('catalog-data.js').write_text(c)
 
-          # Restore the known-good Shop layout, then change only the affected product media.
           s=Path('shop.html').read_text()
           for p in allp:
               pid,name,cat,cid,emoji,size,price,initial,image=p
               if not image: continue
               pat=re.compile(r'(<article class="product-card"[^>]*data-product-id="'+re.escape(pid)+r'"[^>]*>\s*<div class="product-placeholder product-media">)(.*?)(</div>)',re.S)
               s,n=pat.subn(r'\1<img alt="'+name+r'" class="product-image" loading="lazy" src="'+image+r'"/>\3',s,count=1)
-              if n != 1: raise SystemExit('Shop card media not found: '+pid)
+              if n!=1: raise SystemExit('Shop card media not found: '+pid)
           Path('shop.html').write_text(s)
-          print('Clean baseline restored and requested product references applied.')
+          print('Clean baseline restored and product references applied.')
           PY
-
       - name: Commit and remove temporary workflow
         run: |
           rm -f .github/workflows/reset-and-finalise-products.yml
