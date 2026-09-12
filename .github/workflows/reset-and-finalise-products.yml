@@ -39,7 +39,7 @@ jobs:
             ('moet-chandon-ice-imperial','Moët & Chandon Ice Impérial','Champagne / Sparkling Wine','sparkling','🥂','750ml',879.0,'MII','moet-chandon-ice-imperial.png'),
             ('moet-chandon-nectar-imperial','Moët & Chandon Nectar Impérial','Champagne / Sparkling Wine','sparkling','🥂','750ml',799.0,'MNI','moet-chandon-nectar-imperial.png'),
           ]
-          amarula=('amarula-cream-1l','Amarula Cream 1L','Liqueurs / Cream Liqueurs','liqueurs','🥛','1L',215.0,'A1','amarula-cream-1l.png')
+          amarula=('amarula-1l','Amarula Cream 1L','Liqueurs / Cream Liqueurs','liqueurs','🥛','1L',215.0,'A1','amarula-cream-1l.png')
           allp=[amarula]+products
           remove={p[0] for p in allp}|{'southern-comfort','strawberry-lips-cream-liqueur','j-germeister','jagermeister-orange'}
 
@@ -48,6 +48,8 @@ jobs:
           while i<len(lines):
               hit=next((pid for pid in remove if re.search(r'^\s*"id"\s*:\s*"'+re.escape(pid)+r'"',lines[i])),None)
               if hit:
+                  # Skip from the object opening immediately before the id through its closing line.
+                  while i>0 and '{' not in lines[i-1]: i-=1
                   while i<len(lines) and not re.match(r'^\s*\},?\s*$',lines[i]): i+=1
                   if i<len(lines): i+=1
                   continue
@@ -76,5 +78,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add catalog-data.js shop.html .github/workflows/reset-and-finalise-products.yml
-          git commit -m 'Finalise requested product catalogue and images'
+          git commit -m 'Finalise requested product catalogue and image references'
           git push
