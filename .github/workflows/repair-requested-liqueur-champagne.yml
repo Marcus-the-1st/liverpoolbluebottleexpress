@@ -18,7 +18,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, re
+          import re
 
           catalog_path = Path('catalog-data.js')
           shop_path = Path('shop.html')
@@ -26,72 +26,75 @@ jobs:
           s = shop_path.read_text()
 
           products = [
-            {'id':'strawberry-lips','name':'Strawberry Lips','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥛','size':'750ml','normalPrice':159.99,'initial':'SL','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'strawberry-lips.png'},
-            {'id':'sidekick-strawberry-cream','name':'Sidekick Strawberry & Cream','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥛','size':'750ml','normalPrice':115.00,'initial':'SSC','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'sidekick-strawberry-cream.png'},
-            {'id':'sidekick-cookies-cream','name':'Sidekick Cookies & Cream','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥛','size':'750ml','normalPrice':115.00,'initial':'SCC','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'sidekick-cookies-cream.png'},
-            {'id':'jagermeister-classic','name':'Jägermeister (Classic)','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥃','size':'750ml','normalPrice':329.99,'initial':'JAG','specialPrice':None,'specialStart':None,'specialEnd':None,'image':None},
-            {'id':'jagermeister-manifest','name':'Jägermeister Manifest','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥃','size':'1000ml','normalPrice':449.00,'initial':'JGM','specialPrice':None,'specialStart':None,'specialEnd':None,'image':None},
-            {'id':'southern-comfort-original','name':'Southern Comfort Original','category':'Whisky','categoryId':'whisky','emoji':'🥃','size':'750ml','normalPrice':189.99,'initial':'SCO','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'southern-comfort-original.png'},
-            {'id':'southern-comfort-lime','name':'Southern Comfort Lime','category':'Whisky','categoryId':'whisky','emoji':'🥃','size':'750ml','normalPrice':155.00,'initial':'SCL','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'southern-comfort-lime.png'},
-            {'id':'veuve-clicquot-brut','name':'Veuve Clicquot Brut','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':749.99,'initial':'VCB','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'veuve-clicquot-brut.png'},
-            {'id':'veuve-clicquot-rose','name':'Veuve Clicquot Rosé','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':949.00,'initial':'VCR','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'veuve-clicquot-rose.png'},
-            {'id':'veuve-clicquot-rich','name':'Veuve Clicquot Rich','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':1049.00,'initial':'VCRH','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'veuve-clicquot-rich.png'},
-            {'id':'moet-chandon-imperial-brut','name':'Moët & Chandon Impérial Brut','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':649.00,'initial':'MIB','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'moet-chandon-imperial-brut.png'},
-            {'id':'moet-chandon-ice-imperial','name':'Moët & Chandon Ice Impérial','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':879.00,'initial':'MII','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'moet-chandon-ice-imperial.png'},
-            {'id':'moet-chandon-nectar-imperial','name':'Moët & Chandon Nectar Impérial','category':'Champagne / Sparkling Wine','categoryId':'sparkling','emoji':'🥂','size':'750ml','normalPrice':799.00,'initial':'MNI','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'moet-chandon-nectar-imperial.png'},
+            ('strawberry-lips','Strawberry Lips','Liqueurs / Cream Liqueurs','liqueurs','🥛','750ml',159.99,'SL','strawberry-lips.png'),
+            ('sidekick-strawberry-cream','Sidekick Strawberry & Cream','Liqueurs / Cream Liqueurs','liqueurs','🥛','750ml',115.00,'SSC','sidekick-strawberry-cream.png'),
+            ('sidekick-cookies-cream','Sidekick Cookies & Cream','Liqueurs / Cream Liqueurs','liqueurs','🥛','750ml',115.00,'SCC','sidekick-cookies-cream.png'),
+            ('jagermeister-classic','Jägermeister (Classic)','Liqueurs / Cream Liqueurs','liqueurs','🥃','750ml',329.99,'JAG',None),
+            ('jagermeister-manifest','Jägermeister Manifest','Liqueurs / Cream Liqueurs','liqueurs','🥃','1000ml',449.00,'JGM',None),
+            ('southern-comfort-original','Southern Comfort Original','Whisky','whisky','🥃','750ml',189.99,'SCO','southern-comfort-original.png'),
+            ('southern-comfort-lime','Southern Comfort Lime','Whisky','whisky','🥃','750ml',155.00,'SCL','southern-comfort-lime.png'),
+            ('veuve-clicquot-brut','Veuve Clicquot Brut','Champagne / Sparkling Wine','sparkling','🥂','750ml',749.99,'VCB','veuve-clicquot-brut.png'),
+            ('veuve-clicquot-rose','Veuve Clicquot Rosé','Champagne / Sparkling Wine','sparkling','🥂','750ml',949.00,'VCR','veuve-clicquot-rose.png'),
+            ('veuve-clicquot-rich','Veuve Clicquot Rich','Champagne / Sparkling Wine','sparkling','🥂','750ml',1049.00,'VCRH','veuve-clicquot-rich.png'),
+            ('moet-chandon-imperial-brut','Moët & Chandon Impérial Brut','Champagne / Sparkling Wine','sparkling','🥂','750ml',649.00,'MIB','moet-chandon-imperial-brut.png'),
+            ('moet-chandon-ice-imperial','Moët & Chandon Ice Impérial','Champagne / Sparkling Wine','sparkling','🥂','750ml',879.00,'MII','moet-chandon-ice-imperial.png'),
+            ('moet-chandon-nectar-imperial','Moët & Chandon Nectar Impérial','Champagne / Sparkling Wine','sparkling','🥂','750ml',799.00,'MNI','moet-chandon-nectar-imperial.png'),
           ]
-          amarula = {'id':'amarula-cream-1l','name':'Amarula Cream 1L','category':'Liqueurs / Cream Liqueurs','categoryId':'liqueurs','emoji':'🥛','size':'1L','normalPrice':215.0,'initial':'A1','specialPrice':None,'specialStart':None,'specialEnd':None,'image':'amarula-cream-1l.png'}
-          requested_ids = {p['id'] for p in products} | {'amarula-cream-1l'}
-          legacy_ids = {'southern-comfort','strawberry-lips-cream-liqueur','j-germeister','jagermeister-orange'}
+          amarula = ('amarula-cream-1l','Amarula Cream 1L','Liqueurs / Cream Liqueurs','liqueurs','🥛','1L',215.00,'A1','amarula-cream-1l.png')
+          all_products = [amarula] + products
+          remove_ids = {p[0] for p in all_products} | {'southern-comfort','strawberry-lips-cream-liqueur','j-germeister','jagermeister-orange'}
 
-          m = re.search(r'window\.LBB_CATALOG\s*=\s*(\[.*?\]);', c, re.S)
-          if not m:
-              raise SystemExit('Catalogue array not found')
-          data = json.loads(m.group(1))
-          data = [p for p in data if p.get('id') not in requested_ids and p.get('id') not in legacy_ids]
-          data.extend([amarula] + products)
-          c = c[:m.start(1)] + json.dumps(data, ensure_ascii=False, indent=2) + c[m.end(1):]
+          # Remove whole catalogue objects by id, including the malformed legacy Amarula object.
+          for pid in remove_ids:
+              c = re.sub(r'\n?\s*\{\s*"id"\s*:\s*"' + re.escape(pid) + r'"[\s\S]*?\n\s*\},?', '', c, count=0)
+
+          def obj(p):
+              pid,name,cat,cid,emoji,size,price,initial,image = p
+              img = 'null' if image is None else '"' + image + '"'
+              return ('  {\n'
+                      f'    "id": "{pid}",\n    "name": "{name}",\n    "category": "{cat}",\n    "categoryId": "{cid}",\n    "emoji": "{emoji}",\n    "size": "{size}",\n    "normalPrice": {price},\n    "initial": "{initial}",\n    "specialPrice": null,\n    "specialStart": null,\n    "specialEnd": null,\n    "image": {img}\n'
+                      '  }')
+
+          block = ',\n'.join(obj(p) for p in all_products)
+          c = re.sub(r'\n\s*\];\s*$', '\n' + block + '\n];\n', c, count=1)
           catalog_path.write_text(c)
 
           def card(p):
-              if p.get('image'):
-                  media = f'<img alt="{p["name"]}" class="product-image" loading="lazy" src="{p["image"]}"/>'
-              else:
-                  media = f'<span class="product-initial">{p["initial"]}</span>'
-              return (f'<article class="product-card" data-category="{p["category"]}" data-normal-price="{p["normalPrice"]:.2f}" data-product-id="{p["id"]}" data-product-name="{p["name"]}" data-size="{p["size"]}" data-special-price="">'
-                      f'<div class="product-placeholder product-media">{media}</div><div class="product-info"><h4>{p["name"]}</h4><p>{p["size"]}</p><div class="product-price"><strong class="current-price">R{p["normalPrice"]:.2f}</strong></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{p["id"]}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>')
+              pid,name,cat,cid,emoji,size,price,initial,image = p
+              media = (f'<img alt="{name}" class="product-image" loading="lazy" src="{image}"/>' if image else f'<span class="product-initial">{initial}</span>')
+              return (f'<article class="product-card" data-category="{cat}" data-normal-price="{price:.2f}" data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price="">'
+                      f'<div class="product-placeholder product-media">{media}</div><div class="product-info"><h4>{name}</h4><p>{size}</p><div class="product-price"><strong class="current-price">R{price:.2f}</strong></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>')
 
-          for pid in requested_ids:
+          for pid in remove_ids:
               s = re.sub(r'<article class="product-card"[^>]*data-product-id="' + re.escape(pid) + r'"[\s\S]*?</article>', '', s)
 
-          groups = {'whisky':[p for p in products if p['categoryId']=='whisky'], 'liqueurs':[amarula] + [p for p in products if p['categoryId']=='liqueurs'], 'sparkling':[p for p in products if p['categoryId']=='sparkling']}
+          groups = {
+              'whisky': [p for p in products if p[3]=='whisky'],
+              'liqueurs': [amarula] + [p for p in products if p[3]=='liqueurs'],
+              'sparkling': [p for p in products if p[3]=='sparkling'],
+          }
           for cid, items in groups.items():
-              if not items: continue
               pat = re.compile(r'(<div class="category"[^>]*data-category-id="' + re.escape(cid) + r'"[^>]*>[\s\S]*?<div class="product-grid">)([\s\S]*?)(</div></div>)', re.S)
               mm = pat.search(s)
               if not mm:
                   raise SystemExit(f'Existing category {cid} not found')
               s = s[:mm.start(2)] + mm.group(2) + ''.join(card(p) for p in items) + s[mm.end(2):]
-
           shop_path.write_text(s)
-          print('Catalogue and existing Shop categories finalised.')
+          print('Finalisation complete.')
           PY
 
       - name: Validate
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json,re
+          import re
           c=Path('catalog-data.js').read_text(); s=Path('shop.html').read_text()
-          m=re.search(r'window\.LBB_CATALOG\s*=\s*(\[.*?\]);',c,re.S)
-          data=json.loads(m.group(1)); ids=[p['id'] for p in data]
           required=['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial']
-          assert all(ids.count(x)==1 for x in required)
-          assert 'jagermeister-orange' not in ids
+          for x in required: assert c.count('"id": "'+x+'"')==1 and s.count('data-product-id="'+x+'"')==1, x
+          assert 'jagermeister-orange' not in c and 'jagermeister-orange' not in s
           assert 'data-category-id="cream-liqueurs"' not in s
           assert 'data-category-id="herbal-liqueurs"' not in s
           assert 'data-category-id="whiskey-liqueurs"' not in s
-          for x in required: assert s.count('data-product-id="'+x+'"')==1, x
           print('Validation passed.')
           PY
 
