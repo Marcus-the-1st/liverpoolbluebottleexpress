@@ -1102,7 +1102,7 @@ window.LBB_CATALOG = [
   {
     "id": "african-secret-marula",
     "name": "African Secret Marula Cream",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1116,7 +1116,7 @@ window.LBB_CATALOG = [
   {
     "id": "amarula",
     "name": "Amarula Cream",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1130,7 +1130,7 @@ window.LBB_CATALOG = [
   {
     "id": "amarula-1l",
     "name": "Amarula 1L",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "1L",
@@ -1139,12 +1139,12 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": \"amarula-cream-1l.png\"
   },
   {
     "id": "coco-rico-salted-caramel-coconut-cream",
     "name": "Coco Rico Salted Caramel & Coconut Cream",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1174,7 +1174,7 @@ window.LBB_CATALOG = [
   {
     "id": "po-10-c",
     "name": "Po-10-C",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1191,7 +1191,7 @@ window.LBB_CATALOG = [
   {
     "id": "tang-sour-apple",
     "name": "Tang Sour Apple",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1205,7 +1205,7 @@ window.LBB_CATALOG = [
   {
     "id": "tang-sour-blueberry",
     "name": "Tang Sour Blueberry",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1219,7 +1219,7 @@ window.LBB_CATALOG = [
   {
     "id": "tant-sannie-se-melktert",
     "name": "Tant Sannie Se Melktert",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1233,7 +1233,7 @@ window.LBB_CATALOG = [
   {
     "id": "wild-africa-cream",
     "name": "Wild Africa Cream",
-    "category": "Cream Liqueurs & Other Liqueurs",
+    "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
     "emoji": "🥛",
     "size": "750ml",
@@ -1753,7 +1753,6 @@ window.LBB_CATALOG = [
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
 ,  
-{"id": "amarula-cream-1l", "name": "Amarula Cream 1L", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "1L", "normalPrice": 215.0, "initial": "AMR1", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
 {"id": "strawberry-lips", "name": "Strawberry Lips", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 159.99, "initial": "SL", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
 {"id": "sidekick-strawberry-cream", "name": "Sidekick Strawberry & Cream", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SSC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
 {"id": "sidekick-cookies-cream", "name": "Sidekick Cookies & Cream", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SCC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
