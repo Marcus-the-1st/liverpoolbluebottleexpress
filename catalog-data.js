@@ -1128,19 +1128,6 @@ window.LBB_CATALOG = [
     "image": "amarula-cream.png"
   },
   {
-    "id": "amarula-1l",
-    "name": "Amarula 1L",
-    "category": "Liqueurs / Cream Liqueurs",
-    "categoryId": "liqueurs",
-    "emoji": "🥛",
-    "size": "1L",
-    "normalPrice": 215.0,
-    "initial": "A1",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": \"amarula-cream-1l.png\"
-  },
   {
     "id": "coco-rico-salted-caramel-coconut-cream",
     "name": "Coco Rico Salted Caramel & Coconut Cream",
@@ -1767,7 +1754,7 @@ window.LBB_CATALOG = [
 {"id": "moet-chandon-ice-imperial", "name": "Moët & Chandon Ice Impérial", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 879.0, "initial": "MII", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
 {"id": "moet-chandon-nectar-imperial", "name": "Moët & Chandon Nectar Impérial", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 799.0, "initial": "MNI", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false}
   {
-    "id": "amarula-cream-1l",
+    "id": "amarula-1l",
     "name": "Amarula Cream 1L",
     "category": "Liqueurs / Cream Liqueurs",
     "categoryId": "liqueurs",
