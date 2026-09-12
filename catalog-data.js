@@ -1128,7 +1128,6 @@ window.LBB_CATALOG = [
     "image": "amarula-cream.png"
   },
   {
-  {
     "id": "coco-rico-salted-caramel-coconut-cream",
     "name": "Coco Rico Salted Caramel & Coconut Cream",
     "category": "Liqueurs / Cream Liqueurs",
@@ -1739,20 +1738,7 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
-,  
-{"id": "strawberry-lips", "name": "Strawberry Lips", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 159.99, "initial": "SL", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "sidekick-strawberry-cream", "name": "Sidekick Strawberry & Cream", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SSC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "sidekick-cookies-cream", "name": "Sidekick Cookies & Cream", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🍸", "size": "750ml", "normalPrice": 115.0, "initial": "SCC", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "jagermeister-classic", "name": "Jägermeister (Classic)", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🌿", "size": "750ml", "normalPrice": 329.99, "initial": "JAG", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": "jagermeister-classic.jpg", "priceTbc": false},
-{"id": "jagermeister-manifest", "name": "Jägermeister Manifest", "category": "Liqueurs", "categoryId": "liqueurs", "emoji": "🌿", "size": "1000ml", "normalPrice": 449.0, "initial": "JGM", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": "jagermeister-manifest.jpg", "priceTbc": false},
-{"id": "southern-comfort-original", "name": "Southern Comfort Original", "category": "Whisky", "categoryId": "whisky", "emoji": "🥃", "size": "750ml", "normalPrice": 189.99, "initial": "SCO", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "southern-comfort-lime", "name": "Southern Comfort Lime", "category": "Whisky", "categoryId": "whisky", "emoji": "🥃", "size": "750ml", "normalPrice": 155.0, "initial": "SCL", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "veuve-clicquot-brut", "name": "Veuve Clicquot Brut", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 749.99, "initial": "VCB", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "veuve-clicquot-rose", "name": "Veuve Clicquot Rosé", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 949.0, "initial": "VCR", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "veuve-clicquot-rich", "name": "Veuve Clicquot Rich", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 1049.0, "initial": "VCRH", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "moet-chandon-imperial-brut", "name": "Moët & Chandon Impérial Brut", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 649.0, "initial": "MIB", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "moet-chandon-ice-imperial", "name": "Moët & Chandon Ice Impérial", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 879.0, "initial": "MII", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false},
-{"id": "moet-chandon-nectar-imperial", "name": "Moët & Chandon Nectar Impérial", "category": "Champagne / Sparkling Wine", "categoryId": "sparkling", "emoji": "🥂", "size": "750ml", "normalPrice": 799.0, "initial": "MNI", "specialPrice": null, "specialStart": null, "specialEnd": null, "image": null, "priceTbc": false}
+
   {
     "id": "amarula-1l",
     "name": "Amarula Cream 1L",
@@ -1821,7 +1807,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jagermeister-classic.jpg"
   },
   {
     "id": "jagermeister-manifest",
@@ -1835,7 +1821,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jagermeister-manifest.jpg"
   },
   {
     "id": "southern-comfort-original",
