@@ -1231,50 +1231,6 @@ window.LBB_CATALOG = [
     "image": "special-wild-africa.png"
   },
   {
-    "id": "mo-t-chandon-brut-imp-rial",
-    "name": "Moët & Chandon Brut Impérial",
-    "category": "Champagne / Sparkling Wine",
-    "categoryId": "sparkling",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 649.0,
-    "initial": "MTC",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
-    "id": "mo-t-chandon-ice-imp-rial",
-    "name": "Moët & Chandon Ice Impérial",
-    "category": "Champagne / Sparkling Wine",
-    "categoryId": "sparkling",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 879.0,
-    "initial": "MTC",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
-    "id": "mo-t-chandon-nectar",
-    "name": "Moët & Chandon Nectar",
-    "category": "Champagne / Sparkling Wine",
-    "categoryId": "sparkling",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 799.0,
-    "initial": "MTC",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  
-  
-  {
     "id": "veuve-clicquot-ros",
     "name": "Veuve Clicquot Rosé",
     "category": "Champagne / Sparkling Wine",
