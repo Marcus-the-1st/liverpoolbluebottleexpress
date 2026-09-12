@@ -1231,20 +1231,6 @@ window.LBB_CATALOG = [
     "image": "special-wild-africa.png"
   },
   {
-    "id": "veuve-clicquot-ros",
-    "name": "Veuve Clicquot Rosé",
-    "category": "Champagne / Sparkling Wine",
-    "categoryId": "sparkling",
-    "emoji": "🍾",
-    "size": "750ml",
-    "normalPrice": 949.0,
-    "initial": "VCR",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
     "id": "hennessy",
     "name": "Hennessy",
     "category": "Cognac",
