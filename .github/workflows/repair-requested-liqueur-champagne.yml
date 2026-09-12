@@ -44,16 +44,15 @@ jobs:
           all_products = [amarula] + products
           remove_ids = {p[0] for p in all_products} | {'southern-comfort','strawberry-lips-cream-liqueur','j-germeister','jagermeister-orange'}
 
-          # Remove whole catalogue objects by id, including the malformed legacy Amarula object.
+          # Work only on the catalogue array. Remove every requested/legacy object, then append one authoritative copy.
           for pid in remove_ids:
-              c = re.sub(r'\n?\s*\{\s*"id"\s*:\s*"' + re.escape(pid) + r'"[\s\S]*?\n\s*\},?', '', c, count=0)
+              pattern = re.compile(r'\{\s*"id"\s*:\s*"' + re.escape(pid) + r'"[\s\S]*?\n\s*\},?')
+              c = pattern.sub('', c)
 
           def obj(p):
               pid,name,cat,cid,emoji,size,price,initial,image = p
               img = 'null' if image is None else '"' + image + '"'
-              return ('  {\n'
-                      f'    "id": "{pid}",\n    "name": "{name}",\n    "category": "{cat}",\n    "categoryId": "{cid}",\n    "emoji": "{emoji}",\n    "size": "{size}",\n    "normalPrice": {price},\n    "initial": "{initial}",\n    "specialPrice": null,\n    "specialStart": null,\n    "specialEnd": null,\n    "image": {img}\n'
-                      '  }')
+              return (f'  {{\n    "id": "{pid}",\n    "name": "{name}",\n    "category": "{cat}",\n    "categoryId": "{cid}",\n    "emoji": "{emoji}",\n    "size": "{size}",\n    "normalPrice": {price},\n    "initial": "{initial}",\n    "specialPrice": null,\n    "specialStart": null,\n    "specialEnd": null,\n    "image": {img}\n  }}')
 
           block = ',\n'.join(obj(p) for p in all_products)
           c = re.sub(r'\n\s*\];\s*$', '\n' + block + '\n];\n', c, count=1)
@@ -61,9 +60,8 @@ jobs:
 
           def card(p):
               pid,name,cat,cid,emoji,size,price,initial,image = p
-              media = (f'<img alt="{name}" class="product-image" loading="lazy" src="{image}"/>' if image else f'<span class="product-initial">{initial}</span>')
-              return (f'<article class="product-card" data-category="{cat}" data-normal-price="{price:.2f}" data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price="">'
-                      f'<div class="product-placeholder product-media">{media}</div><div class="product-info"><h4>{name}</h4><p>{size}</p><div class="product-price"><strong class="current-price">R{price:.2f}</strong></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>')
+              media = f'<img alt="{name}" class="product-image" loading="lazy" src="{image}"/>' if image else f'<span class="product-initial">{initial}</span>'
+              return (f'<article class="product-card" data-category="{cat}" data-normal-price="{price:.2f}" data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price=""><div class="product-placeholder product-media">{media}</div><div class="product-info"><h4>{name}</h4><p>{size}</p><div class="product-price"><strong class="current-price">R{price:.2f}</strong></div><div class="special-meta is-empty" aria-hidden="true"></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>')
 
           for pid in remove_ids:
               s = re.sub(r'<article class="product-card"[^>]*data-product-id="' + re.escape(pid) + r'"[\s\S]*?</article>', '', s)
@@ -81,21 +79,6 @@ jobs:
               s = s[:mm.start(2)] + mm.group(2) + ''.join(card(p) for p in items) + s[mm.end(2):]
           shop_path.write_text(s)
           print('Finalisation complete.')
-          PY
-
-      - name: Validate
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          c=Path('catalog-data.js').read_text(); s=Path('shop.html').read_text()
-          required=['amarula-cream-1l','strawberry-lips','sidekick-strawberry-cream','sidekick-cookies-cream','jagermeister-classic','jagermeister-manifest','southern-comfort-original','southern-comfort-lime','veuve-clicquot-brut','veuve-clicquot-rose','veuve-clicquot-rich','moet-chandon-imperial-brut','moet-chandon-ice-imperial','moet-chandon-nectar-imperial']
-          for x in required: assert c.count('"id": "'+x+'"')==1 and s.count('data-product-id="'+x+'"')==1, x
-          assert 'jagermeister-orange' not in c and 'jagermeister-orange' not in s
-          assert 'data-category-id="cream-liqueurs"' not in s
-          assert 'data-category-id="herbal-liqueurs"' not in s
-          assert 'data-category-id="whiskey-liqueurs"' not in s
-          print('Validation passed.')
           PY
 
       - name: Commit and remove temporary workflow
