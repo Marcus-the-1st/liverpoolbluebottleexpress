@@ -1573,7 +1573,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "sedgwicks-the-original-old-brown.jpg"
   },
   {
     "id": "robertson-mimosa-orange-spritzer",
@@ -1587,7 +1587,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-mimosa-orange-spritzer.jpg"
   },
   {
     "id": "bernini-blush-6-pack",
