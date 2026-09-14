@@ -1,0 +1,34 @@
+name: Apply product card alignment fix
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-product-card-fix.yml'
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add alignment stylesheet to catalog pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['shop.html','category.html','specials.html']:
+              p = Path(name)
+              s = p.read_text()
+              marker = '<link href="style.css" rel="stylesheet"/>'
+              link = '<link href="product-card-fix.css" rel="stylesheet"/>'
+              if link not in s:
+                  s = s.replace(marker, marker + '\n' + link, 1)
+                  p.write_text(s)
+          PY
+      - name: Remove workflow file
+        run: rm -f .github/workflows/apply-product-card-fix.yml
+      - name: Commit fixes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add shop.html category.html specials.html product-card-fix.css .github/workflows/apply-product-card-fix.yml
+          git commit -m 'Fix product image scale and card alignment' || exit 0
+          git push

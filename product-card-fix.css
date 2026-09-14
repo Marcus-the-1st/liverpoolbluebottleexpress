@@ -1,0 +1,49 @@
+/* Liverpool Blue Bottle — product card alignment fix */
+
+/* Keep every product card's lower information stack aligned, regardless of name length. */
+.product-grid .product-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.product-grid .product-info{
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+}
+
+.product-grid .product-info h4{
+  min-height:3.2em;
+}
+
+.product-grid .product-info > p{
+  min-height:1.6em;
+}
+
+.product-grid .product-price{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+}
+
+.product-grid .special-meta{
+  min-height:28px;
+  display:flex;
+  align-items:center;
+}
+
+.product-grid .special-meta.is-empty{
+  visibility:hidden;
+}
+
+.product-grid .cart-product-control{
+  margin-top:auto;
+}
+
+/* The new 1L Sedgwick's source photo has more surrounding black space than
+   the established 750ml asset. Scale only this exact product image so the
+   bottle itself has the same visual presence, without changing the source. */
+.product-card[data-product-id="sedgwicks-old-brown-1l"] .product-media .product-image{
+  transform:scale(1.18);
+  transform-origin:center center;
+}
