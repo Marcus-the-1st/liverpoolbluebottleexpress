@@ -1898,5 +1898,19 @@ window.LBB_CATALOG = [
     "specialStart": null,
     "specialEnd": null,
     "image": "glenmorangie-12-year-old.png"
+  },
+  {
+    "id": "sedgwicks-old-brown-1l",
+    "name": "Sedgwick's The Original Old Brown",
+    "category": "Fortified Wine",
+    "categoryId": "fortified-wine",
+    "emoji": "🧪",
+    "size": "1L",
+    "normalPrice": 70.0,
+    "initial": "OB1",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "sedgwicks-old-brown-1l-website.png"
   }
 ];
