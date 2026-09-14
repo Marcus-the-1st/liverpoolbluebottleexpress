@@ -1,0 +1,165 @@
+name: Update Cognac and Whisky products
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-cognac-whisky.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update catalogue and shop
+        shell: python
+        run: |
+          import json, re, html
+          from pathlib import Path
+
+          catalog_path = Path('catalog-data.js')
+          shop_path = Path('shop.html')
+
+          text = catalog_path.read_text(encoding='utf-8')
+          marker = 'window.LBB_CATALOG = '
+          start = text.index(marker) + len(marker)
+          decoder = json.JSONDecoder()
+          catalog, end = decoder.raw_decode(text[start:])
+
+          def by_name(name):
+              return next((p for p in catalog if p.get('name') == name), None)
+
+          # Remove only the obsolete duplicate/general Hennessy entry.
+          catalog = [p for p in catalog if p.get('name') != 'Hennessy']
+
+          def ensure_product(name, product_id, category, category_id, size, price, image, initial):
+              p = by_name(name)
+              if p is None:
+                  p = {
+                      'id': product_id,
+                      'name': name,
+                      'category': category,
+                      'categoryId': category_id,
+                      'emoji': '🥃',
+                      'size': size,
+                      'normalPrice': price,
+                      'initial': initial,
+                      'specialPrice': None,
+                      'specialStart': None,
+                      'specialEnd': None,
+                      'image': image
+                  }
+                  catalog.append(p)
+              else:
+                  p['name'] = name
+                  p['category'] = category
+                  p['categoryId'] = category_id
+                  p['size'] = size
+                  p['normalPrice'] = price
+                  p['specialPrice'] = None
+                  p['specialStart'] = None
+                  p['specialEnd'] = None
+                  p['image'] = image
+              return p
+
+          ensure_product('Rémy Martin VSOP', 'remy-martin-vsop', 'Cognac', 'cognac', '750ml', 989.99, 'remy-martin-vsop.png', 'RMV')
+          ensure_product('Martell VS', 'martell-vs', 'Cognac', 'cognac', '750ml', 499.0, 'martell-vs.png', 'MVS')
+          ensure_product('Honor Extra Cognac Gold Filtered', 'honor-extra-cognac-gold-filtered', 'Cognac', 'cognac', '750ml', 539.0, 'honor-extra-cognac.png', 'HEC')
+          ensure_product('Hennessy VSOP', 'hennessy-vsop', 'Cognac', 'cognac', '750ml', 899.99, 'hennessy-vsop.png', 'HVSOP')
+          ensure_product('Hennessy VS', 'hennessy-vs', 'Cognac', 'cognac', '750ml', 580.0, 'hennessy-vs.png', 'HVS')
+          ensure_product('Glenmorangie 12 Years Old Gift Box', 'glenmorangie-12-years-old-gift-box', 'Whisky', 'whisky', '750ml', 625.0, 'glenmorangie-12-year-old.png', 'G12')
+
+          # Write only the JSON catalogue array back into the existing JS file.
+          new_array = json.dumps(catalog, ensure_ascii=False, indent=2)
+          catalog_path.write_text(text[:start] + new_array + text[start + end:], encoding='utf-8')
+
+          shop = shop_path.read_text(encoding='utf-8')
+
+          def card(p):
+              name = html.escape(p['name'], quote=True)
+              pid = html.escape(p['id'], quote=True)
+              category = html.escape(p['category'], quote=True)
+              size = html.escape(str(p['size']), quote=True)
+              image = html.escape(p['image'], quote=True)
+              price = f"R{float(p['normalPrice']):.2f}"
+              special = '' if p.get('specialPrice') is None else f"{float(p['specialPrice']):.2f}"
+              return f'''<article class="product-card" data-category="{category}" data-normal-price="{float(p['normalPrice']):.2f}" data-product-id="{pid}" data-product-name="{name}" data-size="{size}" data-special-price="{special}"><div class="product-placeholder product-media"><img alt="{name}" class="product-image" loading="lazy" src="{image}"/></div><div class="product-info"><h4>{name}</h4><p>{size}</p><div class="product-price"><strong class="current-price">{price}</strong></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="{pid}" type="button"><span class="bottle-plus-icon"><svg viewbox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>'''
+
+          def category_objects(cid):
+              return [p for p in catalog if p.get('categoryId') == cid]
+
+          def replace_grid(section, products):
+              marker = '<div class="product-grid">'
+              pos = section.index(marker)
+              grid_start = pos
+              i = pos + len(marker)
+              depth = 1
+              tag_re = re.compile(r'<div\b[^>]*>|</div>')
+              while depth:
+                  m = tag_re.search(section, i)
+                  if not m:
+                      raise RuntimeError('Could not balance product-grid divs')
+                  if m.group(0).startswith('<div'):
+                      depth += 1
+                  else:
+                      depth -= 1
+                  i = m.end()
+              new_grid = marker + ''.join(card(p) for p in products) + '</div>'
+              return section[:grid_start] + new_grid + section[i:]
+
+          def replace_category(cid):
+              global shop
+              pattern = re.compile(r'(<div class="category" data-category-id="' + re.escape(cid) + r'" id="' + re.escape(cid) + r'">)(.*?)(?=<div class="category" data-category-id="|</main>)', re.S)
+              m = pattern.search(shop)
+              if not m:
+                  raise RuntimeError(f'Category {cid} not found in shop.html')
+              section = m.group(0)
+              section = replace_grid(section, category_objects(cid))
+              shop = shop[:m.start()] + section + shop[m.end():]
+
+          # Rebuild only the two affected category grids from the catalogue so the
+          # obsolete Hennessy card is removed and the new products appear exactly once.
+          replace_category('whisky')
+          replace_category('cognac')
+          shop_path.write_text(shop, encoding='utf-8')
+          print('Updated Cognac and Whisky catalogue/shop sections.')
+          print('Whisky:', [p['name'] for p in category_objects('whisky')])
+          print('Cognac:', [p['name'] for p in category_objects('cognac')])
+      
+      - name: Validate
+        run: |
+          node --check catalog-data.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=Path('catalog-data.js').read_text(encoding='utf-8')
+          a=s.index('window.LBB_CATALOG = ')+len('window.LBB_CATALOG = ')
+          c=json.JSONDecoder().raw_decode(s[a:])[0]
+          names=[p['name'] for p in c]
+          assert names.count('Hennessy') == 0
+          assert names.count('Hennessy VS') == 1
+          assert names.count('Hennessy VSOP') == 1
+          assert names.count('Glenmorangie 12 Years Old Gift Box') == 1
+          assert names.count('Honor Extra Cognac Gold Filtered') == 1
+          assert Path('glenmorangie-12-year-old.png').exists()
+          assert Path('remy-martin-vsop.png').exists()
+          assert Path('martell-vs.png').exists()
+          assert Path('honor-extra-cognac.png').exists()
+          assert Path('hennessy-vsop.png').exists()
+          assert Path('hennessy-vs.png').exists()
+          print('Validation passed.')
+          PY
+          git diff --check
+
+      - name: Commit and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog-data.js shop.html .github/workflows/update-cognac-whisky.yml
+          git commit -m "Update Cognac and Whisky products" || exit 0
+          git rm .github/workflows/update-cognac-whisky.yml
+          git commit -m "Remove temporary Cognac and Whisky update workflow"
+          git push
