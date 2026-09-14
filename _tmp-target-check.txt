@@ -1,0 +1,59 @@
+{
+    "id": "hennessy",
+    "name": "Hennessy",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 580.0,
+    "initial": "H",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  }
+
+{
+    "id": "hennessy-vs",
+    "name": "Hennessy VS",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 899.99,
+    "initial": "HV",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  }
+
+{
+    "id": "martell-vs",
+    "name": "Martell VS",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 499.99,
+    "initial": "MV",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  }
+
+{
+    "id": "r-my-martin-vsop",
+    "name": "Rémy Martin VSOP",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 989.99,
+    "initial": "RMM",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  }
