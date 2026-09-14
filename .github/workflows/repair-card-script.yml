@@ -1,0 +1,31 @@
+name: Repair card script without changing cart engine
+on:
+  push:
+    paths:
+      - '.github/workflows/repair-card-script.yml'
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore script.js and add universal special row
+        run: |
+          git checkout a7f28f8a3f6ce9c08932b301d9642c9dd51a8c06 -- script.js
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('script.js')
+          s = p.read_text()
+          old = """      if (document.body.dataset.page !== 'specials') {\n        let meta = card.querySelector('.special-meta');\n        if (special) {\n          if (!meta) {\n            meta = document.createElement('div');\n            meta.className = 'special-meta is-empty';\n            const info = card.querySelector('.product-info');\n            const control = info?.querySelector('.cart-product-control');\n            if (control) info.insertBefore(meta, control); else info?.appendChild(meta);\n          }\n          const discount = specialPrice < normal ? Math.round((normal - specialPrice) / normal * 100) : 0;\n          meta.innerHTML = `<span class=\"special-badge\">ON SPECIAL</span>${discount > 0 ? `<span class=\"discount-badge\">${discount}% OFF</span>` : ''}`;\n          meta.hidden = false;\n          meta.classList.remove('is-empty');\n        } else if (meta) {"""
+          new = """      if (document.body.dataset.page !== 'specials') {\n        let meta = card.querySelector('.special-meta');\n        if (!meta) {\n          meta = document.createElement('div');\n          meta.className = 'special-meta is-empty';\n          const info = card.querySelector('.product-info');\n          const control = info?.querySelector('.cart-product-control');\n          if (control) info.insertBefore(meta, control); else info?.appendChild(meta);\n        }\n        if (special) {\n          const discount = specialPrice < normal ? Math.round((normal - specialPrice) / normal * 100) : 0;\n          meta.innerHTML = `<span class=\"special-badge\">ON SPECIAL</span>${discount > 0 ? `<span class=\"discount-badge\">${discount}% OFF</span>` : ''}`;\n          meta.hidden = false;\n          meta.classList.remove('is-empty');\n        } else {"""
+          if old not in s:
+              raise SystemExit('Expected card sync block not found')
+          p.write_text(s.replace(old, new, 1))
+          PY
+          rm -f .github/workflows/repair-card-script.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add script.js .github/workflows/repair-card-script.yml
+          git commit -m 'Repair product card badge row without altering cart engine'
+          git push
