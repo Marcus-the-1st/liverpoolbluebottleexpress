@@ -10,9 +10,11 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Restore script.js and add universal special row
         run: |
-          git checkout a7f28f8a3f6ce9c08932b301d9642c9dd51a8c06 -- script.js
+          git checkout d3ddb4e3e4b2b16772a62942c390d07dfb43ac13 -- script.js
           python - <<'PY'
           from pathlib import Path
           p = Path('script.js')
