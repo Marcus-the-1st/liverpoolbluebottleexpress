@@ -1155,8 +1155,6 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "el-bravo-strawberry.png"
   },
-  
-
   {
     "id": "po-10-c",
     "name": "Po-10-C",
@@ -1171,9 +1169,6 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "special-po10.png"
   },
-  
-  
-  
   {
     "id": "tang-sour-apple",
     "name": "Tang Sour Apple",
@@ -1231,32 +1226,18 @@ window.LBB_CATALOG = [
     "image": "special-wild-africa.png"
   },
   {
-    "id": "hennessy",
-    "name": "Hennessy",
-    "category": "Cognac",
-    "categoryId": "cognac",
-    "emoji": "🥃",
-    "size": "750ml",
-    "normalPrice": 580.0,
-    "initial": "H",
-    "specialPrice": null,
-    "specialStart": null,
-    "specialEnd": null,
-    "image": null
-  },
-  {
     "id": "hennessy-vs",
     "name": "Hennessy VS",
     "category": "Cognac",
     "categoryId": "cognac",
     "emoji": "🥃",
     "size": "750ml",
-    "normalPrice": 899.99,
+    "normalPrice": 580.0,
     "initial": "HV",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "hennessy-vs.png"
   },
   {
     "id": "martell-vs",
@@ -1265,12 +1246,12 @@ window.LBB_CATALOG = [
     "categoryId": "cognac",
     "emoji": "🥃",
     "size": "750ml",
-    "normalPrice": 499.99,
+    "normalPrice": 499.0,
     "initial": "MV",
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "martell-vs.png"
   },
   {
     "id": "r-my-martin-vsop",
@@ -1284,7 +1265,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "remy-martin-vsop.png"
   },
   {
     "id": "belgravia-gin-dry-lemon",
@@ -1680,7 +1661,6 @@ window.LBB_CATALOG = [
     "specialEnd": null,
     "image": "count-pushkin-energy-infused-grape-flavour-liqueur.png"
   },
-
   {
     "id": "amarula-1l",
     "name": "Amarula Cream 1L",
@@ -1876,5 +1856,47 @@ window.LBB_CATALOG = [
     "specialStart": null,
     "specialEnd": null,
     "image": "moet-chandon-nectar-imperial.png"
+  },
+  {
+    "id": "honor-extra-cognac-gold-filtered",
+    "name": "Honor Extra Cognac Gold Filtered",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 539.0,
+    "initial": "HEC",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "honor-extra-cognac.png"
+  },
+  {
+    "id": "hennessy-vsop",
+    "name": "Hennessy VSOP",
+    "category": "Cognac",
+    "categoryId": "cognac",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 899.99,
+    "initial": "HVSOP",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "hennessy-vsop.png"
+  },
+  {
+    "id": "glenmorangie-12-years-old-gift-box",
+    "name": "Glenmorangie 12 Years Old Gift Box",
+    "category": "Whisky",
+    "categoryId": "whisky",
+    "emoji": "🥃",
+    "size": "750ml",
+    "normalPrice": 625.0,
+    "initial": "G12",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "glenmorangie-12-year-old.png"
   }
 ];
