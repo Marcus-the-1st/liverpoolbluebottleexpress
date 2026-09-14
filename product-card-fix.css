@@ -64,7 +64,10 @@
   visibility:hidden;
 }
 
+/* The cart is always row 5. If a non-special card has no special-meta
+   element, row 4 remains empty and still reserves the same badge space. */
 .product-grid .cart-product-control{
+  grid-row:5;
   height:42px;
   min-height:42px;
   margin:0;
@@ -83,9 +86,8 @@
   box-sizing:border-box;
 }
 
-/* Keep the supplied 800x1000 product artwork at its native visual scale.
-   Do not enlarge the new 1L Sedgwick's image with a per-product transform;
-   its standardized canvas should be treated exactly like the other packshots. */
+/* Keep the supplied 800x1000 Sedgwick's artwork at its native visual scale.
+   The standardized canvas should be treated exactly like the other packshots. */
 .product-card[data-product-id="sedgwicks-old-brown-1l"] .product-media .product-image{
   transform:none;
   transform-origin:center center;
