@@ -1,35 +1,63 @@
 /* Liverpool Blue Bottle — product card alignment fix */
 
-/* Keep every product card's lower information stack aligned, regardless of name length. */
+/* Keep every product card's information stack on the same fixed rows. */
 .product-grid .product-card{
   display:flex;
   flex-direction:column;
 }
 
 .product-grid .product-info{
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-rows:3.2em 1.6em 44px 28px 42px;
+  row-gap:0;
+  align-content:start;
   flex:1 1 auto;
+  box-sizing:border-box;
 }
 
 .product-grid .product-info h4{
+  height:3.2em;
   min-height:3.2em;
+  max-height:3.2em;
+  margin:0;
+  overflow:hidden;
+  line-height:1.2;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
 }
 
 .product-grid .product-info > p{
+  height:1.6em;
   min-height:1.6em;
+  margin:0;
+  line-height:1.6;
+  overflow:hidden;
 }
 
 .product-grid .product-price{
+  height:44px;
   min-height:44px;
+  margin:0;
+  padding:0;
   display:flex;
   align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+  overflow:hidden;
 }
 
 .product-grid .special-meta{
+  height:28px;
   min-height:28px;
+  max-height:28px;
+  margin:0;
+  padding:0;
   display:flex;
   align-items:center;
+  gap:7px;
+  flex-wrap:nowrap;
+  overflow:hidden;
 }
 
 .product-grid .special-meta.is-empty{
@@ -37,13 +65,28 @@
 }
 
 .product-grid .cart-product-control{
-  margin-top:auto;
+  height:42px;
+  min-height:42px;
+  margin:0;
+  padding:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  box-sizing:border-box;
 }
 
-/* The new 1L Sedgwick's source photo has more surrounding black space than
-   the established 750ml asset. Scale only this exact product image so the
-   bottle itself has the same visual presence, without changing the source. */
+.product-grid .add-to-cart-button,
+.product-grid .quantity-stepper{
+  width:100%;
+  height:42px;
+  min-height:42px;
+  box-sizing:border-box;
+}
+
+/* Keep the supplied 800x1000 product artwork at its native visual scale.
+   Do not enlarge the new 1L Sedgwick's image with a per-product transform;
+   its standardized canvas should be treated exactly like the other packshots. */
 .product-card[data-product-id="sedgwicks-old-brown-1l"] .product-media .product-image{
-  transform:scale(1.18);
+  transform:none;
   transform-origin:center center;
 }
