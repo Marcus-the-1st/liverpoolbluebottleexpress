@@ -567,3 +567,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 })();
+
+
+/* V3.76 — Sedgwick's Old Brown 1L shop-card addition.
+   The catalogue entry is the source of truth; this only fills the
+   existing Fortified Wine grid on the static Shop page. */
+(() => {
+  if (document.body?.dataset.page !== "shop") return;
+  const grid = document.querySelector('#fortified-wine .product-grid');
+  if (!grid || grid.querySelector('[data-product-id="sedgwicks-old-brown-1l"]')) return;
+  grid.insertAdjacentHTML('beforeend', `<article class="product-card" data-category="Fortified Wine" data-normal-price="70.00" data-product-id="sedgwicks-old-brown-1l" data-product-name="Sedgwick's The Original Old Brown" data-size="1L" data-special-price=""><div class="product-placeholder product-media"><img alt="Sedgwick's The Original Old Brown" class="product-image" loading="lazy" src="sedgwicks-old-brown-1l-website.png"/></div><div class="product-info"><h4>Sedgwick's The Original Old Brown</h4><p>1L</p><div class="product-price"><strong class="current-price">R70.00</strong></div><div class="special-meta is-empty" aria-hidden="true"></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="sedgwicks-old-brown-1l" type="button"><span class="bottle-plus-icon"><svg viewBox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>`);
+})();
