@@ -14,7 +14,7 @@
 
 .product-grid .product-media .product-image{
   display:block;
-  width:auto !important;
+  width:100% !important;
   height:100% !important;
   max-width:100% !important;
   max-height:100% !important;
@@ -22,6 +22,7 @@
   object-position:center;
   margin:0;
   padding:0;
+  border:0;
   transform:none !important;
 }
 
