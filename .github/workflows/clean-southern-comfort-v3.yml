@@ -1,0 +1,43 @@
+name: Apply clean Southern Comfort fix v3
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply exact HTML cleanup
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          shop = Path('shop.html')
+          s = shop.read_text(encoding='utf-8')
+          s = s.replace('<link href="product-card-fix.css" rel="stylesheet"/>\n', '')
+          s = s.replace('<link href="product-card-fix.css" rel="stylesheet">\n', '')
+          for pid in ('southern-comfort-original', 'southern-comfort-lime'):
+              p = re.compile(r'<article(?=[^>]*data-product-id="' + re.escape(pid) + r'")[^>]*>.*?</article>', re.S)
+              s, n = p.subn('', s, count=1)
+              if n != 1:
+                  raise SystemExit('Could not remove main ' + pid + ' card')
+          def button(pid):
+              return '<button class="add-to-cart-button" data-cart-add="' + pid + '" type="button"><span class="bottle-plus-icon"><svg viewBox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button>'
+          for pid in ('southern-comfort-original', 'southern-comfort-lime'):
+              p = re.compile(r'<button class="add-to-cart-button" data-cart-add="' + re.escape(pid) + r'" type="button">.*?</button>', re.S)
+              s = p.sub(button(pid), s)
+          shop.write_text(s, encoding='utf-8')
+          Path('product-card-fix.css').write_text('', encoding='utf-8')
+      - name: Commit exact cleanup
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add shop.html product-card-fix.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'Remove Southern Comfort duplicates from Whisky'
+          git push
