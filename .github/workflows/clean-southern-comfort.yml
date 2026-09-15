@@ -1,0 +1,83 @@
+name: Apply clean Southern Comfort fix
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  fix:
+    if: ${{ !contains(github.event.head_commit.message, 'Apply clean Southern Comfort fix') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply surgical fix
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          shop = Path('shop.html')
+          text = shop.read_text(encoding='utf-8')
+
+          text = text.replace('<link href="product-card-fix.css" rel="stylesheet"/>\n', '')
+          text = text.replace('<link href="product-card-fix.css" rel="stylesheet">\n', '')
+
+          start = text.find('<div class="category" data-category-id="whisky" id="whisky">')
+          if start < 0:
+              raise SystemExit('Whisky section not found')
+          subgroup = text.find('<div class="category-subgroup">', start)
+          if subgroup < 0:
+              raise SystemExit('Whiskey Liqueurs subgroup not found')
+          main = text[start:subgroup]
+
+          for pid in ('southern-comfort-original', 'southern-comfort'):
+              pattern = re.compile(r'<article\\b(?=[^>]*data-product-id="' + re.escape(pid) + r'")[^>]*>.*?</article>', re.S)
+              main, count = pattern.subn('', main, count=1)
+              if count:
+                  break
+          else:
+              raise SystemExit('Southern Comfort Original card not found in main Whisky grid')
+
+          pattern = re.compile(r'<article\\b(?=[^>]*data-product-id="southern-comfort-lime")[^>]*>.*?</article>', re.S)
+          main, count = pattern.subn('', main, count=1)
+          if not count:
+              raise SystemExit('Southern Comfort Lime card not found in main Whisky grid')
+
+          text = text[:start] + main + text[subgroup:]
+
+          bottle_button = lambda pid: '<button class="add-to-cart-button" data-cart-add="' + pid + '" type="button"><span class="bottle-plus-icon"><svg viewBox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button>'
+
+          sub_start = text.find('<div class="category-subgroup">', start)
+          sub_end = text.find('</div></div>', sub_start)
+          if sub_end < 0:
+              sub_end = len(text)
+          subgroup_text = text[sub_start:sub_end]
+          for pid in ('southern-comfort-original', 'southern-comfort'):
+              p = re.compile(r'<button\\b(?=[^>]*data-cart-add="' + re.escape(pid) + r'")[^>]*>.*?</button>', re.S)
+              subgroup_text, _ = p.subn(bottle_button(pid), subgroup_text, count=1)
+          p = re.compile(r'<button\\b(?=[^>]*data-cart-add="southern-comfort-lime")[^>]*>.*?</button>', re.S)
+          subgroup_text, _ = p.subn(bottle_button('southern-comfort-lime'), subgroup_text, count=1)
+          text = text[:sub_start] + subgroup_text + text[sub_end:]
+          shop.write_text(text, encoding='utf-8')
+
+          cat = Path('catalog-data.js')
+          c = cat.read_text(encoding='utf-8')
+          for pid in ('southern-comfort-original', 'southern-comfort'):
+              c = re.sub(r'("id"\\s*:\s*"' + re.escape(pid) + r'".*?"category"\\s*:\s*")Whisky(",\\s*"categoryId"\\s*:\s*")whisky(" )', r'\\1Whiskey Liqueurs\\2whiskey-liqueurs\\3', c, flags=re.S)
+          c = re.sub(r'("id"\\s*:\s*"southern-comfort-lime".*?"category"\\s*:\s*")Whisky(",\\s*"categoryId"\\s*:\s*")whisky(" )', r'\\1Whiskey Liqueurs\\2whiskey-liqueurs\\3', c, flags=re.S)
+          cat.write_text(c, encoding='utf-8')
+
+          Path('product-card-fix.css').write_text('', encoding='utf-8')
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add shop.html catalog-data.js product-card-fix.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'Apply clean Southern Comfort fix'
+          git push
