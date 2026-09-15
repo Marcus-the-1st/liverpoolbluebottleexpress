@@ -1,15 +1,21 @@
 /* Liverpool Blue Bottle — Whisky carousel endpoint fix
    Keep the Shop preview to the agreed first four Whisky products.
    The full Whisky catalogue remains available through View All. */
-body[data-page="shop"] #whisky .product-card:nth-child(n+5){
+body[data-page="shop"] #whisky > .product-grid > .product-card:nth-child(n+5){
   display:none !important;
 }
 
-/* Southern Comfort belongs only in the dedicated Whisky Liqueurs subgroup for now.
-   Hide only the duplicate cards in the main Whisky product grid. */
-body[data-page="shop"] #whisky > .product-grid > article.product-card[data-product-id="southern-comfort-original"],
-body[data-page="shop"] #whisky > .product-grid > article.product-card[data-product-id="southern-comfort-lime"],
-body[data-page="shop"] #whisky > .product-grid > article.product-card[data-product-name="Southern Comfort Original"],
-body[data-page="shop"] #whisky > .product-grid > article.product-card[data-product-name="Southern Comfort Lime"]{
+/* Southern Comfort belongs only in the dedicated Whiskey Liqueurs subgroup.
+   These two cards must not appear in the main Whisky product grid. */
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-id="southern-comfort-original"],
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-id="southern-comfort-lime"],
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-name="Southern Comfort Original"],
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-name="Southern Comfort Lime"]{
   display:none !important;
+}
+
+/* Do not affect the Whiskey Liqueurs subgroup below the main grid. */
+body[data-page="shop"] #whisky > .category-subgroup .product-card[data-product-id="southern-comfort-original"],
+body[data-page="shop"] #whisky > .category-subgroup .product-card[data-product-id="southern-comfort-lime"]{
+  display:flex !important;
 }
