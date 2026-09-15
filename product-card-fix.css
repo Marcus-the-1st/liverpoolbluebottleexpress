@@ -4,3 +4,11 @@
 body[data-page="shop"] #whisky .product-card:nth-child(n+5){
   display:none !important;
 }
+
+/* Southern Comfort belongs only in the Whisky Liqueurs subgroup for now.
+   Remove the duplicate cards from the main Whisky product grid while leaving
+   the dedicated Whisky Liqueurs subgroup untouched. */
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-id="southern-comfort-original"],
+body[data-page="shop"] #whisky > .product-grid > .product-card[data-product-id="southern-comfort-lime"]{
+  display:none !important;
+}
