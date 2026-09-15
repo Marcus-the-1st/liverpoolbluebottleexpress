@@ -1748,8 +1748,8 @@ window.LBB_CATALOG = [
   {
     "id": "southern-comfort-original",
     "name": "Southern Comfort Original",
-    "category": "Whisky",
-    "categoryId": "whisky",
+    "category": "Whiskey Liqueurs",
+    "categoryId": "whiskey-liqueurs",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 189.99,
@@ -1762,8 +1762,8 @@ window.LBB_CATALOG = [
   {
     "id": "southern-comfort-lime",
     "name": "Southern Comfort Lime",
-    "category": "Whisky",
-    "categoryId": "whisky",
+    "category": "Whiskey Liqueurs",
+    "categoryId": "whiskey-liqueurs",
     "emoji": "🥃",
     "size": "750ml",
     "normalPrice": 155.0,
