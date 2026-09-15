@@ -1,6 +1,6 @@
 /* Liverpool Blue Bottle — Whisky carousel endpoint fix
    Keep the Shop preview to the agreed first four Whisky products.
    The full Whisky catalogue remains available through View All. */
-#whisky .product-card:nth-child(n+5){
+body[data-page="shop"] #whisky .product-card:nth-child(n+5){
   display:none !important;
 }
