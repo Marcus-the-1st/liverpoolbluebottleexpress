@@ -1,139 +1,188 @@
-/* Shop page: limit each category carousel to the first 4 products.
-   Full list is available via the VIEW ALL button / category page.
-   The > combinator ensures we only affect the main product-grid,
-   not any subgroup grids (e.g. Whiskey Liqueurs). */
+/* ================================================================
+   PRODUCT CARD FIX — FINAL ALIGNMENT RULES
+   ================================================================
+   Root cause of the Sedgwick / Fortified Wine misalignment:
+   Any rule that uses height:auto + aspect-ratio on the media frame
+   lets the source image’s own dimensions control the card height.
+   Different bottle photos then produce different media heights,
+   which shifts the name, price and Add to Cart out of alignment.
+
+   This file forces a rigid, identical structure for every product
+   card on both the shop page and the category page.
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. SHOP PAGE — limit each main carousel to the first 4 products
+   ---------------------------------------------------------------- */
 body[data-page="shop"] .category > .product-grid > .product-card:nth-child(n+5) {
   display: none !important;
 }
 
-/* ================================================================
-   CATEGORY PRODUCT CARD ALIGNMENT — FIXED MEDIA FRAME
-   The category stylesheet previously used height:auto together with
-   aspect-ratio on the media frame. That lets different source-image
-   intrinsic dimensions influence the frame height. Lock the media
-   frame itself instead; the image is contained inside it.
-   ================================================================ */
-#catalogRoot .category .product-placeholder.product-media {
-  width:100% !important;
-  height:245px !important;
-  min-height:245px !important;
-  max-height:245px !important;
-  flex:0 0 245px !important;
-  aspect-ratio:auto !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  overflow:hidden !important;
-  box-sizing:border-box !important;
+/* ----------------------------------------------------------------
+   2. UNIVERSAL PRODUCT CARD — strict vertical flex
+   ---------------------------------------------------------------- */
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
 }
 
-#catalogRoot .category .product-placeholder.product-media .product-image {
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  object-fit:contain !important;
-  object-position:center center !important;
-  margin:0 !important;
-  padding:0 !important;
-  border:0 !important;
-  box-sizing:border-box !important;
+/* ----------------------------------------------------------------
+   3. FIXED MEDIA FRAME — every card gets the exact same height
+      Source-image dimensions can NEVER change this height.
+   ---------------------------------------------------------------- */
+.product-card .product-placeholder,
+.product-card .product-media,
+.product-card .product-placeholder.product-media {
+  width: 100% !important;
+  height: 210px !important;
+  min-height: 210px !important;
+  max-height: 210px !important;
+  flex: 0 0 210px !important;
+  aspect-ratio: auto !important;          /* kill any aspect-ratio */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background: #050505 !important;
 }
 
-/* Keep the exact same media footprint on larger category layouts. */
-@media (min-width:521px) {
-  #catalogRoot .category .product-placeholder.product-media {
-    height:330px !important;
-    min-height:330px !important;
-    max-height:330px !important;
-    flex-basis:330px !important;
+/* Larger screens get a taller (but still fixed) frame */
+@media (min-width: 521px) {
+  .product-card .product-placeholder,
+  .product-card .product-media,
+  .product-card .product-placeholder.product-media {
+    height: 245px !important;
+    min-height: 245px !important;
+    max-height: 245px !important;
+    flex: 0 0 245px !important;
   }
 }
 
-/* ================================================================
-   CATEGORY INFO ROWS — HARD ALIGNMENT
-   Keep title, size, price, special row and Add to Cart at identical
-   vertical positions for every card in the same category grid.
-   ================================================================ */
-#catalogRoot .category .product-info {
-  display:grid !important;
-  grid-template-rows:3.6em 1.4em 48px 34px 52px !important;
-  align-content:start !important;
-  flex:0 0 auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  padding:15px 12px 14px !important;
-  box-sizing:border-box !important;
+/* ----------------------------------------------------------------
+   4. IMAGE INSIDE THE FRAME — always contained and centred
+   ---------------------------------------------------------------- */
+.product-card .product-placeholder img,
+.product-card .product-media img,
+.product-card .product-image {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 92% !important;
+  max-height: 92% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
 }
 
-#catalogRoot .category .product-info h4 {
-  height:3.6em !important;
-  min-height:3.6em !important;
-  max-height:3.6em !important;
-  margin:0 !important;
-  line-height:1.2 !important;
-  overflow:hidden !important;
-  display:-webkit-box !important;
-  -webkit-box-orient:vertical !important;
-  -webkit-line-clamp:3 !important;
+/* ----------------------------------------------------------------
+   5. INFO SECTION — identical vertical rows for every card
+   ---------------------------------------------------------------- */
+.product-card .product-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  padding: 14px 14px 16px !important;
+  box-sizing: border-box !important;
+  justify-content: flex-start !important;
 }
 
-#catalogRoot .category .product-info > p {
-  height:1.4em !important;
-  min-height:1.4em !important;
-  max-height:1.4em !important;
-  margin:0 !important;
-  line-height:1.4 !important;
-  overflow:hidden !important;
+/* Fixed-height name row (prevents wrapping from shifting everything) */
+.product-card .product-info h4 {
+  min-height: 2.6em !important;
+  max-height: 2.6em !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.3 !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  font-size: 0.95rem !important;
 }
 
-#catalogRoot .category .product-price {
-  height:48px !important;
-  min-height:48px !important;
-  margin:0 !important;
-  padding:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:flex-start !important;
-  gap:8px !important;
-  flex-wrap:nowrap !important;
-  overflow:hidden !important;
+/* Size row */
+.product-card .product-info > p {
+  min-height: 1.3em !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.3 !important;
+  overflow: hidden !important;
+  font-size: 0.85rem !important;
 }
 
-#catalogRoot .category .special-meta {
-  height:34px !important;
-  min-height:34px !important;
-  max-height:34px !important;
-  margin:0 !important;
-  padding:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  gap:7px !important;
-  flex-wrap:nowrap !important;
-  overflow:hidden !important;
+/* Price row */
+.product-card .product-price {
+  min-height: 36px !important;
+  margin: 0 0 8px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 
-#catalogRoot .category .special-meta.is-empty {
-  visibility:hidden !important;
+/* Special-meta row (always reserved so cards stay aligned) */
+.product-card .special-meta {
+  min-height: 28px !important;
+  margin: 0 !important;
 }
 
-#catalogRoot .category .cart-product-control {
-  height:52px !important;
-  min-height:52px !important;
-  margin:0 !important;
-  padding:10px 0 0 !important;
-  width:100% !important;
-  display:flex !important;
-  align-items:center !important;
-  box-sizing:border-box !important;
+.product-card .special-meta.is-empty {
+  visibility: hidden !important;
 }
 
-#catalogRoot .category .add-to-cart-button,
-#catalogRoot .category .quantity-stepper {
-  width:100% !important;
-  height:42px !important;
-  min-height:42px !important;
-  box-sizing:border-box !important;
-  justify-content:center !important;
+/* Add to Cart — pushed to the bottom of the card */
+.product-card .cart-product-control {
+  margin-top: auto !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.product-card .add-to-cart-button {
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+}
+
+/* ----------------------------------------------------------------
+   6. CATEGORY PAGE SPECIFIC — higher specificity to beat any
+      leftover rules in style-base.css
+   ---------------------------------------------------------------- */
+body.category-page #catalogRoot .category .product-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.category-page #catalogRoot .category .product-placeholder,
+body.category-page #catalogRoot .category .product-media,
+body.category-page #catalogRoot .category .product-placeholder.product-media {
+  height: 210px !important;
+  min-height: 210px !important;
+  max-height: 210px !important;
+  flex: 0 0 210px !important;
+  aspect-ratio: auto !important;
+}
+
+@media (min-width: 521px) {
+  body.category-page #catalogRoot .category .product-placeholder,
+  body.category-page #catalogRoot .category .product-media,
+  body.category-page #catalogRoot .category .product-placeholder.product-media {
+    height: 245px !important;
+    min-height: 245px !important;
+    max-height: 245px !important;
+    flex: 0 0 245px !important;
+  }
+}
+
+body.category-page #catalogRoot .category .product-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+
+body.category-page #catalogRoot .category .cart-product-control {
+  margin-top: auto !important;
 }
