@@ -5,3 +5,41 @@
 body[data-page="shop"] .category > .product-grid > .product-card:nth-child(n+5) {
   display: none !important;
 }
+
+/* Fortified Wine category page — lock both product image frames to
+   exactly the same height. This prevents intrinsic image dimensions
+   from making one card's media area taller than the other. */
+.category-page #fortified-wine .product-placeholder.product-media {
+  width: 100% !important;
+  height: 245px !important;
+  min-height: 245px !important;
+  max-height: 245px !important;
+  aspect-ratio: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  flex: 0 0 245px !important;
+}
+
+.category-page #fortified-wine .product-placeholder.product-media .product-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+@media (min-width: 521px) {
+  .category-page #fortified-wine .product-placeholder.product-media {
+    height: 330px !important;
+    min-height: 330px !important;
+    max-height: 330px !important;
+    flex-basis: 330px !important;
+  }
+}
