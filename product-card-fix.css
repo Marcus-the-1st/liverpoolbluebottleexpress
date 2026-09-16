@@ -1,0 +1,7 @@
+/* Shop page: limit each category carousel to the first 4 products.
+   Full list is available via the VIEW ALL button / category page.
+   The > combinator ensures we only affect the main product-grid,
+   not any subgroup grids (e.g. Whiskey Liqueurs). */
+body[data-page="shop"] .category > .product-grid > .product-card:nth-child(n+5) {
+  display: none !important;
+}
