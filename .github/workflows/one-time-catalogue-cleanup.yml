@@ -42,15 +42,6 @@ jobs:
           if re.search(r'"categoryId"\s*:\s*"wine-5l"', text):
               raise SystemExit("wine-5l remains in catalog-data.js")
 
-          for product_id, image in [
-              ("robertson-chapel-red-1-5l", "robertson-chapel-red-1.5l.jpg"),
-              ("robertson-chapel-natural-sweet-red-1-5l", "robertson-chapel-sweet-red-1.5l.jpg"),
-          ]:
-              pattern = rf'("id": "{re.escape(product_id)}".*?\n\s*"image": )"[^"]*"'
-              text, count = re.subn(pattern, rf'\1"{image}"', text, count=1, flags=re.S)
-              if count != 1:
-                  raise SystemExit(f"Could not normalize image for {product_id}")
-
           path.write_text(text, encoding="utf-8")
           PY
 
