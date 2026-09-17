@@ -3,7 +3,7 @@
   if (!root) return;
 
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
-  const wineCategoryIds = ["wine-5l", "sparkling", "fortified-wine"];
+  const wineCategoryIds = ["wine-5l", "wine", "sparkling", "fortified-wine"];
   const items = catalog.filter(p => wineCategoryIds.includes(p.categoryId));
 
   const esc = v => String(v).replace(/[&<>"']/g, x => ({
