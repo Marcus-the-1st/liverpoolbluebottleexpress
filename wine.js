@@ -3,10 +3,18 @@
   if (!root) return;
 
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const imageMap = {
+    "robertson-chapel-red-1-5l": "robertson-chapel-red-1.5l.jpg",
+    "robertson-chapel-natural-sweet-red-1-5l": "robertson-chapel-sweet-red-1.5l.jpg"
+  };
+  catalog.forEach(product => {
+    if (product && imageMap[product.id] && !product.image) product.image = imageMap[product.id];
+  });
+
   const wineCategoryIds = ["wine-5l", "wine", "sparkling", "fortified-wine"];
   const items = catalog.filter(p => wineCategoryIds.includes(p.categoryId));
 
-  const esc = v => String(v).replace(/[&<>"']/g, x => ({
+  const esc = v => String(v).replace(/[&<>\"']/g, x => ({
     "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
   }[x]));
   const money = n => `R${Number(n).toFixed(2)}`;
