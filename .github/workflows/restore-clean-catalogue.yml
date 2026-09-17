@@ -13,12 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
-      - name: Restore catalogue and set Robertson images
+          fetch-depth: 1
+      - name: Restore clean catalogue and Robertson images
         shell: bash
         run: |
           set -e
-          git show HEAD^:catalog-data.js > catalog-data.js
+          git show 2856e917825f309ebe91a51eb63bcd9ba22976c8:catalog-data.js > catalog-data.js
           python3 - <<'PY'
           from pathlib import Path
           import re
