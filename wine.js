@@ -65,4 +65,11 @@
       </div>
     </div>
   `).join("");
+
+  // The shared site script adds the reveal class at DOMContentLoaded.
+  // Mark Wine categories visible now so that dynamically rendered content
+  // is already visible when that observer runs; no scroll is required.
+  root.querySelectorAll(".category").forEach(category => {
+    category.classList.add("visible");
+  });
 })();
