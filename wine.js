@@ -3,6 +3,29 @@
   if (!root) return;
 
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+
+  // Keep legacy catalogue records compatible with the unified Wine page
+  // without maintaining a separate image map.
+  const wine5LIds = new Set([
+    "4th-street-natural-sweet-red-5l",
+    "4th-street-natural-sweet-ros-5l",
+    "4th-street-natural-sweet-white-5l",
+    "4th-street-sweet-late-harvest-5l"
+  ]);
+  catalog.forEach(product => {
+    if (!product) return;
+    if (wine5LIds.has(product.id)) {
+      product.category = "Wines";
+      product.categoryId = "wine";
+    }
+    if (product.id === "robertson-chapel-red-1-5l") {
+      product.image = "robertson-chapel-red-1.5l.jpg";
+    }
+    if (product.id === "robertson-chapel-natural-sweet-red-1-5l") {
+      product.image = "robertson-chapel-sweet-red-1.5l.jpg";
+    }
+  });
+
   const wineCategoryIds = ["wine", "sparkling", "fortified-wine"];
   const items = catalog.filter(p => wineCategoryIds.includes(p.categoryId));
 
