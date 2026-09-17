@@ -1,0 +1,45 @@
+name: Restore clean catalogue source
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Restore catalogue and set Robertson images
+        shell: bash
+        run: |
+          set -e
+          git show HEAD^:catalog-data.js > catalog-data.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          path = Path('catalog-data.js')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              'robertson-chapel-red-1-5l': 'robertson-chapel-red-1.5l.jpg',
+              'robertson-chapel-natural-sweet-red-1-5l': 'robertson-chapel-sweet-red-1.5l.jpg',
+          }
+          for product_id, image in replacements.items():
+              pattern = rf'("id": "{re.escape(product_id)}".*?\n\s*"image": )[^\n]+'
+              text, count = re.subn(pattern, rf'\1"{image}"', text, count=1, flags=re.S)
+              if count != 1:
+                  raise SystemExit(f'Could not update image for {product_id}')
+          if re.search(r'"categoryId"\s*:\s*"wine-5l"', text):
+              raise SystemExit('wine-5l remains in catalogue')
+          path.write_text(text, encoding='utf-8')
+          PY
+          rm -f .github/workflows/restore-clean-catalogue.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add catalog-data.js .github/workflows/restore-clean-catalogue.yml
+          git commit -m 'Restore clean catalogue source data'
+          git push
