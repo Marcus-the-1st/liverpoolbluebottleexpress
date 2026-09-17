@@ -1,21 +1,90 @@
 (() => {
   const root=document.getElementById("catalogRoot");
 
-  // Newly uploaded product images that are now available in the repository.
-  // Keep the master catalogue data unchanged until the image assets are ready
-  // to be managed there as part of the normal catalogue update flow.
-  const imageMap = {
-    "robertson-chapel-red-1-5l": "robertson-chapel-red-1.5l.jpg",
-    "robertson-chapel-natural-sweet-red-1-5l": "robertson-chapel-sweet-red-1.5l.jpg"
-  };
+  // Images are now set directly in catalog-data.js (source of truth).
+  // No runtime imageMap override needed.
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
-  catalog.forEach(product => {
-    if (product && imageMap[product.id] && !product.image) product.image = imageMap[product.id];
-  });
 
   if(!root) return;
   const mode=document.body.dataset.page || "shop";
-  if(mode!=="specials") return;
+  if(mode!=="specials") {
+    if (mode === "shop") normalizeShop(root);
+    return;
+  }
+
+  function normalizeShop(root) {
+    // Repair the static Shop DOM without changing product data, prices or
+    // the existing cart/order engine. The master catalogue remains the
+    // source of truth for product images and specials.
+    const nav = root.querySelector("#categories");
+    if (nav) {
+      nav.querySelectorAll('a[href="#wine-5l"]').forEach(link => link.remove());
+    }
+
+    const moveOutOfNestedParent = (node) => {
+      if (node && node.parentElement !== root) root.appendChild(node);
+      return node;
+    };
+
+    const normalizeCategory = (id, label) => {
+      let nodes = Array.from(root.querySelectorAll(`.category[data-category-id="${id}"]`));
+      if (!nodes.length) return null;
+
+      // If the first matching category is nested inside another category,
+      // detach it first so a parent cleanup cannot accidentally delete it.
+      let primary = nodes.find(node => node.parentElement === root) || nodes[0];
+      primary = moveOutOfNestedParent(primary);
+
+      // Re-query after moving the primary node and remove duplicate wrappers.
+      nodes = Array.from(root.querySelectorAll(`.category[data-category-id="${id}"]`));
+      nodes.filter(node => node !== primary).forEach(node => node.remove());
+
+      const title = primary.querySelector(":scope > .category-title") || primary.querySelector(".category-title");
+      const cards = Array.from(primary.querySelectorAll('.product-card[data-product-id]'))
+        .filter(card => (card.dataset.category || "") === label);
+
+      if (!title) return primary;
+
+      const grid = document.createElement("div");
+      grid.className = "product-grid";
+      cards.forEach(card => grid.appendChild(card));
+
+      primary.replaceChildren(title, grid);
+      return primary;
+    };
+
+    // Fix Fortified first because the broken markup currently nests it inside
+    // the Sparkling section. Detaching it first prevents cross-category loss.
+    normalizeCategory("fortified-wine", "Fortified Wine");
+    normalizeCategory("sparkling", "Champagne / Sparkling Wine");
+
+    // Move the four 4th Street 5L cards into the single Wines section.
+    const wine = root.querySelector('.category[data-category-id="wine"]');
+    const oldWine5L = root.querySelector('.category[data-category-id="wine-5l"]');
+    if (wine && oldWine5L) {
+      const grid = wine.querySelector(":scope > .product-grid");
+      if (grid) {
+        Array.from(oldWine5L.querySelectorAll('.product-card[data-product-id]')).forEach(card => {
+          card.dataset.category = "Wines";
+          grid.appendChild(card);
+        });
+      }
+      oldWine5L.remove();
+    }
+
+    // Keep one clean category order on Shop while leaving each category's
+    // products and existing markup otherwise untouched.
+    const order = [
+      "wine", "whisky", "brandy", "rum", "vodka", "tequila", "gin",
+      "liqueurs", "sparkling", "cognac", "six-packs", "ready-to-drink",
+      "fortified-wine"
+    ];
+    order.forEach(id => {
+      const category = root.querySelector(`:scope > .category[data-category-id="${id}"]`);
+      if (category) root.appendChild(category);
+    });
+  }
+
   const c=window.LBB_SPECIALS_CAMPAIGN||{};
   const start=new Date(`${c.campaignStart}T00:00:00+02:00`);
   const end=new Date(`${c.campaignEnd}T23:59:59.999+02:00`);
