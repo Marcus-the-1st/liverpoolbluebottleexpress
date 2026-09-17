@@ -2,9 +2,21 @@
   const root = document.getElementById("catalogRoot");
   if (!root) return;
 
-  const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const rawCatalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const legacyWineIds = new Set([
+    "4th-street-natural-sweet-red-5l",
+    "4th-street-natural-sweet-ros-5l",
+    "4th-street-natural-sweet-white-5l",
+    "4th-street-sweet-late-harvest-5l"
+  ]);
+  const catalog = rawCatalog.map(p => {
+    if (!p) return p;
+    if (legacyWineIds.has(p.id)) return {...p, category: "Wines", categoryId: "wine"};
+    if (p.id === "robertson-chapel-red-1-5l") return {...p, image: "robertson-chapel-red-1.5l.jpg"};
+    if (p.id === "robertson-chapel-natural-sweet-red-1-5l") return {...p, image: "robertson-chapel-sweet-red-1.5l.jpg"};
+    return p;
+  });
 
-  // Images are already set in catalog-data.js – no runtime imageMap needed.
   const wineCategoryIds = ["wine", "sparkling", "fortified-wine"];
   const items = catalog.filter(p => wineCategoryIds.includes(p.categoryId));
 
@@ -27,7 +39,6 @@
     g.items.push(p);
   });
 
-  // Preferred order inside the Wine page
   const order = ["wine", "sparkling", "fortified-wine"];
   groups.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 
