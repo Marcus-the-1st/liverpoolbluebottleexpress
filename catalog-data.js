@@ -10,8 +10,8 @@ window.LBB_CATALOG = [
   {
     "id": "4th-street-natural-sweet-red-5l",
     "name": "4th Street Natural Sweet Red 5L",
-    "category": "Wines (4th Street 5L)",
-    "categoryId": "wine-5l",
+    "category": "Wines",
+    "categoryId": "wine",
     "emoji": "🍷",
     "size": "5L",
     "normalPrice": 165.0,
@@ -24,8 +24,8 @@ window.LBB_CATALOG = [
   {
     "id": "4th-street-natural-sweet-ros-5l",
     "name": "4th Street Natural Sweet Rosé 5L",
-    "category": "Wines (4th Street 5L)",
-    "categoryId": "wine-5l",
+    "category": "Wines",
+    "categoryId": "wine",
     "emoji": "🍷",
     "size": "5L",
     "normalPrice": 165.0,
@@ -38,8 +38,8 @@ window.LBB_CATALOG = [
   {
     "id": "4th-street-natural-sweet-white-5l",
     "name": "4th Street Natural Sweet White 5L",
-    "category": "Wines (4th Street 5L)",
-    "categoryId": "wine-5l",
+    "category": "Wines",
+    "categoryId": "wine",
     "emoji": "🍷",
     "size": "5L",
     "normalPrice": 165.0,
@@ -52,8 +52,8 @@ window.LBB_CATALOG = [
   {
     "id": "4th-street-sweet-late-harvest-5l",
     "name": "4th Street Sweet Late Harvest 5L",
-    "category": "Wines (4th Street 5L)",
-    "categoryId": "wine-5l",
+    "category": "Wines",
+    "categoryId": "wine",
     "emoji": "🍷",
     "size": "5L",
     "normalPrice": 165.0,
