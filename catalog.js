@@ -1,9 +1,29 @@
 (() => {
   const root=document.getElementById("catalogRoot");
 
-  // Images are now set directly in catalog-data.js (source of truth).
-  // No runtime imageMap override needed.
+  // Images and catalogue values are sourced from catalog-data.js. These
+  // legacy-record normalizations keep the current repository data compatible
+  // with the unified wine structure without maintaining a separate image map.
   const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const wine5LIds = new Set([
+    "4th-street-natural-sweet-red-5l",
+    "4th-street-natural-sweet-ros-5l",
+    "4th-street-natural-sweet-white-5l",
+    "4th-street-sweet-late-harvest-5l"
+  ]);
+  catalog.forEach(product => {
+    if (!product) return;
+    if (wine5LIds.has(product.id)) {
+      product.category = "Wines";
+      product.categoryId = "wine";
+    }
+    if (product.id === "robertson-chapel-red-1-5l") {
+      product.image = "robertson-chapel-red-1.5l.jpg";
+    }
+    if (product.id === "robertson-chapel-natural-sweet-red-1-5l") {
+      product.image = "robertson-chapel-sweet-red-1.5l.jpg";
+    }
+  });
 
   if(!root) return;
   const mode=document.body.dataset.page || "shop";
@@ -30,12 +50,9 @@
       let nodes = Array.from(root.querySelectorAll(`.category[data-category-id="${id}"]`));
       if (!nodes.length) return null;
 
-      // If the first matching category is nested inside another category,
-      // detach it first so a parent cleanup cannot accidentally delete it.
       let primary = nodes.find(node => node.parentElement === root) || nodes[0];
       primary = moveOutOfNestedParent(primary);
 
-      // Re-query after moving the primary node and remove duplicate wrappers.
       nodes = Array.from(root.querySelectorAll(`.category[data-category-id="${id}"]`));
       nodes.filter(node => node !== primary).forEach(node => node.remove());
 
@@ -53,8 +70,8 @@
       return primary;
     };
 
-    // Fix Fortified first because the broken markup currently nests it inside
-    // the Sparkling section. Detaching it first prevents cross-category loss.
+    // Fix Fortified first because the broken markup nests it inside
+    // Sparkling. Detaching it first prevents cross-category loss.
     normalizeCategory("fortified-wine", "Fortified Wine");
     normalizeCategory("sparkling", "Champagne / Sparkling Wine");
 
