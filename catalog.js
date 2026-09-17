@@ -2,7 +2,20 @@
   const root = document.getElementById("catalogRoot");
   if (!root) return;
 
-  const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const rawCatalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+  const legacyWineIds = new Set([
+    "4th-street-natural-sweet-red-5l",
+    "4th-street-natural-sweet-ros-5l",
+    "4th-street-natural-sweet-white-5l",
+    "4th-street-sweet-late-harvest-5l"
+  ]);
+  const catalog = rawCatalog.map(p => {
+    if (!p) return p;
+    if (legacyWineIds.has(p.id)) return {...p, category: "Wines", categoryId: "wine"};
+    if (p.id === "robertson-chapel-red-1-5l") return {...p, image: "robertson-chapel-red-1.5l.jpg"};
+    if (p.id === "robertson-chapel-natural-sweet-red-1-5l") return {...p, image: "robertson-chapel-sweet-red-1.5l.jpg"};
+    return p;
+  });
   const mode = document.body.dataset.page || "shop";
   const esc = v => String(v ?? "").replace(/[&<>"']/g, x => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -84,14 +97,12 @@
 
   // ---------- SHOP PAGE (dynamic rebuild so we never have broken static HTML again) ----------
   if (mode === "shop" || !mode) {
-    // Preferred display order
     const order = [
       "wine", "whisky", "brandy", "rum", "vodka", "tequila", "gin",
       "liqueurs", "sparkling", "cognac", "six-packs", "fortified-wine",
       "ready-to-drink", "whiskey-liqueurs"
     ];
 
-    // Group products
     const groupsMap = new Map();
     catalog.forEach(p => {
       if (!p || !p.categoryId) return;
@@ -106,7 +117,6 @@
       groupsMap.get(p.categoryId).items.push(p);
     });
 
-    // Build ordered list (known order first, then any leftovers)
     const groups = [];
     order.forEach(id => {
       if (groupsMap.has(id)) {
@@ -116,7 +126,6 @@
     });
     groupsMap.forEach(g => groups.push(g));
 
-    // Category navigation strip
     const navHtml = `
       <div class="category-nav" id="categoryNav">
         <div class="category-strip" id="categories">
@@ -124,7 +133,6 @@
         </div>
       </div>`;
 
-    // Preview: show first 4 products, then VIEW ALL if more
     const PREVIEW = 4;
     const sections = groups.map(g => {
       const preview = g.items.slice(0, PREVIEW);
@@ -178,11 +186,9 @@
 
     root.innerHTML = navHtml + sections;
 
-    // Re-run image sync + cart controls after rebuild
     if (typeof window.syncProductImages === "function") {
       window.syncProductImages();
     }
-    // Trigger any existing cart button binding
     document.dispatchEvent(new Event("catalog-rebuilt"));
   }
 })();
