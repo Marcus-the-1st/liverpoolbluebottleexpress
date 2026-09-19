@@ -946,6 +946,34 @@ window.LBB_CATALOG = [
     "image": "belgravia.png"
   },
   {
+    "id": "belgravia-pink",
+    "name": "Belgravia Pink",
+    "category": "Gin",
+    "categoryId": "gin",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 145.0,
+    "initial": "BP",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  },
+  {
+    "id": "belgravia-blackberry",
+    "name": "Belgravia Blackberry",
+    "category": "Gin",
+    "categoryId": "gin",
+    "emoji": "🍸",
+    "size": "750ml",
+    "normalPrice": 145.0,
+    "initial": "BB",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  },
+  {
     "id": "belgravia-platinum",
     "name": "Belgravia Platinum",
     "category": "Gin",
