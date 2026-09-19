@@ -933,7 +933,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "belgravia",
-    "name": "Belgravia",
+    "name": "Belgravia Original",
     "category": "Gin",
     "categoryId": "gin",
     "emoji": "🍸",
