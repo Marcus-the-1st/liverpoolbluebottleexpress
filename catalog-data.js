@@ -2082,6 +2082,34 @@ window.LBB_CATALOG = [
     "image": null
   },
   {
+    "id": "robertson-chapel-red-750ml",
+    "name": "Robertson Chapel Red 750ml",
+    "category": "Wines",
+    "categoryId": "wine",
+    "emoji": "🍷",
+    "size": "750ml",
+    "normalPrice": 50,
+    "initial": "RCR",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  },
+  {
+    "id": "robertson-chapel-sweet-red-750ml",
+    "name": "Robertson Chapel Sweet Red 750ml",
+    "category": "Wines",
+    "categoryId": "wine",
+    "emoji": "🍷",
+    "size": "750ml",
+    "normalPrice": 50,
+    "initial": "RCS",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  },
+  {
     "id": "robertson-chapel-red-1-5l",
     "name": "Robertson Chapel Red 1.5L",
     "category": "Wines",
