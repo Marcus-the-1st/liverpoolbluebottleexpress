@@ -2209,7 +2209,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "robertson-dry-1l",
-    "name": "Robertson Dry 1L",
+    "name": "Robertson Sagte Droë Rooi 1L",
     "category": "Wines",
     "categoryId": "wine",
     "emoji": "🍷",
