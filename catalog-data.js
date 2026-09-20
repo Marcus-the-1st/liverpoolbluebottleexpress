@@ -2205,7 +2205,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-natural-sweet-white-750ml.png"
   },
   {
     "id": "robertson-natural-sweet-red-1l",
@@ -2303,7 +2303,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "tassenberg-750ml.png"
   },
   {
     "id": "nederburg-baronne",
@@ -2317,7 +2317,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "nederburg-baronne-750ml.png"
   },
   {
     "id": "spier-merlot",
