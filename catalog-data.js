@@ -2208,6 +2208,20 @@ window.LBB_CATALOG = [
     "image": null
   },
   {
+    "id": "robertson-natural-sweet-red-1l",
+    "name": "Robertson Natural Sweet Red 1L",
+    "category": "Wines",
+    "categoryId": "wine",
+    "emoji": "🍷",
+    "size": "1L",
+    "normalPrice": 50,
+    "initial": "RNSR1L",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": null
+  },
+  {
     "id": "robertson-dry-1l",
     "name": "Robertson Sagte Droë Rooi 1L",
     "category": "Wines",
