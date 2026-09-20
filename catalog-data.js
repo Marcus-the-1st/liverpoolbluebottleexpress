@@ -2121,7 +2121,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "drostdy-hof-adelpracht-late-harvest-1l.png"
   },
   {
     "id": "drostdy-hof-adelpracht-late-harvest-5l",
@@ -2219,7 +2219,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-natural-sweet-rose-1l.png"
   },
   {
     "id": "graca-rose-750ml",
@@ -2233,7 +2233,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "graca-rose-750ml.png"
   },
   {
     "id": "lutzville-vineyards-pinotage-750ml",
@@ -2247,7 +2247,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "lutzville-vineyards-pinotage-750ml.png"
   },
   {
     "id": "tassenberg",
@@ -2429,6 +2429,6 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jc-le-roux-le-domaine-non-alcoholic.png"
   }
 ];
