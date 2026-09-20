@@ -176,9 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ================================================================
    V3.9 — SHOPPING CART / WHATSAPP ORDER ENGINE
-   Product editing remains simple: change each product card's
-   data-product-name, data-size, data-normal-price and optional
-   data-special-price / data-special-start / data-special-end.
+   Cart product data comes exclusively from window.LBB_CATALOG.
+   Visible product cards are only presentation controls for the master catalogue.
    ================================================================ */
 (() => {
   const STORAGE_KEY = "lbb_cart_v39";
