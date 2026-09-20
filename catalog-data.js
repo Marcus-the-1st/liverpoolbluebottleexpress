@@ -2093,7 +2093,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-chapel-red-750ml.png"
   },
   {
     "id": "robertson-chapel-sweet-red-750ml",
@@ -2107,7 +2107,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-chapel-sweet-red-750ml.png"
   },
   {
     "id": "robertson-chapel-red-1-5l",
