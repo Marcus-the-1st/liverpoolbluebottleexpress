@@ -224,24 +224,26 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function readProducts() {
-    return [...document.querySelectorAll(".product-card")].map((card, index) => {
-      const normal = parseFloat(card.dataset.normalPrice || "0");
-      const special = parseFloat(card.dataset.specialPrice || "");
-      const price = getActivePrice(normal, special, card.dataset.specialOnly === "true");
-      return {
-        id: card.dataset.productId || `${(card.dataset.productName || "product").toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${index}`,
-        name: card.dataset.productName || card.querySelector("h4")?.textContent.trim() || "Product",
-        category: card.dataset.category || "",
-        size: card.dataset.size || card.querySelector("p")?.textContent.trim() || "",
-        normalPrice: normal,
-        price,
-        discount: Math.max(0, normal - price),
-        priceTbc: card.dataset.priceTbc === "true",
-        card
-      };
-    });
-  }
+    const catalog = Array.isArray(window.LBB_CATALOG) ? window.LBB_CATALOG : [];
+    const cards = new Map(
+      [...document.querySelectorAll(".product-card[data-product-id]")].map(card => [card.dataset.productId, card])
+    );
 
+    return catalog
+      .filter(Boolean)
+      .map(product => {
+        const normal = Number(product.normalPrice || 0);
+        const price = getActivePrice(normal, product.specialPrice, product.specialOnly === true);
+        return {
+          ...product,
+          normalPrice: normal,
+          price,
+          discount: Math.max(0, normal - price),
+          priceTbc: product.priceTbc === true,
+          card: cards.get(product.id) || null
+        };
+      });
+  }
   let products = [];
 
   function saveCart() {
@@ -332,6 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderProductControls() {
     products.forEach(product => {
+      if (!product.card) return;
       const info = product.card.querySelector(".product-info");
       if (!info) return;
       let control = info.querySelector(".cart-product-control");
@@ -569,12 +572,3 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 
-/* V3.76 — Sedgwick's Old Brown 1L shop-card addition.
-   The catalogue entry is the source of truth; this only fills the
-   existing Fortified Wine grid on the static Shop page. */
-(() => {
-  if (document.body?.dataset.page !== "shop") return;
-  const grid = document.querySelector('#fortified-wine .product-grid');
-  if (!grid || grid.querySelector('[data-product-id="sedgwicks-old-brown-1l"]')) return;
-  grid.insertAdjacentHTML('beforeend', `<article class="product-card" data-category="Fortified Wine" data-normal-price="70.00" data-product-id="sedgwicks-old-brown-1l" data-product-name="Sedgwick's The Original Old Brown" data-size="1L" data-special-price=""><div class="product-placeholder product-media"><img alt="Sedgwick's The Original Old Brown" class="product-image" loading="lazy" src="sedgwicks-old-brown-1l-website.png"/></div><div class="product-info"><h4>Sedgwick's The Original Old Brown</h4><p>1L</p><div class="product-price"><strong class="current-price">R70.00</strong></div><div class="special-meta is-empty" aria-hidden="true"></div><div class="cart-product-control"><button class="add-to-cart-button" data-cart-add="sedgwicks-old-brown-1l" type="button"><span class="bottle-plus-icon"><svg viewBox="0 0 24 24"><path class="bottle" d="M9 3h6v4l1 2v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l1-2V3Z"></path><path class="plus" d="M12 11v6M9 14h6"></path></svg></span><span>Add to Cart</span></button></div></div></article>`);
-})();
