@@ -2345,7 +2345,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "spier-sauvignon-blanc-750ml.png"
   },
   {
     "id": "two-oceans-cabernet-sauvignon-merlot",
@@ -2429,7 +2429,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jc-le-roux-le-domaine.png"
   },
   {
     "id": "jc-le-roux-la-fleurette",
@@ -2443,7 +2443,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jc-le-roux-la-fleurette.png"
   },
   {
     "id": "jc-le-roux-la-chanson",
@@ -2457,7 +2457,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "jc-le-roux-la-chanson.png"
   },
   {
     "id": "jc-le-roux-le-domaine-non-alcoholic",
