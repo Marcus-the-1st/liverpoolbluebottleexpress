@@ -2233,7 +2233,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-crisp-dry-white-1l.png"
   },
   {
     "id": "robertson-natural-sweet-rose-1l",
