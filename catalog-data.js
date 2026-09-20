@@ -2331,7 +2331,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "spier-merlot-750ml.png"
   },
   {
     "id": "spier-sauvignon-blanc",
@@ -2359,7 +2359,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "two-oceans-cabernet-sauvignon-merlot-750ml.png"
   },
   {
     "id": "two-oceans-sauvignon-blanc",
@@ -2373,7 +2373,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "two-oceans-sauvignon-blanc-750ml.png"
   },
   {
     "id": "versailles-medium-sweet-red",
