@@ -1298,7 +1298,7 @@ window.LBB_CATALOG = [
   {
     "id": "belgravia-gin-dry-lemon",
     "name": "Belgravia Gin & Dry Lemon",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1312,7 +1312,7 @@ window.LBB_CATALOG = [
   {
     "id": "brutal-fruit-ruby-apple",
     "name": "Brutal Fruit Ruby Apple",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1326,7 +1326,7 @@ window.LBB_CATALOG = [
   {
     "id": "carling-black-label",
     "name": "Carling Black Label",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1340,7 +1340,7 @@ window.LBB_CATALOG = [
   {
     "id": "castle-lager",
     "name": "Castle Lager",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1354,7 +1354,7 @@ window.LBB_CATALOG = [
   {
     "id": "castle-lite",
     "name": "Castle Lite",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1368,7 +1368,7 @@ window.LBB_CATALOG = [
   {
     "id": "castle-milk-stout",
     "name": "Castle Milk Stout",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1382,7 +1382,7 @@ window.LBB_CATALOG = [
   {
     "id": "flying-fish-pressed-lemon",
     "name": "Flying Fish Pressed Lemon",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1396,7 +1396,7 @@ window.LBB_CATALOG = [
   {
     "id": "hunters-dry",
     "name": "Hunters Dry",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1410,7 +1410,7 @@ window.LBB_CATALOG = [
   {
     "id": "hunters-gold-twister",
     "name": "Hunters Gold Twister",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1424,7 +1424,7 @@ window.LBB_CATALOG = [
   {
     "id": "ice-tropez",
     "name": "Ice Tropez",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 275ml NRB",
@@ -1438,7 +1438,7 @@ window.LBB_CATALOG = [
   {
     "id": "lion-lager",
     "name": "Lion Lager",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1452,7 +1452,7 @@ window.LBB_CATALOG = [
   {
     "id": "mxd-peach-mojito",
     "name": "MXD Peach Mojito",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1466,7 +1466,7 @@ window.LBB_CATALOG = [
   {
     "id": "mxd-pina-colada",
     "name": "MXD Pina Colada",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1480,7 +1480,7 @@ window.LBB_CATALOG = [
   {
     "id": "mxd-watermelon-daiquiri",
     "name": "MXD Watermelon Daiquiri",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1494,7 +1494,7 @@ window.LBB_CATALOG = [
   {
     "id": "redd-s-mxd-vodka-guarana",
     "name": "Redd’s MXD Vodka Guarana",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1508,7 +1508,7 @@ window.LBB_CATALOG = [
   {
     "id": "redd-s-mxd-vodka-pine-flavour",
     "name": "Redd’s MXD Vodka Pine Flavour",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml",
@@ -1522,7 +1522,7 @@ window.LBB_CATALOG = [
   {
     "id": "windhoek-draught",
     "name": "Windhoek Draught",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1536,7 +1536,7 @@ window.LBB_CATALOG = [
   {
     "id": "bernini-mimosa-6-pack",
     "name": "Bernini Mimosa",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml Can",
@@ -1550,7 +1550,7 @@ window.LBB_CATALOG = [
   {
     "id": "strongbow-dry-cider-6-pack",
     "name": "Strongbow Dry Cider",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml Can",
@@ -1564,7 +1564,7 @@ window.LBB_CATALOG = [
   {
     "id": "strongbow-gold-6-pack",
     "name": "Strongbow Gold",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml Can",
@@ -1578,7 +1578,7 @@ window.LBB_CATALOG = [
   {
     "id": "strongbow-red-berries-6-pack",
     "name": "Strongbow Red Berries",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 440ml Can",
@@ -1620,7 +1620,7 @@ window.LBB_CATALOG = [
   {
     "id": "bernini-blush-6-pack",
     "name": "Bernini Blush",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
@@ -1635,7 +1635,7 @@ window.LBB_CATALOG = [
   {
     "id": "bernini-classic-6-pack",
     "name": "Bernini Classic",
-    "category": "Six Packs",
+    "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
     "size": "6 × 500ml",
