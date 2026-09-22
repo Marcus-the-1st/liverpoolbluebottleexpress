@@ -2177,7 +2177,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "drostdy-hof-claret-select-750ml.png"
   },
   {
     "id": "drostdy-hof-claret-select-5l",
@@ -2233,7 +2233,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "robertson-dry-1l.png"
   },
   {
     "id": "robertson-crisp-dry-white-1l",
@@ -2387,7 +2387,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "versailles-medium-sweet-red-750ml.png"
   },
   {
     "id": "versailles-dry-red",
@@ -2401,7 +2401,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "versailles-dry-red-750ml.png"
   },
   {
     "id": "orc-full-cream-fortified-wine",
