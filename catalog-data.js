@@ -1424,8 +1424,8 @@ window.LBB_CATALOG = [
   {
     "id": "ice-tropez",
     "name": "Ice Tropez",
-    "category": "Six-pack Cans",
-    "categoryId": "six-packs",
+    "category": "Six-Packs of NRB",
+    "categoryId": "six-pack-nrb",
     "emoji": "🍺",
     "size": "6 × 275ml NRB",
     "normalPrice": 439.0,
