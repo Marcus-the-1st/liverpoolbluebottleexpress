@@ -87,12 +87,18 @@
     // Preferred display order
     const order = [
       "wine", "whisky", "brandy", "rum", "vodka", "tequila", "gin",
-      "liqueurs", "sparkling", "cognac", "six-packs", "fortified-wine",
+      "liqueurs", "sparkling", "cognac", "six-packs", "six-pack-nrb", "fortified-wine",
       "ready-to-drink", "whiskey-liqueurs"
     ];
 
     // Group products
     const groupsMap = new Map();
+    groupsMap.set("six-pack-nrb", {
+      id: "six-pack-nrb",
+      name: "Six Pack of NRB",
+      emoji: "🍺",
+      items: []
+    });
     catalog.forEach(p => {
       if (!p || !p.categoryId) return;
       if (!groupsMap.has(p.categoryId)) {
