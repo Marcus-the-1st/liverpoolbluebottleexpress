@@ -1,29 +1,23 @@
 Liverpool Blue Bottle Liquor Express
-19 website-ready product images
+Website image redo — 4 products
 
-All images are 800x1000 PNGs with the supplied product photography preserved,
-proportionally scaled and presented on a black studio canvas.
+Prepared as 800 x 1000 PNG website images with a consistent black presentation,
+full product visibility, proportional scaling and no invented/recreated packaging.
 
-Upload the PNG files into the website's existing image/assets location.
-Do not rename them after upload.
+FILE MAPPING
+1. drostdy-hof-claret-select-750ml.png
+   -> Drostdy-Hof Claret Select 750ml
 
-Products:
-1. Belgravia Pink 750ml
-2. Belgravia Blackberry 750ml
-3. J.C. Le Roux La Chanson 750ml
-4. J.C. Le Roux La Fleurette 750ml
-5. J.C. Le Roux Le Domaine 750ml
-6. Romantic Lips Sweet Red 5L
-7. Romantic Lips Sweet Rosé 5L
-8. Romantic Lips Sweet White 5L
-9. Romantic Lips Dry Red 5L
-10. J.C. Le Roux Le Domaine Non-Alcoholic 750ml
-11. Drostdy-Hof Adelpracht Late Harvest 5L
-12. Drostdy-Hof Claret Select 5L
-13. Rusthof Natural Sweet Red 5L
-14. Rusthof Natural Rosé 5L
-15. Rusthof Dry Red 5L
-16. 1659 Rosé 750ml
-17. 1659 Sweet Red 750ml
-18. 1659 Classic Special Red 750ml
-19. ORC Full Cream Fortified Wine 750ml
+2. versailles-medium-sweet-red-750ml.png
+   -> Versailles Medium Sweet Red 750ml
+
+3. robertson-dry-1l.png
+   -> Robertson Sagte Droë Rooi 1L
+
+4. versailles-dry-red-750ml.png
+   -> Versailles Dry Red 750ml
+
+IMPORTANT
+These files are ready to upload to the website repository.
+The catalogue references have NOT been changed yet because the images still
+need to be uploaded to GitHub first.
