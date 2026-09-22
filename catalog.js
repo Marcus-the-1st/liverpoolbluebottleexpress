@@ -95,7 +95,7 @@
     const groupsMap = new Map();
     groupsMap.set("six-pack-nrb", {
       id: "six-pack-nrb",
-      name: "Six-Pack of NRB",
+      name: "Six-Packs of NRB",
       emoji: "🍺",
       items: []
     });
