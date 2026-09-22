@@ -2849,7 +2849,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "brutal-fruit-ruby-apple-nrb-500ml-6-pack.png"
   },
   {
     "id": "bacardi-breezer-watermelon-nrb-275ml-6-pack",
