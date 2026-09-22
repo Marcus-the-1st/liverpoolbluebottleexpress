@@ -186,33 +186,3 @@ body.category-page #catalogRoot .category .product-info {
 body.category-page #catalogRoot .category .cart-product-control {
   margin-top: auto !important;
 }
-
-
-/* ================================================================
-   V3.59 — PRODUCT IMAGE VISUAL SCALE NORMALIZATION + RENDERING
-   The media frame is already fixed. The remaining inconsistency is
-   caused by different amounts of empty space inside the supplied
-   800×1000 packshots. These adjustments normalize the affected
-   NRB packshots without altering the source artwork or packaging.
-   ================================================================ */
-.product-card .product-image{
-  transform-origin:center center !important;
-}
-
-/* Six-Packs of NRB — matched to the visual footprint seen across
-   the current category. Values preserve the actual proportions. */
-.product-card[data-product-id="carling-black-label-nrb-330ml-6-pack"] .product-image{transform:scale(1.12)!important}
-.product-card[data-product-id="castle-lite-nrb-330ml-6-pack"] .product-image{transform:scale(1.10)!important}
-.product-card[data-product-id="castle-lager-nrb-330ml-6-pack"] .product-image{transform:scale(1.08)!important}
-.product-card[data-product-id="castle-milk-stout-nrb-330ml-6-pack"] .product-image{transform:scale(1.28)!important}
-.product-card[data-product-id="corona-extra-nrb-335ml-6-pack"] .product-image{transform:scale(1.25)!important}
-.product-card[data-product-id="stella-artois-nrb-330ml-6-pack"] .product-image{transform:scale(1.24)!important}
-.product-card[data-product-id="flying-fish-pressed-lemon-nrb-330ml-6-pack"] .product-image{transform:scale(.98)!important}
-.product-card[data-product-id="brutal-fruit-ruby-apple-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
-.product-card[data-product-id="brutal-fruit-ruby-apple-nrb-500ml-6-pack"] .product-image{transform:scale(1.08)!important}
-.product-card[data-product-id="bacardi-breezer-watermelon-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
-.product-card[data-product-id="amstel-lager-nrb-330ml-6-pack"] .product-image{transform:scale(.96)!important}
-.product-card[data-product-id="windhoek-draught-nrb-440ml-6-pack"] .product-image{transform:scale(1.04)!important}
-.product-card[data-product-id="klipdrift-cola-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
-.product-card[data-product-id="extreme-guarana-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
-
