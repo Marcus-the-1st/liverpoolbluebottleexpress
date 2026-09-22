@@ -2737,7 +2737,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "carling-black-label-nrb-330ml-6-pack.png"
   },
   {
     "id": "castle-lite-nrb-330ml-6-pack",
@@ -2751,7 +2751,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "castle-lite-nrb-330ml-6-pack.png"
   },
   {
     "id": "castle-lager-nrb-330ml-6-pack",
@@ -2765,7 +2765,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "castle-lager-nrb-330ml-6-pack.png"
   },
   {
     "id": "castle-milk-stout-nrb-330ml-6-pack",
@@ -2779,7 +2779,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "castle-milk-stout-nrb-330ml-6-pack.png"
   },
   {
     "id": "corona-extra-nrb-335ml-6-pack",
@@ -2793,7 +2793,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "corona-extra-nrb-335ml-6-pack.png"
   },
   {
     "id": "stella-artois-nrb-330ml-6-pack",
@@ -2807,7 +2807,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "stella-artois-nrb-330ml-6-pack.png"
   },
   {
     "id": "flying-fish-pressed-lemon-nrb-330ml-6-pack",
@@ -2821,7 +2821,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "flying-fish-pressed-lemon-nrb-330ml-6-pack.png"
   },
   {
     "id": "brutal-fruit-ruby-apple-nrb-275ml-6-pack",
@@ -2835,7 +2835,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "brutal-fruit-ruby-apple-nrb-275ml-6-pack.png"
   },
   {
     "id": "brutal-fruit-ruby-apple-nrb-500ml-6-pack",
@@ -2863,7 +2863,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "bacardi-breezer-watermelon-nrb-275ml-6-pack.png"
   },
   {
     "id": "amstel-lager-nrb-330ml-6-pack",
@@ -2877,7 +2877,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "amstel-lager-nrb-330ml-6-pack.png"
   },
   {
     "id": "windhoek-draught-nrb-440ml-6-pack",
@@ -2891,7 +2891,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "windhoek-draught-nrb-440ml-6-pack.png"
   },
   {
     "id": "heineken-nrb-330ml-6-pack",
@@ -3073,7 +3073,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "klipdrift-cola-nrb-275ml-6-pack.png"
   },
   {
     "id": "extreme-guarana-nrb-275ml-6-pack",
@@ -3087,7 +3087,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "extreme-guarana-nrb-275ml-6-pack.png"
   },
   {
     "id": "savanna-dry-nrb-500ml-6-pack",
