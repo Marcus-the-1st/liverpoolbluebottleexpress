@@ -1886,6 +1886,20 @@ window.LBB_CATALOG = [
     "image": null
   },
   {
+    "id": "lion-lager",
+    "name": "Lion Lager",
+    "category": "Six-pack Cans",
+    "categoryId": "six-packs",
+    "emoji": "🍺",
+    "size": "6 × 500ml Can",
+    "normalPrice": 85,
+    "initial": "LL",
+    "specialPrice": 69.99,
+    "specialStart": "2026-09-01",
+    "specialEnd": "2026-09-15",
+    "image": "special-lion-lager.png"
+  },
+  {
     "id": "smirnoff-1818",
     "name": "Smirnoff 1818",
     "category": "Vodka",
