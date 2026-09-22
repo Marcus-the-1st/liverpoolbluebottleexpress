@@ -52,7 +52,7 @@
               data-special-price="${Number(p.specialPrice).toFixed(2)}"
               data-special-only="${p.specialOnly === true ? "true" : "false"}">
               <div class="product-placeholder product-media">
-                <img class="product-image" src="${esc(p.image || "special-product-image-pending.png")}" alt="${esc(p.name)}" loading="lazy">
+                <img class="product-image" src="${esc(p.image || "special-product-image-pending.png")}" alt="${esc(p.name)}" loading="lazy" decoding="async">
               </div>
               <div class="product-info">
                 <h4>${esc(p.name)}</h4>
@@ -159,7 +159,7 @@
                 data-price-tbc="${p.priceTbc === true ? "true" : "false"}">
                 <div class="product-placeholder product-media">
                   ${p.image
-                    ? `<img class="product-image" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`
+                    ? `<img class="product-image" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async">`
                     : `<span class="product-initial">${esc(p.initial || "")}</span>`}
                 </div>
                 <div class="product-info">
