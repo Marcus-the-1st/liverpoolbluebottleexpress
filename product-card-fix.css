@@ -216,9 +216,3 @@ body.category-page #catalogRoot .category .cart-product-control {
 .product-card[data-product-id="klipdrift-cola-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
 .product-card[data-product-id="extreme-guarana-nrb-275ml-6-pack"] .product-image{transform:scale(.98)!important}
 
-/* Long category pages: let off-screen cards remain cheap to render.
-   This does not alter their layout or content. */
-.category-page .category-detail-section .product-card{
-  content-visibility:auto;
-  contain-intrinsic-size:360px;
-}
