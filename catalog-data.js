@@ -2905,7 +2905,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "heineken-nrb-330ml-6-pack.png"
   },
   {
     "id": "savanna-dry-nrb-330ml-6-pack",
@@ -2919,7 +2919,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "savanna-dry-nrb-330ml-6-pack.png"
   },
   {
     "id": "savanna-angry-lemon-nrb-330ml-6-pack",
@@ -2947,7 +2947,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "hunters-dry-nrb-330ml-6-pack.png"
   },
   {
     "id": "hunters-gold-nrb-330ml-6-pack",
@@ -2961,7 +2961,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "hunters-gold-nrb-330ml-6-pack.png"
   },
   {
     "id": "red-square-blue-ice-nrb-275ml-6-pack",
@@ -2975,7 +2975,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square-blue-ice-nrb-275ml-6-pack.png"
   },
   {
     "id": "red-square-red-ice-nrb-275ml-6-pack",
@@ -2989,7 +2989,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square-red-ice-nrb-275ml-6-pack.png"
   },
   {
     "id": "red-square-purple-ice-nrb-275ml-6-pack",
@@ -3003,7 +3003,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square-purple-ice-nrb-275ml-6-pack.png"
   },
   {
     "id": "red-square-vodka-energy-nrb-275ml-6-pack",
@@ -3017,7 +3017,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "red-square-vodka-energy-nrb-275ml-6-pack.png"
   },
   {
     "id": "kix-raspberry-peach-spritzer-nrb-330ml-6-pack",
@@ -3031,7 +3031,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "kix-raspberry-peach-spritzer-nrb-330ml-6-pack.png"
   },
   {
     "id": "bernini-blush-nrb-275ml-6-pack",
@@ -3045,7 +3045,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "bernini-blush-nrb-275ml-6-pack.png"
   },
   {
     "id": "bernini-classic-nrb-275ml-6-pack",
@@ -3059,7 +3059,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "bernini-classic-nrb-275ml-6-pack.png"
   },
   {
     "id": "klipdrift-cola-nrb-275ml-6-pack",
