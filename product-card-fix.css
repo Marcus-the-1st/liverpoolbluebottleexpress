@@ -18,10 +18,12 @@
 .product-card .product-placeholder.product-media {
   width: 100%;
   flex: 0 0 auto;
+  aspect-ratio: 4 / 5;
+  height: auto;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  overflow: hidden !important;
+  overflow: hidden;
   background: #050505 !important;
   position: relative;
 }
