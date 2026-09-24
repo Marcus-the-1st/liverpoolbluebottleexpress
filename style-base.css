@@ -1243,9 +1243,9 @@ button{
    ================================================================ */
 
 .product-placeholder{
-  height:205px;
-
+  aspect-ratio:4 / 5;
   width:100%;
+  height:auto;
 
   display:grid;
 
@@ -2262,7 +2262,6 @@ button:active{
   }
 
   .product-placeholder{
-    height:195px;
   }
 
   .brands-grid{
