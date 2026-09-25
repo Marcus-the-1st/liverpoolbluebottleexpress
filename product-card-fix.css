@@ -36,10 +36,7 @@
   object-fit: contain !important;
   object-position: center center !important;
   background: #050505 !important;
-  /* permanent safety margin – never let reflection touch the edge */
-  max-width: 94% !important;
-  max-height: 94% !important;
-  margin: auto !important;
+  /* no max-width / max-height – images already have correct padding */
 }
 
 /* ---------- Missing-image placeholder (the letters) ---------- */
