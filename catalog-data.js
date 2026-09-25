@@ -3090,6 +3090,20 @@ window.LBB_CATALOG = [
     "image": "extreme-guarana-nrb-275ml-6-pack.png"
   },
   {
+    "id": "savanna-angry-lemon-nrb-500ml-6-pack",
+    "name": "Savanna Angry Lemon",
+    "category": "Six-Packs of NRB",
+    "categoryId": "six-pack-nrb",
+    "emoji": "🍺",
+    "size": "6 × 500ml NRB",
+    "normalPrice": 160,
+    "initial": "SAL500N",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
+    "image": "savanna-angry-lemon-nrb-500ml-6-pack.png"
+  },
+  {
     "id": "savanna-dry-nrb-500ml-6-pack",
     "name": "Savanna Dry",
     "category": "Six-Packs of NRB",
