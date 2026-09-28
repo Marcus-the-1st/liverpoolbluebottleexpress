@@ -1719,7 +1719,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "strongbow-strawberry-lime-500ml-6-pack",
-    "name": "Strongbow Strawberry & Lime",
+    "name": "Strongbow Ultra Strawberry & Lime",
     "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
@@ -1775,7 +1775,7 @@ window.LBB_CATALOG = [
   },
   {
     "id": "extreme-440ml-4-pack",
-    "name": "Extreme",
+    "name": "Extreme Guarana",
     "category": "Six-pack Cans",
     "categoryId": "six-packs",
     "emoji": "🍺",
