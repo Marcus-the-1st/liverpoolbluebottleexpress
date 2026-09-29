@@ -1,0 +1,35 @@
+CATALOG IMAGE-PATH FIXES
+
+amstel-lager-can-500ml-6-pack -> amstel-lager-can-500ml-6-pack.png
+bacardi-breezer-watermelon-can-440ml-6-pack -> bacardi-breezer-watermelon-can-440ml-6-pack.png
+belgravia-gin-dark-cherry-440ml-6-pack -> belgravia-gin-dark-cherry-440ml-6-pack.png
+brutal-fruit-litchi-seche-500ml-6-pack -> brutal-fruit-litchi-seche-500ml-6-pack.png
+brutal-fruit-strawberry-rouge-500ml-6-pack -> brutal-fruit-strawberry-rouge-500ml-6-pack.png
+caribbean-twist-pina-colada-440ml-6-pack -> caribbean-twist-pina-colada-440ml-6-pack.png
+caribbean-twist-pineapple-daiquiri-440ml-6-pack -> caribbean-twist-pineapple-daiquiri-440ml-6-pack.png
+caribbean-twist-watermelon-440ml-6-pack -> caribbean-twist-watermelon-440ml-6-pack.png
+detroit-energizer-guarana-440ml-6-pack -> detroit-energizer-guarana-440ml-6-pack.png
+extreme-440ml-4-pack -> extreme-guarana-can-440ml-6-pack.png
+heineken-can-500ml-6-pack -> heineken-can-500ml-6-pack.png
+hunters-dry -> hunters-dry.png
+hunters-gold-twister -> hunters-gold-twister.png
+kix-rose-raspberry-peach-spritzer-440ml-6-pack -> kix-rose-raspberry-peach-spritzer-440ml-6-pack.png
+kix-tropical-spritzer-440ml-6-pack -> kix-tropical-spritzer-440ml-6-pack.png
+kix-wild-berry-spritzer-440ml-6-pack -> kix-wild-berry-spritzer-440ml-6-pack.png
+mxd-peach-mojito -> mxd-peach-mojito.png
+mxd-pina-colada -> mxd-pina-colada.png
+mxd-watermelon-daiquiri -> mxd-watermelon-daiquiri.png
+redd-s-mxd-vodka-guarana -> redd-s-mxd-vodka-guarana.png
+redd-s-mxd-vodka-pine-flavour -> redd-s-mxd-vodka-pine-flavour.png
+savanna-angry-lemon-nrb-330ml-6-pack -> savanna-angry-lemon-nrb-330ml-6-pack.png
+savanna-dry-nrb-500ml-6-pack -> savanna-dry-nrb-500ml-6-pack.png
+smirnoff-ice-twist-berry-440ml-6-pack -> smirnoff-ice-berry-twist-440ml-6-pack.png
+smirnoff-ice-twist-pine-440ml-6-pack -> smirnoff-ice-pine-twist-440ml-6-pack.png
+stella-artois-can-410ml-6-pack -> stella-artois-can-410ml-6-pack.png
+strongbow-dry-cider-6-pack -> strongbow-dry-cider-6-pack.png
+strongbow-gold-6-pack -> strongbow-gold-6-pack.png
+strongbow-strawberry-lime-500ml-6-pack -> strongbow-ultra-strawberry-lime-500ml-6-pack.png
+
+NOT changed: Windhoek Draught 6 × 440ml NRB catalogue path. The path is already correct, but the uploaded PNG with that filename is a cans image and must be replaced with the correct NRB snapshot.
+
+The Savanna Angry Lemon 500ml NRB entry was already mapped correctly and was left unchanged.
