@@ -1433,7 +1433,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": null
+    "image": "windhoek-draught-can-500ml-6-pack.png"
   },
   {
     "id": "amstel-lager-can-500ml-6-pack",
@@ -1757,7 +1757,7 @@ window.LBB_CATALOG = [
     "specialPrice": 115,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
-    "image": "special-belgravia-gin-dry-lemon.png"
+    "image": "belgravia-gin-dry-lemon-cans.png"
   },
   {
     "id": "belgravia-gin-dark-cherry-440ml-6-pack",
@@ -2891,7 +2891,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": "windhoek-draught-nrb-440ml-6-pack.png"
+    "image": null
   },
   {
     "id": "heineken-nrb-330ml-6-pack",

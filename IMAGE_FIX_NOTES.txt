@@ -1,0 +1,37 @@
+Liverpool Blue Bottle – Image & catalog fixes (29 Sep 2026)
+
+WHAT WAS WRONG
+- Many six-pack images (especially the ones previously generated/zoomed by another AI) filled almost the entire card with almost no padding, so they looked “huge”.
+- Windhoek Draught CANS photo was assigned to the Windhoek Draught NRB product.
+- Windhoek Draught CANS product had image: null (showed WD placeholder).
+- Several other pack photos needed replacing with the correctly framed versions from beverage_packs.zip / beverage_packs_batch2.zip.
+
+WHAT WAS DONE
+1. Re-processed all 32 provided pack photos into consistent 800×1000 PNGs with ~13% black padding on each side (object-fit: contain now looks balanced).
+2. Catalog updates:
+   - windhoek-draught (Six-pack Cans) → windhoek-draught-can-500ml-6-pack.png
+   - windhoek-draught-nrb-440ml-6-pack → image: null (no correct NRB photo was in the packs; the cans photo was removed so it no longer shows in the wrong place)
+   - belgravia-gin-dry-lemon → belgravia-gin-dry-lemon-cans.png
+3. Overwrote the matching filenames in the site with the new padded images.
+
+IMAGES UPDATED (from your beverage_packs zips)
+Savanna Angry Lemon 330 & 500 NRB, Savanna Dry 500 NRB,
+Brutal Fruit Strawberry Rouge & Litchi Sèche,
+Windhoek Draught CANS, Amstel Lager cans, Heineken cans,
+Bacardi Breezer Watermelon, Hunters Dry, Hunters Gold,
+Kix Rose / Tropical / Wild Berry,
+Redd’s MXD Pine & Guarana, MXD Watermelon / Peach Mojito / Pina Colada,
+Strongbow Gold / Dry / Ultra Strawberry & Lime,
+Detroit Energizer, Extreme Guarana, Stella Artois,
+Belgravia Gin & Dark Cherry + Gin & Dry Lemon cans,
+Smirnoff Ice Berry & Pine Twist,
+Caribbean Twist Watermelon / Pina Colada / Pineapple Daiquiri.
+
+STILL MISSING / PLACEHOLDER
+- Windhoek Draught 6×440ml NRB (need a real bottle-pack photo)
+- Castle Lite 6×500ml Can (still using logo / special image)
+- Flying Fish Pressed Lemon, Strongbow Red Berries, Castle Lite Draught, and a few others that already had image: null
+
+DELIVERABLES
+- liverpoolbluebottleexpress-fixed-images.zip  → full site ready to upload
+- catalog-and-fixed-images-only.zip           → just catalog-data.js + the 32 new PNGs (if you prefer to merge yourself)
