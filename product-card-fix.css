@@ -1,127 +1,216 @@
 /* ================================================================
-   PRODUCT CARD FIX — clean & stable (v2)
+   PRODUCT CARD FIX — v3 (unified alignment)
+   Loaded last so these rules win. Goal: every product card in a
+   row has identical geometry so images, size labels, price pills
+   and Add to Cart buttons line up across the grid.
    ================================================================ */
 
-/* Keep the base media heights from style-base.css.
-   Only reinforce structure and missing-image state. */
+/* ---------- Grid: force equal-height cards ---------- */
+.category-page .product-grid,
+.specials-product-grid,
+.catalog-section .product-grid {
+  align-items: stretch !important;
+}
 
 .product-card {
   display: flex !important;
   flex-direction: column !important;
-  height: 100%;
-  min-height: 0;
+  height: 100% !important;
+  min-height: 0 !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
 }
 
-/* Media frame – let style-base.css control the actual height */
+/* ---------- Image frame: fixed footprint, contain image ---------- */
+/* Prefer aspect-ratio so it scales cleanly; kill conflicting fixed heights */
 .product-card .product-placeholder,
 .product-card .product-media,
 .product-card .product-placeholder.product-media {
-  width: 100%;
-  flex: 0 0 auto;
-  aspect-ratio: 4 / 5;
-  height: auto;
+  width: 100% !important;
+  flex: 0 0 auto !important;
+  aspect-ratio: 3 / 4 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  overflow: hidden;
+  overflow: hidden !important;
   background: #050505 !important;
-  position: relative;
+  position: relative !important;
+  border-radius: 18px 18px 0 0 !important;
 }
 
-/* Images always contained */
-.product-card .product-image {
+@media (max-width: 520px) {
+  .product-card .product-placeholder,
+  .product-card .product-media,
+  .product-card .product-placeholder.product-media {
+    border-radius: 14px 14px 0 0 !important;
+  }
+}
+
+/* Images always contained inside the frame — never blow out size */
+.product-card .product-image,
+.product-card .product-media .product-image,
+.product-card .product-placeholder .product-image {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   object-fit: contain !important;
   object-position: center center !important;
   background: #050505 !important;
-  /* no max-width / max-height – images already have correct padding */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  flex: none !important;
 }
 
-/* ---------- Missing-image placeholder (the letters) ---------- */
+/* Missing-image initials stay centered and consistent */
 .product-card .product-initial {
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.55);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-  user-select: none;
-  line-height: 1;
+  font-size: clamp(1.5rem, 4.5vw, 2.2rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  line-height: 1 !important;
+  user-select: none !important;
 }
 
-/* Optional subtle bottle icon behind the initials */
-.product-card .product-placeholder:not(:has(img))::before {
-  content: "🍺";
-  position: absolute;
-  font-size: 3.2rem;
-  opacity: 0.12;
-  filter: grayscale(1);
-  pointer-events: none;
-}
-
-/* ---------- Info section stays consistent ---------- */
+/* ---------- Info block: fixed row heights via CSS grid ---------- */
+/* Rows: name | size | price | special-meta | cart control          */
 .product-card .product-info {
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-rows: 3.4em 1.35em 44px 28px 48px !important;
+  align-content: start !important;
   flex: 1 1 auto !important;
-  padding: 14px 14px 16px !important;
-  min-height: 0;
+  min-height: 0 !important;
+  padding: 14px 14px 14px !important;
+  box-sizing: border-box !important;
+  row-gap: 0 !important;
 }
 
+@media (max-width: 520px) {
+  .product-card .product-info {
+    grid-template-rows: 3.4em 1.35em 44px 28px 48px !important;
+    padding: 12px 12px 12px !important;
+  }
+}
+
+/* Name — clamp to 2–3 lines, fixed slot */
 .product-card .product-info h4 {
-  margin: 0 0 4px 0 !important;
-  line-height: 1.25 !important;
+  margin: 0 !important;
+  height: 3.4em !important;
+  min-height: 3.4em !important;
+  max-height: 3.4em !important;
+  line-height: 1.15 !important;
+  font-size: 0.95rem !important;
+  overflow: hidden !important;
   display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  overflow: hidden !important;
-  font-size: 0.95rem !important;
-  min-height: 2.5em;
+  -webkit-line-clamp: 3 !important;
 }
 
+/* Size label — single fixed line */
 .product-card .product-info > p {
-  margin: 0 0 10px 0 !important;
-  font-size: 0.82rem !important;
-  opacity: 0.85;
-  min-height: 1.3em;
+  margin: 0 !important;
+  height: 1.35em !important;
+  min-height: 1.35em !important;
+  max-height: 1.35em !important;
+  line-height: 1.35 !important;
+  font-size: 0.8rem !important;
+  opacity: 0.85 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
 }
 
+/* Price row — fixed height, left-aligned pills */
 .product-card .product-price {
-  margin: 0 0 8px 0 !important;
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
 }
 
+.product-card .product-price .base-price,
+.product-card .product-price .current-price {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+/* Special badges row — always reserve space so non-special cards
+   don’t collapse and shift the Add to Cart button up */
 .product-card .special-meta {
-  min-height: 24px;
-  margin: 0;
-}
-.product-card .special-meta.is-empty {
-  visibility: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
 }
 
-/* Push Add to Cart to the bottom of every card */
+.product-card .special-meta.is-empty,
+.product-card .special-meta[hidden] {
+  visibility: hidden !important;
+  display: flex !important; /* keep the row geometry */
+}
+
+/* Add to Cart — pinned to bottom of the fixed row */
 .product-card .cart-product-control {
-  margin-top: auto !important;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.product-card .add-to-cart-button {
+  margin: 0 !important;
+  padding: 4px 0 0 !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
   width: 100% !important;
-  min-height: 42px;
-  box-sizing: border-box;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
 }
 
-/* Category page – make sure grid items stretch equally */
+.product-card .add-to-cart-button,
+.product-card .quantity-stepper {
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ---------- Specials grid inherits the same structure ---------- */
+.specials-product-grid .product-card .product-info {
+  grid-template-rows: 3.4em 1.35em 44px 28px 48px !important;
+}
+
+/* Kill any leftover fixed-height media rules that fight aspect-ratio */
+.specials-product-grid .product-media,
+.category-page .product-placeholder.product-media {
+  height: auto !important;
+  aspect-ratio: 3 / 4 !important;
+}
+
+/* Ensure category grid cards stretch equally */
 .category-page .product-grid {
-  align-items: stretch;
+  display: grid !important;
+  align-items: stretch !important;
 }
 .category-page .product-card {
-  height: 100%;
+  width: 100% !important;
+  min-width: 0 !important;
+  flex: none !important;
 }
