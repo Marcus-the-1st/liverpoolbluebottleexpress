@@ -2891,7 +2891,7 @@ window.LBB_CATALOG = [
     "specialPrice": null,
     "specialStart": null,
     "specialEnd": null,
-    "image": "windhoek-draught-nrb-440ml-6-pack.png"
+    "image": null
   },
   {
     "id": "heineken-nrb-330ml-6-pack",
