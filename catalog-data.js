@@ -1757,8 +1757,22 @@ window.LBB_CATALOG = [
     "specialPrice": 115,
     "specialStart": "2026-09-01",
     "specialEnd": "2026-09-15",
+    "image": null
+  },,
+  {
+    "id": "belgravia-gin-tonic-440ml-6-pack",
+    "name": "Belgravia Gin & Tonic",
+    "category": "Six-pack Cans",
+    "categoryId": "six-packs",
+    "emoji": "🍺",
+    "size": "6 × 440ml Can",
+    "normalPrice": 129.99,
+    "initial": "BGT",
+    "specialPrice": null,
+    "specialStart": null,
+    "specialEnd": null,
     "image": "belgravia-gin-dry-lemon-cans.png"
-  },
+  }
   {
     "id": "belgravia-gin-dark-cherry-440ml-6-pack",
     "name": "Belgravia Gin & Dark Cherry",
