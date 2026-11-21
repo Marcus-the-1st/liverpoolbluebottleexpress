@@ -1772,7 +1772,7 @@ window.LBB_CATALOG = [
     "specialStart": null,
     "specialEnd": null,
     "image": "belgravia-gin-dry-lemon-cans.png"
-  }
+  },
   {
     "id": "belgravia-gin-dark-cherry-440ml-6-pack",
     "name": "Belgravia Gin & Dark Cherry",
